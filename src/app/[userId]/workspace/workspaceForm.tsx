@@ -22,7 +22,6 @@ const WorkspaceForm = () => {
     const { reset, register, handleSubmit } = form;
 
     const handleOnSubmit = async(data: any) => {
-        const token = localStorage.getItem('accessToken');
         const response = await createWorksapceFetch(data);
         
         if(response.success) {

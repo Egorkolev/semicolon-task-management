@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import fs from "fs";
 
 export async function POST(req: Request) {
-    const {token} = await req.json()
+    const { token } = await req.json()
     try {
         const publicKey = fs.readFileSync('public.pem', 'utf8');
         const verified = jwt.verify(
@@ -21,10 +21,10 @@ export async function POST(req: Request) {
     } catch (error: any) {
         console.error("Invalid or Unavailable Token", error as Error);
         if (error && error.name === "JsonWebTokenError") {
-            return{
+            return NextResponse.json({
                 verified: false,
                 error: error.message,
-            };
+            }, {status: 401});
         }
     }
 }
