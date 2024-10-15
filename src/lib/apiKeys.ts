@@ -1,0 +1,9 @@
+export const apiKeys = {
+    POST_CREATE_NEW_USER: process.env.NEXT_PUBLIC_POST_CREATE_NEW_USER as string,
+    POST_USER_LOGIN: process.env.NEXT_PUBLIC_POST_USER_LOGIN as string,
+    POST_REFRESH_TOKEN: process.env.NEXT_PUBLIC_POST_REFRESH_TOKEN as string,
+    POST_VERIFY_TOKEN: process.env.NEXT_PUBLIC_POST_VERIFY_TOKEN as string,
+    POST_CREATE_WORKSPACE: process.env.NEXT_PUBLIC_POST_CREATE_WORKSPACE as string,
+    GET_USER_WORKSPACE: process.env.NEXT_PUBLIC_GET_USER_WORKSPACE as string,
+    RSA_PUBLIC_KEY_PEM: process.env.NEXT_PUBLIC_RSA_PUBLIC_KEY_PEM as string,
+}

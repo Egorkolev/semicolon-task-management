@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id            String                 @id @default(uuid())
+  fullName      String
+  email         String                 @unique
+  password      String
+  photoUrl      String?
+  createdAt     DateTime               @default(now())
+  resetRequests ResetPasswordRequest[]
+  workspace     Workspace[]
+}
+
+model Workspace {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  tasks       Task[]
+  userId      String
+  createdAt   DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id])
+}
+
+enum Priority {
+  LOW
+  MIDDLE
+  HIGH
+}
+
+model Task {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  riority     Priority
+  dueDate     DateTime
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id])
+}
+
+model ResetPasswordRequest {
+  id        String   @id @default(uuid())
+  userId    String
+  code      String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+}
