@@ -20,29 +20,23 @@ const WithAuth = (WrappedComponent: React.ComponentType<any>) => {
                         localStorage.setItem("accessToken", newRefreshToken.accessToken);
                         console.log("New access token acquured");
                         } else {
-                        router.push("/login");
                         return;
                         }
                     } else {
-                        router.push("/login");
                         return;
                     }
                 } else {
                     const verifyToken = await verifiedToken(token);
-                    console.log("verifyToken", verifyToken);
                     
                     if (!verifyToken?.verified) {
                         console.error("Token verification failed");
                         localStorage.removeItem("accessToken");
-                        router.push("/login");
                         return;
                     }
             
-                    console.log("Token is successfuly verified");
                     const decodedToken = jwt.decode(token);
                     const userId = (decodedToken as JwtPayload)?.userId;
                     const hasWorkspace = await userWorkspaceFetch();
-                    console.log("hasWorkspace", hasWorkspace);
                     
                     if(!hasWorkspace.hasWorkspace) {
                         router.push(`/${userId}/workspace`);
