@@ -2,11 +2,11 @@ import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import fs from "fs";
+import { apiKeys } from "@/lib/apiKeys";
 
 export async function POST(req: Request) {
     const {email, password} = await req.json();
-    const privateKey = fs.readFileSync('private.pem', 'utf8');
+    const privateKey = apiKeys.RSA_PRIVATE_KEY_PEM;
     
     if(!email || !password) {
         return NextResponse.json({error: 'All fields are required'}, {status: 400})

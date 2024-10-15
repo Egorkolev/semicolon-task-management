@@ -6,4 +6,5 @@ export const apiKeys = {
     POST_CREATE_WORKSPACE: process.env.NEXT_PUBLIC_POST_CREATE_WORKSPACE as string,
     GET_USER_WORKSPACE: process.env.NEXT_PUBLIC_GET_USER_WORKSPACE as string,
     RSA_PUBLIC_KEY_PEM: process.env.NEXT_PUBLIC_RSA_PUBLIC_KEY_PEM as string,
+    RSA_PRIVATE_KEY_PEM: process.env.RSA_PRIVATE_KEY_PEM as string,
 }

@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
-import fs from "fs";
+import { apiKeys } from "@/lib/apiKeys";
 
 export async function POST(req: Request) {
     const { token } = await req.json()
     try {
-        const publicKey = fs.readFileSync('public.pem', 'utf8');
+        const publicKey = apiKeys.RSA_PUBLIC_KEY_PEM;
         const verified = jwt.verify(
             token,
             publicKey,
