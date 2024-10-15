@@ -5,10 +5,14 @@
   "description": "Task Manager",
   "type": "module",
   "scripts": {
+    "postinstall": "prisma generate",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
+  },
+  "engines": {
+   "node": ">=14.x"
   },
   "dependencies": {
     "@eslint/config-array": "^0.18.0",
