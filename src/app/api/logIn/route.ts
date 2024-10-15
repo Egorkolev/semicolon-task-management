@@ -7,7 +7,6 @@ import fs from "fs";
 export async function POST(req: Request) {
     const {email, password} = await req.json();
     const privateKey = fs.readFileSync('private.pem', 'utf8');
-    console.log("privateKey", privateKey);
     
     if(!email || !password) {
         return NextResponse.json({error: 'All fields are required'}, {status: 400})
@@ -25,7 +24,6 @@ export async function POST(req: Request) {
         };
         
         const isPasswordValid = await bcrypt.compare(password, user.password);
-        console.log("isPasswordValid", isPasswordValid);
         
         if(!isPasswordValid) {
             return NextResponse.json({

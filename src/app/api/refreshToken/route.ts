@@ -3,8 +3,7 @@ import jwt, {JwtPayload} from "jsonwebtoken";
 import fs from "fs";
 
 export async function POST(req: Request) {
-    const {token} = await req.json()
-    console.log("refreshToken refresh", token);
+    const {token} = await req.json();
     const publicKey = fs.readFileSync('public.pem', 'utf8');
     const privateKey = fs.readFileSync('private.pem', 'utf8');
 
@@ -14,7 +13,6 @@ export async function POST(req: Request) {
             publicKey,
             { algorithms: ["RS256"] },
         ) as JwtPayload;
-        console.log("decoded refresh", decoded);
         
 
         const newAccessToken = jwt.sign(
