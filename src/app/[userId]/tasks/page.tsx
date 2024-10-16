@@ -1,5 +1,5 @@
 import Layout from "./layout";
-const Workspace = () => {
+const Tasks = () => {
     return (
         <div>
             <Layout />
@@ -7,4 +7,4 @@ const Workspace = () => {
     );
 };
 
-export default Workspace;
+export default Tasks;
