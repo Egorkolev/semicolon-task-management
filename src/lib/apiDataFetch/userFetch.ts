@@ -27,7 +27,7 @@ export async function userLoginFetch(data: any) {
         const response = await apiRequest({
             method: 'POST',
             url: apiKeys.POST_USER_LOGIN,
-            data,
+            data: {data},
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
