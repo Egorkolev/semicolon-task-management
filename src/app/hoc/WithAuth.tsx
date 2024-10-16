@@ -23,6 +23,7 @@ const WithAuth = (WrappedComponent: React.ComponentType<any>) => {
                         return;
                         }
                     } else {
+                        router.push("/login");
                         return;
                     }
                 } else {
@@ -31,6 +32,7 @@ const WithAuth = (WrappedComponent: React.ComponentType<any>) => {
                     if (!verifyToken?.verified) {
                         console.error("Token verification failed");
                         localStorage.removeItem("accessToken");
+                        router.push("/login");
                         return;
                     }
             

@@ -25,10 +25,9 @@ const RootLayout = ({
 }>) => {
   const pathname = usePathname();
   const excludedPsths = ['/login', '/registration', '/workspace'];
-
   const shouldShowContent = !excludedPsths.some((path) => pathname.startsWith(path) || pathname.endsWith(path));
-
-  const AuthenticatedLayout = WithAuth(() => <>{children}</>);
+  const isRegistrationPage = pathname === '/registration';
+  const AuthenticatedLayout = isRegistrationPage ? (() => <>{children}</>) : WithAuth(() => <>{children}</>);
   return (
     <html lang="en">
       <body
