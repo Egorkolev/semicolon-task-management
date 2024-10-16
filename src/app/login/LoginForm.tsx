@@ -36,7 +36,7 @@ const LoginForm = () => {
         const refreshToken = localStorage.getItem('refreshToken');
 
         if(accessToken && refreshToken) {
-            router.push('/');
+            router.push("/");
         };
         reset();
     };

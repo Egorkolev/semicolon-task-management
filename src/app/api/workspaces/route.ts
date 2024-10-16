@@ -3,9 +3,7 @@ import prisma from "@/lib/prisma";
 
 export async function GET(req: Request) {
     const userId = req.headers.get('tm-user-id');
-    console.log("userId", userId);
     
-
     if(!userId) {
         return NextResponse.json({message: "User ID is required"}, {status: 400});
     }

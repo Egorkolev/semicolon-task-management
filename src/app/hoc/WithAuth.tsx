@@ -42,8 +42,6 @@ const WithAuth = (WrappedComponent: React.ComponentType<any>) => {
                     
                     if(!hasWorkspace.hasWorkspace) {
                         router.push(`/${userId}/workspace`);
-                    } else {
-                        router.push("/");
                     }
                 }
             };
