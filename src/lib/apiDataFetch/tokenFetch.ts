@@ -13,8 +13,6 @@ export async function verifiedToken(token: any) {
                 'Authorization': `Bearer ${token}`
             }
         });
-        console.log("response", response);
-        
        return response;
         
     } catch (error) {
