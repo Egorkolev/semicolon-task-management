@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import TMAvatar from "./TMAvatar";
 import { BsFillGridFill } from "react-icons/bs";
 import { BsGrid } from "react-icons/bs";
@@ -11,19 +11,19 @@ import { IoSettingsOutline } from "react-icons/io5";
 import useUserId from "@/hooks/useUserId";
 
 const TMSideBarMenu = () => {
-  const router = useRouter();
+  // const router = useRouter();
   const pathname = usePathname();
   const userId = useUserId();
   const menuItems = [
-    { name: "Overview", path: `/overview`, icon: <BsFillGridFill />, iconActive: <BsGrid /> },
-    { name: "Tasks", path: `/tasks`, icon: <FaListAlt />, iconActive: <FaRegRectangleList /> },
-    { name: "Settings", path: `/settings`, icon: <IoSettings />, iconActive: <IoSettingsOutline /> },
+    { name: "Overview", path: `/${userId}/overview`, icon: <BsFillGridFill />, iconActive: <BsGrid /> },
+    { name: "Tasks", path: `/${userId}/tasks`, icon: <FaListAlt />, iconActive: <FaRegRectangleList /> },
+    { name: "Settings", path: `/${userId}/settings`, icon: <IoSettings />, iconActive: <IoSettingsOutline /> },
   ];
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    router.push(`/${userId}/${href}`);
-  }
+  // const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  //   e.preventDefault();
+  //   router.push(`/${userId}/${href}`);
+  // }
 
   return (
     <>
@@ -36,7 +36,7 @@ const TMSideBarMenu = () => {
             <li key={item.path} className="relative">
               <Link
                 href={item.path}
-                onClick={(e) => handleClick(e, item.path)}
+                // onClick={(e) => handleClick(e, item.path)}
                 className={`flex items-center gap-1 py-2 px-4 rounded hover:bg-gray-50 ${
                   pathname.includes(item.path) ? "text-blue font-bold" : "text-gray-700"
                 }`}

@@ -8,7 +8,7 @@ const Home = () => {
   const userId = useUserId();
 
   useEffect(() => {
-    router.replace(`/${userId}/overview`);
+    router.push(`/${userId}/overview`);
   });
   
   return <></>;
