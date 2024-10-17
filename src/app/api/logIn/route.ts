@@ -6,7 +6,7 @@ import { apiKeys } from "@/lib/apiKeys";
 
 export async function POST(req: Request) {
     const { email, password } = await req.json();
-    const privateKey = apiKeys.RSA_PRIVATE_KEY_PEM;
+    const privateKey = apiKeys.RSA_PRIVATE_KEY_PEM.replace(/\\n/g, '\n');
     
     if(!email || !password) {
         return NextResponse.json({error: 'All fields are required'}, {status: 400});

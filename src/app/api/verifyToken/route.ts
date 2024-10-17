@@ -5,7 +5,7 @@ import { apiKeys } from "@/lib/apiKeys";
 export async function POST(req: Request) {
     const { token } = await req.json()
     try {
-        const publicKey = apiKeys.RSA_PUBLIC_KEY_PEM;
+        const publicKey = apiKeys.RSA_PUBLIC_KEY_PEM.replace(/\\n/g, '\n');
         const verified = jwt.verify(
             token,
             publicKey,

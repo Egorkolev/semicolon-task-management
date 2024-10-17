@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { importSPKI, jwtVerify } from "jose";
 import { apiKeys } from "./lib/apiKeys";
 
-const privateKey = apiKeys.RSA_PUBLIC_KEY_PEM;
+const privateKey = apiKeys.RSA_PUBLIC_KEY_PEM.replace(/\\n/g, '\n');
 
 async function getPublicKey() {
     return await importSPKI(privateKey, 'RS256');
