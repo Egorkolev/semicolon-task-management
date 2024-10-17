@@ -8,9 +8,12 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { userRegisterFetch } from "@/lib/apiDataFetch/userFetch";
+import TMToast from "../customComponents/TMToast";
 
 const RegistrationForm = () => {
     const [showPass, setShowPass] = useState<boolean>(false)
+    const [showToast, setShowToast] = useState<boolean>(false);
+    const [responseData, setResponseData] = useState<any>()
     const router = useRouter();
     const form = useForm({
         defaultValues: {
@@ -24,6 +27,9 @@ const RegistrationForm = () => {
 
     const handleOnSubmit = async(data: any) => {
         const response = await userRegisterFetch(data);
+        setResponseData(response);
+        setShowToast(true);
+        
         if(response?.success) {
             router.push('/login');
         }
@@ -31,6 +37,7 @@ const RegistrationForm = () => {
     };
     return (
         <FormProvider {...form}>
+            <TMToast response={responseData} trigger={showToast} />
             <Form {...form}>
                 <form
                 onSubmit={handleSubmit(handleOnSubmit)}

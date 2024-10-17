@@ -6,7 +6,7 @@ export async function POST(req: Request) {
     const { fullName, email, password } = await req.json();
 
     if(!fullName || !email || !password) {
-        return NextResponse.json({error: 'All fields are required'}, {status: 400});
+        return NextResponse.json({warning: 'All fields are required'}, {status: 400});
     }
 
     try {
@@ -24,12 +24,12 @@ export async function POST(req: Request) {
         const {password: _, ...userWithoutPassword} = newUser;
 
         return NextResponse.json({
-            message: 'User created saccessfully',
+            message: 'Welcome! Your account has been created',
             success: true,
             user: userWithoutPassword,
         }, {status: 201});
     } catch (error) {
-        console.error('Error to create new User', error)
-        return NextResponse.json({error: 'Error to create new User', success: false}, {status: 500});
+        console.error('An error occurred while creating your account. Please try again later:', error)
+        return NextResponse.json({error: 'An error occurred while creating your account. Please try again later', success: false}, {status: 500});
     } 
 }

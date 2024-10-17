@@ -6,6 +6,7 @@ import WithAuth from "./hoc/WithAuth";
 import TMSideBarMenu from "./customComponents/TMSideBarMenu";
 import { usePathname } from "next/navigation";
 import TMInfoSideBar from "./customComponents/TMInfoSideBar";
+import { Toaster } from "sonner";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -40,6 +41,7 @@ const RootLayout = ({
             </div>
             <div className="flex-1 p-10 bg-gray bg-opacity-10">
                 <AuthenticatedLayout />
+                <Toaster position="top-right" />
             </div>
             <div className="flex h-screen bg-gray bg-opacity-10">
                 {shouldShowContent && <TMInfoSideBar />}

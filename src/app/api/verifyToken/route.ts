@@ -14,14 +14,16 @@ export async function POST(req: Request) {
         
         if(verified) {
             return NextResponse.json({
+                message: 'Welcome back!',
                 verified: true,
             }, {status: 200});
         }
 
     } catch (error: any) {
-        console.error("Invalid or Unavailable Token", error as Error);
+        console.error("Session expired, please log in again", error as Error);
         if (error && error.name === "JsonWebTokenError") {
             return NextResponse.json({
+                message: 'Session expired, please log in again',
                 verified: false,
                 error: error.message,
             }, {status: 401});

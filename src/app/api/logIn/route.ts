@@ -18,7 +18,7 @@ export async function POST(req: Request) {
         });
         if(!user) {
             return NextResponse.json({
-                error: 'Incorect email or password',
+                warning: 'Please check your login details and try again',
                 success: false,
             }, {status: 401});
         };
@@ -27,7 +27,7 @@ export async function POST(req: Request) {
         
         if(!isPasswordValid) {
             return NextResponse.json({
-                error: 'Incorect email or password',
+                warning: 'Please check your login details and try again',
                 success: false,
             }, {status: 401});
         };
@@ -44,13 +44,13 @@ export async function POST(req: Request) {
         );
 
         return NextResponse.json({
-            message: 'Login successfully access', 
+            message: 'You have successfully logged in', 
             success: true,
             accessToken, 
             refreshToken,
         }, {status: 200});
     } catch (error) {
-        console.error('Autentification error:', error);
-        return NextResponse.json({error: 'Server error'}, {status: 500});
+        console.error('An error occurred. Please try again later:', error);
+        return NextResponse.json({error: 'An error occurred. Please try again later'}, {status: 500});
     };
 }

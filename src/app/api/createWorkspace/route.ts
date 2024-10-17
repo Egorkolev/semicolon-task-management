@@ -7,7 +7,7 @@ export async function POST(req: Request) {
     
 
     if(!userId || !workspaceName) {
-        return NextResponse.json({error: 'user ID and workspace Name is required'}, {status: 400});
+        return NextResponse.json({warning: 'Workspace name is required'}, {status: 400});
     }
 
     try {
@@ -21,11 +21,11 @@ export async function POST(req: Request) {
         if(newWorkspace) {
             return NextResponse.json({
                 success: true,
-                message: 'Workspac created saccessfully',
+                message: 'Workspace created successfully',
             }, {status: 201});
         }
     } catch (error) {
-        console.error('Error to create new Workspac', error)
-        return NextResponse.json({error: 'Error to create new Workspac', success: false}, {status: 500});
+        console.error('An error occurred. Please try again later:', error)
+        return NextResponse.json({error: 'An error occurred. Please try again later', success: false}, {status: 500});
     }
 }

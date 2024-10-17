@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, {  useState } from "react";
 import { PrimaryButton } from "../../customComponents/TMButton";
 import TMInput from "../../customComponents/TMInput";
 import { FormProvider, useForm } from "react-hook-form";
@@ -7,10 +7,12 @@ import { Form } from "@/components/ui/form";
 import { useRouter } from "next/navigation";
 import { createWorksapceFetch } from "@/lib/apiDataFetch/workspaceFetch";
 import TMTextArea from "@/app/customComponents/TMTextArea";
+import TMToast from "@/app/customComponents/TMToast";
 
 const WorkspaceForm = () => {
     const router = useRouter();
-
+    const [showToast, setShowToast] = useState<boolean>(false);
+    const [responseData, setResponseData] = useState<any>()
     
     const form = useForm({
         defaultValues: {
@@ -23,7 +25,8 @@ const WorkspaceForm = () => {
 
     const handleOnSubmit = async(data: any) => {
         const response = await createWorksapceFetch(data);
-        
+        setResponseData(response);
+        setShowToast(true);
         if(response.success) {
             router.push("/");
         } else {
@@ -33,6 +36,7 @@ const WorkspaceForm = () => {
     };
     return (
         <FormProvider {...form}>
+        <TMToast response={responseData} trigger={showToast} />
         <Form {...form}>
             <form
             onSubmit={handleSubmit(handleOnSubmit)}
