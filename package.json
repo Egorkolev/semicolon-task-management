@@ -12,7 +12,7 @@
     "lint": "next lint"
   },
   "engines": {
-   "node": ">=14.x"
+    "node": ">=14.x"
   },
   "dependencies": {
     "@eslint/config-array": "^0.18.0",

@@ -5,11 +5,11 @@ import jwt from "jsonwebtoken";
 import { apiKeys } from "@/lib/apiKeys";
 
 export async function POST(req: Request) {
-    const {email, password} = await req.json();
+    const { email, password } = await req.json();
     const privateKey = apiKeys.RSA_PRIVATE_KEY_PEM;
     
     if(!email || !password) {
-        return NextResponse.json({error: 'All fields are required'}, {status: 400})
+        return NextResponse.json({error: 'All fields are required'}, {status: 400});
     };
 
     try {
