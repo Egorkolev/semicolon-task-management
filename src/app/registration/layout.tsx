@@ -19,9 +19,9 @@ const Layout = () => {
                     <div className={styles.frameForm} >
                         <RegistrationForm />
                     </div>
-                    <Link className="text-infoBlue" href="/registration">
+                    <a className="text-infoBlue" href="/https://github.com/Egorkolev/semicolon-task-management" target="_blank">
                         <YellowButton type="button"><FaGithub className="mr-2" /> GitHub code review</YellowButton>
-                    </Link>
+                    </a>
                 </>
 
             } />

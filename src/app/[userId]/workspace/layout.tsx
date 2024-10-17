@@ -2,7 +2,6 @@
 import React from "react";
 import { SecondaryButton, YellowButton } from "../../customComponents/TMButton";
 import { TMFrame } from "../../customComponents/TMFrame";
-import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
 import { styles} from "@/styles/tailwindClasses";
 import WorkspaceForm from ".././workspace/workspaceForm";
@@ -30,9 +29,9 @@ const Layout = () => {
                     <div className={styles.frameForm} >
                         <WorkspaceForm />
                     </div>
-                    <Link className="text-infoBlue" href="/registration">
+                    <a className="text-infoBlue" href="/https://github.com/Egorkolev/semicolon-task-management" target="_blank">
                         <YellowButton type="button"><FaGithub className="mr-2" /> GitHub code review</YellowButton>
-                    </Link>
+                    </a>
                 </>
             } />
         </div>
