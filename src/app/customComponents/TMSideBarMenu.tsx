@@ -8,16 +8,16 @@ import { FaListAlt } from "react-icons/fa";
 import { FaRegRectangleList } from "react-icons/fa6";
 import { IoSettings } from "react-icons/io5";
 import { IoSettingsOutline } from "react-icons/io5";
-import useUserId from "@/hooks/useUserId";
+import useUserInfo from "@/hooks/useUserInfo";
 
 const TMSideBarMenu = () => {
   // const router = useRouter();
   const pathname = usePathname();
-  const userId = useUserId();
+  const user = useUserInfo();
   const menuItems = [
-    { name: "Overview", path: `/${userId}/overview`, icon: <BsFillGridFill />, iconActive: <BsGrid /> },
-    { name: "Tasks", path: `/${userId}/tasks`, icon: <FaListAlt />, iconActive: <FaRegRectangleList /> },
-    { name: "Settings", path: `/${userId}/settings`, icon: <IoSettings />, iconActive: <IoSettingsOutline /> },
+    { name: "Overview", path: `/${user?.userId}/overview`, icon: <BsFillGridFill />, iconActive: <BsGrid /> },
+    { name: "Tasks", path: `/${user?.userId}/tasks`, icon: <FaListAlt />, iconActive: <FaRegRectangleList /> },
+    { name: "Settings", path: `/${user?.userId}/settings`, icon: <IoSettings />, iconActive: <IoSettingsOutline /> },
   ];
 
   // const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {

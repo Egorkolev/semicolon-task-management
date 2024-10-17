@@ -1,14 +1,15 @@
 "use client";
-import useUserId from "@/hooks/useUserId";
+import useUserInfo from "@/hooks/useUserInfo";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 const Home = () => {
   const router = useRouter();
-  const userId = useUserId();
+  const user = useUserInfo();
+  
 
   useEffect(() => {
-    router.push(`/${userId}/overview`);
+    router.push(`/${user?.userId}/overview`);
   });
   
   return <></>;
