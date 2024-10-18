@@ -43,7 +43,7 @@ const RootLayout = ({
                 <AuthenticatedLayout />
                 <Toaster position="top-right" />
             </div>
-            <div className="flex h-screen bg-gray bg-opacity-10">
+            <div className="h-screen bg-gray bg-opacity-10 hidden md:flex">
                 {shouldShowContent && <TMInfoSideBar />}
             </div>
           </div>

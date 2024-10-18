@@ -15,7 +15,7 @@ const Layout = () => {
                     <Link className="text-infoBlue" href="/registration">
                         <SecondaryButton type="button" label="Create Account" />
                     </Link>
-                    <h1 className="text-start text-6xl font-bold text-white hidden md:block ">Take your productivity to the next level.</h1>
+                    <h1 className="text-start text-6xl font-bold text-white hidden md:block">Take your productivity to the next level.</h1>
                     <div className={styles.frameForm} >
                         <LoginForm />
                     </div>

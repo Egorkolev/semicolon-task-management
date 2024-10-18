@@ -19,7 +19,7 @@ const WithAuth = (WrappedComponent: React.ComponentType<any>) => {
                 if (!token) {      
                     if (refreshToken) {
                         const newRefreshToken = await refreshedToken(refreshToken);
-                        if (newRefreshToken.accessToken) {
+                        if (newRefreshToken?.accessToken) {
                             localStorage.setItem("accessToken", newRefreshToken.accessToken);
                             console.log("New access token acquured");
                         } else {
@@ -46,6 +46,7 @@ const WithAuth = (WrappedComponent: React.ComponentType<any>) => {
                     const decodedToken = jwt.decode(token);
                     const userId = (decodedToken as JwtPayload)?.userId;
                     const hasWorkspace = await userWorkspaceFetch();
+                    
                     if(!hasWorkspace?.success) {
                         router.push(`/${userId}/workspace`);
                         setResponseData(hasWorkspace);
