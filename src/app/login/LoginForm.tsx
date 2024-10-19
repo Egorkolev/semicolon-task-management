@@ -35,7 +35,6 @@ const LoginForm = () => {
 
     const handleOnSubmit = async(data: FormType) => {
         const response = await userLoginFetch(data);
-        const isWorkspace = await userWorkspaceFetch();
         setResponseData(response);
         setShowToast(true);
         
@@ -49,6 +48,7 @@ const LoginForm = () => {
         const refreshToken = localStorage.getItem('refreshToken');
         
         if(accessToken && refreshToken) {
+            const isWorkspace = await userWorkspaceFetch();
             if(isWorkspace?.success) {
                 router.push("/");
             } else {

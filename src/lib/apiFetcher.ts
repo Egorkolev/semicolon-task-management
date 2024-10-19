@@ -19,10 +19,10 @@ const apiRequest = async ({method, url, data = null, headers = {}}: RequestType)
     } catch (error: unknown) {
         if(axios.isAxiosError(error)) {
             console.error('Axios Error:', error.response?.data || error.message);
-            throw new Error(error.response?.data || 'Something went wrong with the request');
+            return (error.response?.data || error.message);
         } else {
             console.error('Unexpected error:', (error as Error).message);
-            throw new Error('An unexpected error occurred') 
+            return (error as Error).message;
         }
     }
 }
