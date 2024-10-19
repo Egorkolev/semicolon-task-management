@@ -2,61 +2,67 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { refreshedToken, verifiedToken } from "@/lib/apiDataFetch/tokenFetch";
-import jwt, { JwtPayload } from "jsonwebtoken";
-import { userWorkspaceFetch } from "@/lib/apiDataFetch/workspaceFetch";
 import TMToast from "../customComponents/TMToast";
+import { Progress } from "@/components/ui/progress"
+import { ProgressIndicator } from "@radix-ui/react-progress";
+
 
 const WithAuth = (WrappedComponent: React.ComponentType<any>) => {
     const AuthenticatedLayout = (props: any) => {
+        const [loading, setLoading] = useState<boolean>(true);
         const [showToast, setShowToast] = useState<boolean>(false);
-        const [responseData, setResponseData] = useState<any>()
+        const [responseData, setResponseData] = useState<any>();
         const router = useRouter();
 
         useEffect(() => {
             const verificationToken = async () => {
                 const token = localStorage.getItem("accessToken");
                 const refreshToken = localStorage.getItem("refreshToken");
-                if (!token) {      
-                    if (refreshToken) {
+
+                if (token) {
+                    const verifyToken = await verifiedToken(token);
+                    setResponseData(verifyToken)
+                    if (verifyToken?.verified) {
+                        setLoading(false);
+                    } else if (refreshToken) {
                         const newRefreshToken = await refreshedToken(refreshToken);
-                        if (newRefreshToken?.accessToken) {
+                        setResponseData(newRefreshToken)
+                        if (newRefreshToken?.success) {
                             localStorage.setItem("accessToken", newRefreshToken.accessToken);
-                            console.log("New access token acquured");
+                            setLoading(false);
                         } else {
-                            setResponseData(newRefreshToken);
-                            setShowToast(true);
-                            return;
+                            handleLogout();
                         }
                     } else {
-                        router.push("/login");
-                        return;
+                        handleLogout();
+                    }
+                } else if (refreshToken) {
+                    const newRefreshToken = await refreshedToken(refreshToken);
+                    setResponseData(newRefreshToken)
+                    if (newRefreshToken?.success) {
+                        localStorage.setItem("accessToken", newRefreshToken.accessToken);
+                        setLoading(false);
+                    } else {
+                        handleLogout();
                     }
                 } else {
-                    const verifyToken = await verifiedToken(token);
-                    
-                    if (!verifyToken?.verified) {
-                        console.error("Token verification failed");
-                        localStorage.removeItem("accessToken");
-                        router.push("/login");
-                        setResponseData(verifyToken);
-                        setShowToast(true);
-                        return;
-                    }
-            
-                    const decodedToken = jwt.decode(token);
-                    const userId = (decodedToken as JwtPayload)?.userId;
-                    const hasWorkspace = await userWorkspaceFetch();
-                    
-                    if(!hasWorkspace?.success) {
-                        router.push(`/${userId}/workspace`);
-                        setResponseData(hasWorkspace);
-                        setShowToast((v) => !v);
-                    }
+                    handleLogout();
                 }
             };
-      
+
+            const handleLogout = () => {
+                setShowToast(true);
+                router.push("/login");
+                localStorage.removeItem("accessToken");
+                localStorage.removeItem("refreshToken");
+            };
+
             verificationToken();
         }, [router]);
+
+        if (loading) {
+            return <Progress className="bg-blue/40" value={10} />
+        }
 
         return (
             <>
@@ -64,7 +70,7 @@ const WithAuth = (WrappedComponent: React.ComponentType<any>) => {
                 <TMToast response={responseData} trigger={showToast} />
             </>
         );
-    }  
+    };
     return AuthenticatedLayout; 
 };
 

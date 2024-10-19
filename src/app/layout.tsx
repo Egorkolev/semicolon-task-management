@@ -24,10 +24,10 @@ const RootLayout = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  const pathname = usePathname();
+  const pathName = usePathname();
   const excludedPsths = ['/login', '/registration', '/workspace'];
-  const shouldShowContent = !excludedPsths.some((path) => pathname.includes(path));
-  const isRegistrationPage = pathname.includes('/registration');
+  const shouldShowContent = !excludedPsths.some((path) => pathName.includes(path));
+  const isRegistrationPage = pathName.includes('/registration') || pathName.includes('/login') || pathName.includes('/workspace');
   const AuthenticatedLayout = isRegistrationPage ? (() => <>{children}</>) : WithAuth(() => <>{children}</>);
   return (
     <html lang="en">

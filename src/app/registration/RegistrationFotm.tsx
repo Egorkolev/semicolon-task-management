@@ -10,6 +10,12 @@ import { useRouter } from "next/navigation";
 import { userRegisterFetch } from "@/lib/apiDataFetch/userFetch";
 import TMToast from "../customComponents/TMToast";
 
+interface FormType {
+    fullName: string,
+    email: string;
+    password: string;
+}
+
 const RegistrationForm = () => {
     const [showPass, setShowPass] = useState<boolean>(false)
     const [showToast, setShowToast] = useState<boolean>(false);
@@ -25,7 +31,7 @@ const RegistrationForm = () => {
 
     const {reset, register, handleSubmit } = form;
 
-    const handleOnSubmit = async(data: any) => {
+    const handleOnSubmit = async(data: FormType) => {
         const response = await userRegisterFetch(data);
         setResponseData(response);
         setShowToast(true);

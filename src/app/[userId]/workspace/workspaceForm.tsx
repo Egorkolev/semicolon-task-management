@@ -9,6 +9,11 @@ import { createWorksapceFetch } from "@/lib/apiDataFetch/workspaceFetch";
 import TMTextArea from "@/app/customComponents/TMTextArea";
 import TMToast from "@/app/customComponents/TMToast";
 
+interface FormType {
+    workspaceName: string,
+    workspaceDescription: string;
+}
+
 const WorkspaceForm = () => {
     const router = useRouter();
     const [showToast, setShowToast] = useState<boolean>(false);
@@ -23,7 +28,7 @@ const WorkspaceForm = () => {
 
     const { reset, register, handleSubmit } = form;
 
-    const handleOnSubmit = async(data: any) => {
+    const handleOnSubmit = async(data: FormType) => {
         const response = await createWorksapceFetch(data);
         setResponseData(response);
         setShowToast(true);

@@ -9,13 +9,21 @@ import { FaEyeSlash } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { userLoginFetch } from "@/lib/apiDataFetch/userFetch";
 import TMToast from "../customComponents/TMToast";
+import { userWorkspaceFetch } from "@/lib/apiDataFetch/workspaceFetch";
+import useUserInfo from "@/hooks/useUserInfo";
+
+interface FormType {
+    email: string;
+    password: string;
+}
 
 const LoginForm = () => {
-    const [showPass, setShowPass] = useState<boolean>(false)
+    const [showPass, setShowPass] = useState<boolean>(false);
     const [showToast, setShowToast] = useState<boolean>(false);
-    const [responseData, setResponseData] = useState<any>()
+    const [responseData, setResponseData] = useState<any>();
     const router = useRouter();
-
+    const user = useUserInfo();
+    
     const form = useForm({
         defaultValues: {
             email: "",
@@ -25,8 +33,9 @@ const LoginForm = () => {
 
     const { reset, register, handleSubmit } = form;
 
-    const handleOnSubmit = async(data: any) => {
+    const handleOnSubmit = async(data: FormType) => {
         const response = await userLoginFetch(data);
+        const isWorkspace = await userWorkspaceFetch();
         setResponseData(response);
         setShowToast(true);
         
@@ -36,12 +45,17 @@ const LoginForm = () => {
                 localStorage.setItem('refreshToken', response.refreshToken)
             ]);
         };
-
         const accessToken = localStorage.getItem('accessToken');
         const refreshToken = localStorage.getItem('refreshToken');
-
+        
         if(accessToken && refreshToken) {
-            router.push("/");
+            if(isWorkspace?.success) {
+                router.push("/");
+            } else {
+                router.push(`/${user?.userId}/workspace`);
+                setResponseData(isWorkspace);
+                setShowToast(true);
+            }
         };
         reset();
     };

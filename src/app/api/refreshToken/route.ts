@@ -21,9 +21,9 @@ export async function POST(req: Request) {
             {algorithm: 'RS256', expiresIn: '1h'}
         );
 
-        return NextResponse.json({ message: 'Welcome back!' ,accessToken: newAccessToken, access: true}, {status: 200});
+        return NextResponse.json({ message: 'Welcome back!' ,accessToken: newAccessToken, success: true}, {status: 200});
     } catch (error) {
         console.error('Session expired, please log in again:', error);
-        return NextResponse.json({error: 'Session expired, please log in again', access: false}, {status: 401});
+        return NextResponse.json({error: 'Session expired, please log in again', success: false}, {status: 401});
     }
 }

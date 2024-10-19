@@ -39,7 +39,8 @@ model Task {
   id          String   @id @default(uuid())
   title       String
   description String
-  riority     Priority
+  priority    Priority
+  startDate   DateTime
   dueDate     DateTime
   workspaceId String
   workspace   Workspace @relation(fields: [workspaceId], references: [id])

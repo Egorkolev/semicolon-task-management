@@ -10,7 +10,7 @@ const Home = () => {
 
   useEffect(() => {
     router.push(`/${user?.userId}/overview`);
-  });
+  }, [router, user?.userId]);
   
   return <></>;
 };
