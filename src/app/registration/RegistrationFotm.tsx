@@ -1,46 +1,16 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { PrimaryButton } from "../customComponents/TMButton";
 import TMInput from "../customComponents/TMInput";
-import { FormProvider, useForm } from "react-hook-form";
+import { FormProvider } from "react-hook-form";
 import { Form } from "@/components/ui/form";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-import { useRouter } from "next/navigation";
-import { userRegisterFetch } from "@/lib/apiDataFetch/userFetch";
 import TMToast from "../customComponents/TMToast";
-
-interface FormType {
-    fullName: string,
-    email: string;
-    password: string;
-}
+import useRegistration from "./useRegistration";
 
 const RegistrationForm = () => {
-    const [showPass, setShowPass] = useState<boolean>(false)
-    const [showToast, setShowToast] = useState<boolean>(false);
-    const [responseData, setResponseData] = useState<any>()
-    const router = useRouter();
-    const form = useForm({
-        defaultValues: {
-            fullName: "",
-            email: "",
-            password: "",
-        }
-    });
-
-    const {reset, register, handleSubmit } = form;
-
-    const handleOnSubmit = async(data: FormType) => {
-        const response = await userRegisterFetch(data);
-        setResponseData(response);
-        setShowToast(true);
-        
-        if(response?.success) {
-            router.push('/login');
-        }
-        reset();
-    };
+    const {form, showPass, showToast, responseData, setShowPass, register, handleSubmit, handleOnSubmit}  = useRegistration();
     return (
         <FormProvider {...form}>
             <TMToast response={responseData} trigger={showToast} />

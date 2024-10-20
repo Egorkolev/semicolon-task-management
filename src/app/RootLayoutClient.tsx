@@ -1,7 +1,4 @@
-"use client"
-import { Provider } from "react-redux";
 import type { Metadata } from "next";
-import store from "../../redux/store";
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -14,9 +11,10 @@ const RootLayoutClient = ({
     children: React.ReactNode;
 }) => {
     return (
-        <Provider store={store}>
+        <>
             {children}
-        </Provider>
+        </>
+        
     )
 }
 
