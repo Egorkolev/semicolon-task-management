@@ -53,7 +53,6 @@ const TMSideBarMenu = () => {
         />
         {showCalendar && (
           <div
-            onBlur={() => setShowCalendat(false)}
             className="flex absolute shadow-xl bg-white rounded-lg left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
           >
             <TMCalendar />
@@ -81,7 +80,6 @@ const TMSideBarMenu = () => {
                 <li key={item.path} className="relative">
                   <Link
                     href={item.path}
-                    // onClick={(e) => handleClick(e, item.path)}
                     className={`flex items-center gap-1 py-2 px-4 rounded hover:bg-gray-50 ${
                       pathname.includes(item.path)
                         ? "text-blue font-bold"

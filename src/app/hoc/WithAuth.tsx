@@ -4,8 +4,6 @@ import { useRouter } from "next/navigation";
 import { refreshedToken, verifiedToken } from "@/lib/apiDataFetch/tokenFetch";
 import TMToast from "../customComponents/TMToast";
 import { Progress } from "@/components/ui/progress"
-import { ProgressIndicator } from "@radix-ui/react-progress";
-
 
 const WithAuth = (WrappedComponent: React.ComponentType<any>) => {
     const AuthenticatedLayout = (props: any) => {

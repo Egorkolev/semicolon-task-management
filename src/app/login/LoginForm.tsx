@@ -53,8 +53,6 @@ const LoginForm = () => {
                 router.push("/");
             } else {
                 router.push(`/${user?.userId}/workspace`);
-                setResponseData(isWorkspace);
-                setShowToast(true);
             }
         };
         reset();
