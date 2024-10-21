@@ -1,8 +1,9 @@
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
  
 interface ButtonType {
     label?: string;
-    type: "submit" | "reset" | "button" | undefined;
+    type?: "submit" | "reset" | "button" | undefined;
+    className?: string;
     children?: React.ReactNode;
     onClick?: () => void;
 }
@@ -48,7 +49,7 @@ export const SecondaryButton = ({label, type, children, onClick}: ButtonType) =>
 export const YellowButton = ({label, type, children, onClick}: ButtonType) => {
   return (
   <Button 
-  onClick={onClick}
+    onClick={onClick}
     type={type} 
     className="
       bg-yellow
@@ -61,5 +62,11 @@ export const YellowButton = ({label, type, children, onClick}: ButtonType) => {
   >
       {children || label}
   </Button>
+  )
+}
+
+export const GhostButton = ({label, children, className, onClick}: ButtonType) => {
+  return (
+    <Button className={className} onClick={onClick} variant="ghost">{children || label}</Button>
   )
 }

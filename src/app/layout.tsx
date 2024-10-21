@@ -32,14 +32,14 @@ const RootLayout = ({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray bg-opacity-10`}
       >
         <RootLayoutClient>
-          <div className="flex">
+          <div className="flex justify-between">
             <div className="flex h-screen">
               {shouldShowContent && <TMSideBarMenu />}
             </div>
-            <div className="flex-1 p-10 bg-gray bg-opacity-10">
+            <div className="max-w-6xl flex-1 p-10">
                 <AuthenticatedLayout />
                 <Toaster position="top-right" />
             </div>

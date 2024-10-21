@@ -25,5 +25,17 @@ export const styles = {
         p-4
         rounded-lg
         shadow-xl
+    `,
+    toggleGroupItem: `
+        flex flex-wrap h-fit 
+        justify-center
+        md:justify-between gap-2
+        data-[state=on]:bg-white 
+        bg-white w-full p-2 px-6
+        rounded-2xl text-gray 
+        data-[state=on]:text-blue
+        border border-transparent 
+        data-[state=on]:border-1 
+        data-[state=on]:border-blue
     `
 }
