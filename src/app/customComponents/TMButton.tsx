@@ -1,4 +1,6 @@
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge"
+
  
 interface ButtonType {
     label?: string;
@@ -65,8 +67,8 @@ export const YellowButton = ({label, type, children, onClick}: ButtonType) => {
   )
 }
 
-export const GhostButton = ({label, children, className, onClick}: ButtonType) => {
+export const BadgeButton = ({label, children, className, onClick}: ButtonType) => {
   return (
-    <Button className={className} onClick={onClick} variant="ghost">{children || label}</Button>
+    <Badge className={className} onClick={onClick} variant="outline">{children || label}</Badge>
   )
 }

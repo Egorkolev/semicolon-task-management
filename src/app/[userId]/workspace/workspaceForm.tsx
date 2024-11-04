@@ -9,7 +9,7 @@ import TMToast from "@/app/customComponents/TMToast";
 import useWorkspace from "./useWorkspace";
 
 const WorkspaceForm = () => {
-    const { form, showToast, responseData, register, handleSubmit, handleOnSubmit} = useWorkspace();
+    const {form, showToast, responseData, register, handleSubmit, handleOnSubmit} = useWorkspace();
     return (
         <FormProvider {...form}>
         <TMToast response={responseData} trigger={showToast} />

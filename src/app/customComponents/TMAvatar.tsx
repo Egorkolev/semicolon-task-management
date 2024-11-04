@@ -1,4 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import AvatarLogo from "../public/avatar.png";
+import { useEffect } from "react";
 
 interface AvatarType {
     logo?: string;
@@ -6,9 +8,10 @@ interface AvatarType {
     style?: string;
 }
 const TMAvatar = ({logo, fallBack, style}: AvatarType) => {
+    
     return (
         <Avatar className={`mx-auto rounded-lg ${style}`}>
-            <AvatarImage src={logo ? logo : "https://github.com/shadcn.png"} />
+            <AvatarImage src={logo || AvatarLogo.src} />
             <AvatarFallback className="rounded-lg">{fallBack}</AvatarFallback>
         </Avatar>
     )

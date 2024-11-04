@@ -31,6 +31,7 @@ const useRegistration = () => {
         setShowToast(true);
         
         if(response?.success) {
+            localStorage.setItem("userSuccess", JSON.stringify({email: data.email, password: data.password}));
             router.push('/login');
         }
         reset();

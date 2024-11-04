@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import RootLayoutClient from "./RootLayoutClient";
 import "./globals.css";
 import WithAuth from "./hoc/WithAuth";
-import TMSideBarMenu from "./customComponents/TMSideBarMenu";
+import TMSideBarMenu from "./customComponents/TMSideBarMenu/TMSideBarMenu";
 import { usePathname } from "next/navigation";
 import TMInfoSideBar from "./customComponents/TMInfoSideBar";
 import { Toaster } from "sonner";
@@ -35,18 +35,23 @@ const RootLayout = ({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray bg-opacity-10`}
       >
         <RootLayoutClient>
-          <div className="flex justify-between">
-            <div className="flex h-screen">
-              {shouldShowContent && <TMSideBarMenu />}
+            <div className="flex justify-between">
+              <div className="flex h-screen fixed z-[60]">
+                {shouldShowContent && <TMSideBarMenu />}
+              </div>
+              <div className="w-full fixed">
+                <div className={isRegistrationPage ? `py-10 px-3 h-[100vh]`
+                  : `py-10 max-w-7xl 3xl:mx-auto pl-[75px] 3xl:pl-[15px] md:mr-[301px] 3xl:pr-[301px] pr-[15px] h-[100vh] flex-1 overflow-auto`
+                }>
+                  <AuthenticatedLayout />
+                  <Toaster position="top-center" />
+                </div>
+              </div>
+
+              <div className="h-screen hidden md:flex fixed right-0">
+                  {shouldShowContent && <TMInfoSideBar />}
+              </div>
             </div>
-            <div className="max-w-6xl flex-1 p-10">
-                <AuthenticatedLayout />
-                <Toaster position="top-right" />
-            </div>
-            <div className="h-screen bg-gray bg-opacity-10 hidden md:flex">
-                {shouldShowContent && <TMInfoSideBar />}
-            </div>
-          </div>
         </RootLayoutClient>
       </body>
     </html>

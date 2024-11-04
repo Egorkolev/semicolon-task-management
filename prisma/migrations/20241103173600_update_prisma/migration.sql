@@ -1,0 +1,6 @@
+-- CreateEnum
+CREATE TYPE "Status" AS ENUM ('PENDING', 'IN_PROGRESS', 'COMPLETE');
+
+-- AlterTable
+ALTER TABLE "Task" ADD COLUMN     "status" "Status" NOT NULL DEFAULT 'PENDING',
+ALTER COLUMN "dueDate" DROP NOT NULL;

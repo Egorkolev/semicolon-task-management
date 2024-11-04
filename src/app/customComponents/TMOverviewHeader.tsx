@@ -3,9 +3,9 @@ import HelloImg from "../public/hello.png"
 import Image from "next/image";
 
 interface HeaderType {
-    userName: string;
+    userName: string | undefined;
     welcomeText: string;
-    textFrame: string;
+    textFrame: string | React.JSX.Element;
 }
 
 export const TMOverviewHeader = ({userName, welcomeText, textFrame}: HeaderType) => {
@@ -21,9 +21,10 @@ export const TMOverviewHeader = ({userName, welcomeText, textFrame}: HeaderType)
             <div 
                 className="
                     w-[100%] 
-                    max-w-full p-10
+                    max-w-full p-8
                     text-white
                     rounded-2xl
+                    font-serif
                     "
                 style={{
                     backgroundImage: `url(${OverviweFrame.src})`,

@@ -35,13 +35,20 @@ enum Priority {
   HIGH
 }
 
+enum Status {
+  PENDING
+  IN_PROGRESS
+  COMPLETE
+}
+
 model Task {
   id          String   @id @default(uuid())
   title       String
   description String
   priority    Priority
+  status      Status @default(PENDING)
   startDate   DateTime
-  dueDate     DateTime
+  dueDate     DateTime?
   workspaceId String
   workspace   Workspace @relation(fields: [workspaceId], references: [id])
 }
@@ -53,3 +60,4 @@ model ResetPasswordRequest {
   createdAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id])
 }
+
