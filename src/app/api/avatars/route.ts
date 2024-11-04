@@ -3,7 +3,7 @@ import prisma from "@/lib/prisma";
 import { createClient } from "@supabase/supabase-js";
 import { apiKeys } from "@/lib/apiKeys";
 
-const supabase = createClient(apiKeys.SUPABASE_URL!, apiKeys.SUPABASE_ROLE_KEY!);
+const supabase = createClient(apiKeys.SUPABASE_URL, apiKeys.SUPABASE_ROLE_KEY);
 
 export async function POST(req: Request) {
     const formData = await req.formData();
