@@ -55,7 +55,7 @@ const TMTaskCard = ({tasks}: any) => {
                             <div className="text-darkBlue">
                                 {task.description}
                             </div>
-                            <div className="flex justify-between items-center">
+                            <div className="flex justify-between items-center gap-2">
                                 <SecondaryButton>View Task <FaCaretRight /></SecondaryButton>
                                 <BadgeButton className={`flex justify-between gap-2 px-2 ${badgePriorityStyle}`}>{task.priority}{badgePriorityIcon}</BadgeButton>
                             </div>
