@@ -106,7 +106,7 @@ const useOverview = () => {
             };
     
             setTaskData((prevData) => [
-                ...(prevData || []), // Проверка на случай, если prevData изначально undefined
+                ...(prevData || []),
                 newTask
             ]);
         }

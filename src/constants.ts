@@ -1,4 +1,5 @@
 export enum Status {
+    ALL="ALL",
     PENDING="PENDING",
     IN_PROGRESS="IN_PROGRESS",
     COMPLETE="COMPLETE"

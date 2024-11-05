@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { UserProvider } from "../context/UserContext";
+import { DateProvider } from "@/context/DateContext";
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -12,9 +13,11 @@ const RootLayoutClient = ({
     children: React.ReactNode;
 }) => {
     return (
-        <UserProvider>
-            {children}
-        </UserProvider>
+        <DateProvider>
+            <UserProvider>
+                {children}
+            </UserProvider>
+        </DateProvider>
     )
 }
 

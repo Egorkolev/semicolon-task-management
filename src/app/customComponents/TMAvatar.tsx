@@ -1,7 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import AvatarLogo from "../public/avatar.png";
-import { useEffect } from "react";
-
 interface AvatarType {
     logo?: string;
     fallBack?: string;
