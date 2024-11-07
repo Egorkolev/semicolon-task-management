@@ -4,8 +4,6 @@ import prisma from "@/lib/prisma";
 export async function GET(req: Request, {params}: {params: {taskId: string}}) {
     const {taskId} = params;
     const userId = req.headers.get('tm-user-id');
-    console.log("taskId from back", taskId);
-    
     
     if(!userId) {
         return NextResponse.json({warning: "User ID is required"}, {status: 400});
