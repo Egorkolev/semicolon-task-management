@@ -6,7 +6,7 @@ interface HeaderType {
     userName?: string | undefined;
     welcomeText?: string;
     textFrame?: string | React.JSX.Element;
-    pageName?: string;
+    pageName?: string | React.ReactNode;
 }
 
 export const TMOverviewHeader = ({userName, welcomeText, textFrame, pageName}: HeaderType) => {

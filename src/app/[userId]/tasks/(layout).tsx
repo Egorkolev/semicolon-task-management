@@ -3,25 +3,15 @@
 import { PrimaryButton } from "@/app/customComponents/TMButton";
 import { TMOverviewHeader } from "@/app/customComponents/TMOverviewHeader";
 import TMTaskDialog from "@/app/customComponents/TMTaskDialog/TMTaskDialog";
-import useOverview from "../overview/useOverview";
 import TMToast from "@/app/customComponents/TMToast";
 import TMTaskCard from "@/app/customComponents/TMTaskCard";
-import { Status } from "@/constants";
-import { useState } from "react";
 import NoteImg from "../../public/note.png";
 import Image from "next/image";
+import useTasks from "./useTasks";
 
 const Layout = () => {
-    const [selectedStatus, setSelectedStatus] = useState<string>(Status.ALL)
-    const {closeTaskDialog, openTaskDialog, register, handleOnSubmitTask, handleSubmit, 
-    form, showTaskDialog, responseData, showToast, taskData} = useOverview();
-
-    const filters = [
-        {name:"All Tasks", status: Status.ALL},
-        {name:"Pending", status: Status.PENDING},
-        {name:"In Progress", status: Status.IN_PROGRESS},
-        {name:"Completed", status: Status.COMPLETE},
-    ]
+    const { closeTaskDialog, openTaskDialog, register, handleOnSubmitTask, handleSubmit, setSelectedStatus,
+        form, showTaskDialog, responseData, showToast, taskData, filters, selectedStatus } = useTasks();
 
     return (
         <div className="flex flex-col gap-5">

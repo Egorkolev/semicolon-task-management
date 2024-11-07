@@ -7,11 +7,14 @@ import { FcMediumPriority } from "react-icons/fc";
 import { FcLowPriority } from "react-icons/fc";
 import { FcHighPriority } from "react-icons/fc";
 import { useDateContext } from "@/context/DateContext";
+import Link from "next/link";
+import useUserInfo from "@/hooks/useUserInfo";
 
 const TMTaskCard = ({tasks, filters}: any) => {
     const [fileredTask, setFileredTask] = useState<TaskType[]>()
     const {dateISO} = useDateContext();
-
+    const user = useUserInfo();
+     
     useEffect(() => {
         if(dateISO && filters) {
             if(filters !== Status.ALL) {
@@ -84,7 +87,9 @@ const TMTaskCard = ({tasks, filters}: any) => {
                                 {task.description}
                             </div>
                             <div className="flex justify-between items-center gap-2">
-                                <SecondaryButton>View Task <FaCaretRight /></SecondaryButton>
+                            <Link className="text-infoBlue" href={`/${user?.userId}/tasks/${task.id}/task`}>
+                                <SecondaryButton>View Task<FaCaretRight /></SecondaryButton>
+                            </Link>
                                 <BadgeButton className={`flex justify-between gap-2 px-2 ${badgePriorityStyle}`}>{task.priority}{badgePriorityIcon}</BadgeButton>
                             </div>
                         </div>

@@ -14,4 +14,5 @@ export const apiKeys = {
     GET_USER_WORKSPACE: process.env.NEXT_PUBLIC_GET_USER_WORKSPACE as string,
     GET_USER_DATA: process.env.NEXT_PUBLIC_GET_USER_DATA as string,
     GET_USER_TASKS: process.env.NEXT_PUBLIC_GET_USER_TASKS as string,
+    GET_TASK: process.env.NEXT_PUBLIC_GET_TASK as string,
 }

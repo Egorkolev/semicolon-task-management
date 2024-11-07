@@ -2,8 +2,8 @@ import { Progress } from '@/components/ui/progress';
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 
-const Layout = dynamic(() => import('./(layout)'));
-const Tasks = () => {
+const Layout = dynamic(() => import('./layout'));
+const Task = () => {
     return (
         <div>
             <Suspense fallback={<Progress className="bg-blue/40" value={10} />}>
@@ -13,4 +13,4 @@ const Tasks = () => {
     );
 };
 
-export default Tasks;
+export default Task;
