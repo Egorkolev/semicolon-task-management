@@ -9,12 +9,23 @@ import { FiTrash } from "react-icons/fi";
 import { FiEdit } from "react-icons/fi";
 import TMBreadcrumb from "@/app/customComponents/TMBreadcrumb";
 import useTask from "./useTask";
+import TMDeleteDialog from "@/app/customComponents/TMDeleteDialog";
+import TMToast from "@/app/customComponents/TMToast";
 
 const Layout = () => {
-    const { getPriorityClass, getPriorityIcon, getButtonstatus, getBadgeClass, getButtonText, Status, userId, task } = useTask();
-    
+    const { getPriorityClass, getPriorityIcon, getButtonstatus, getBadgeClass, getButtonText, openDeleteDialog,
+    handleDeleteTask, closeDeleteDialog, showDeleteDialog, responseData, showToast, Status, userId, task } = useTask();
+
     return (
         <div>
+            <TMToast response={responseData} trigger={showToast} />
+            <TMDeleteDialog 
+                showDeleteDialog={showDeleteDialog} 
+                onClose={closeDeleteDialog} 
+                onClick={handleDeleteTask} 
+                taskName={task?.title}
+                taskStatus={task?.status}
+            />
             <TMOverviewHeader
                 pageName={<TMBreadcrumb breadCrumbHref={`/${userId}/tasks`} breadCrumbLink="Tasks" breadCrumbPage={`Task: ${task?.title}`} />}
                 textFrame={<>This page is currently under development and will be available soon. <br/>Thank you for your patience!</>}
@@ -35,12 +46,12 @@ const Layout = () => {
                         <div className="text-gray max-w-[370px]">
                             {task.description}
                         </div>
-                        <div className="flex justify-between items-center gap-2">
+                        <div className="flex items-center gap-2">
                             <Button className={`${getButtonstatus(task.status)} items-center flex gap-2`}>
                                 {task.status === Status.COMPLETE && <IoCheckmarkDoneCircle className="w-8 h-8" />}
                                 {getButtonText(task.status)}
                             </Button>
-                            <Button className="px-2 bg-errorRed bg-opacity-10 hover:bg-errorRed hover:bg-opacity-20">
+                            <Button onClick={openDeleteDialog} className="px-2 bg-errorRed bg-opacity-10 hover:bg-errorRed hover:bg-opacity-20">
                                 <FiTrash className="w-5 h-5 text-errorRed" />
                             </Button>
                             <Button className="px-2 bg-blue bg-opacity-10 hover:bg-blue hover:bg-opacity-20">

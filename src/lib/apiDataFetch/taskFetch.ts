@@ -56,3 +56,21 @@ export async function uniqTaskFetch(taskId: string | string[]) {
         console.error('Error submiting data:', (error as Error).message)
     }
 }
+
+export async function deleteTaskFetch(taskId: string | undefined) {
+    const token = localStorage.getItem('accessToken');
+    try {
+        const response = await apiRequest({
+            method: "DELETE",
+            url: `${apiKeys.DELETE_TASK}/${taskId}`,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        return response;
+
+    } catch (error) {
+        console.error('Error submiting data:', (error as Error).message)
+    }
+}

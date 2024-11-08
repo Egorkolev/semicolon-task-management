@@ -18,7 +18,8 @@ export const PrimaryButton = ({label, type, children, onClick}: ButtonType) => {
     className="
       bg-blue 
       rounded-lg 
-      hover:bg-opacity-90
+      opacity-90 
+      hover:opacity-100
       hover:bg-blue
       shadow-xl
     "

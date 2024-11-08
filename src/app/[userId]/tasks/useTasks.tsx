@@ -50,7 +50,7 @@ const useTasks = () => {
         const response = await createNewTaskFetch(data);
         if(response.success) {
             const newTask: TaskType = {
-                id: response.userId,
+                id: response.taskId,
                 title: data.taskName,
                 description: data.taskDescription || null,
                 priority: (data.taskPriority as Priority.LOW | Priority.MIDDLE | Priority.HIGH) || Priority.LOW,
@@ -67,7 +67,7 @@ const useTasks = () => {
         }
         setResponseData(response);
         setShowToast(true);
-        closeTaskDialog()
+        closeTaskDialog();
         reset();
     };
 

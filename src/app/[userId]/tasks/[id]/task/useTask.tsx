@@ -1,34 +1,52 @@
 import { uniqTaskFetch } from "@/lib/apiDataFetch/taskFetch";
 import { FcHighPriority, FcLowPriority, FcMediumPriority } from "react-icons/fc";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Priority, Status } from "@/constants";
+import { deleteTaskFetch } from "@/lib/apiDataFetch/taskFetch";
 
 const useTask = () => {
     const [userId, setUserId] = useState<string | string[] | undefined>(undefined);
     const [taskId, setTaskId] = useState<string | string[] | undefined>(undefined);
     const [task, setTask] = useState<TaskType | undefined>(undefined);
+    const [showDeleteDialog, setShowDeleteDialog] = useState<boolean>(false);
+    const [showToast, setShowToast] = useState<boolean>(false);
+    const [responseData, setResponseData] = useState<any>();
+    const closeDeleteDialog = () => setShowDeleteDialog(false);
+    const openDeleteDialog = () => setShowDeleteDialog(true);
     const params = useParams();
+    const router = useRouter();
     
     useEffect(() => {
         if(params.userId && params.id) {
             setUserId(params.userId);
             setTaskId(params.id);
+
+            async function getUniqTask() {
+                try {
+                    const response = await uniqTaskFetch(params.id);
+                    if(response.success) {
+                        setTask(response.task);
+                    }
+                } catch (error) {
+                    
+                }
+            }
+            
+            getUniqTask()
         }
 
-        async function getUniqTask() {
-            try {
-                const response = await uniqTaskFetch(params.id);
-                if(response.success) {
-                    setTask(response.task);
-                }
-            } catch (error) {
-                
-            }
-        }
-        
-        getUniqTask()
     }, [params]);
+
+    const handleDeleteTask = async() => {
+        const response = await deleteTaskFetch(task?.id)
+        if(response.success) {
+            router.replace(`..`);
+        }
+        setResponseData(response);
+        setShowToast(true);
+        closeDeleteDialog();
+    } 
 
     const getBadgeClass = (status: string) => {
         switch (status) {
@@ -72,9 +90,9 @@ const useTask = () => {
     const getButtonstatus = (status: string) => {
         switch (status) {
             case Status.PENDING:
-                return 'bg-blue hover:bg-blue hover:opacity-90 rounded-lg';
+                return 'bg-blue hover:bg-blue opacity-90 hover:opacity-100 rounded-lg';
             case Status.IN_PROGRESS:
-                return 'bg-successGreen hover:bg-successGreen hover:opacity-90 rounded-lg';
+                return 'bg-successGreen hover:bg-successGreen opacity-90 hover:opacity-100 rounded-lg';
             case Status.COMPLETE:
                 return 'text-successGreen bg-white shadow-none hover:bg-white cursor-default border-none pl-0';
             default:
@@ -95,11 +113,17 @@ const useTask = () => {
         }
     };
     return {
+        closeDeleteDialog,
+        openDeleteDialog,
+        handleDeleteTask, 
         getPriorityClass,
         getPriorityIcon,
         getButtonstatus,
         getBadgeClass,
         getButtonText,
+        showDeleteDialog,
+        responseData, 
+        showToast,
         Status,
         userId,
         task,

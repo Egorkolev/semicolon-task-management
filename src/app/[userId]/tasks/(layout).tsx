@@ -50,7 +50,7 @@ const Layout = () => {
             }
             {!taskData?.length ? 
             <div className="m-auto flex flex-col justify-center h-[50vh] items-center gap-2 text-center">
-                <Image src={NoteImg} alt="No Task Img" width={150} height={150} />
+                <Image src={NoteImg} alt="No Task Img" width={150} height={150} style={{width: "auto"}} />
                 <h2 className="text-darkBlue text-2xl">No Tasks Yet</h2>
                 <p>You have no task created in your workspace yet.<br/>
                 Get productive. Create a Task Now.</p>
