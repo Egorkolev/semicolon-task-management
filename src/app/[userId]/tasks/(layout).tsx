@@ -40,6 +40,7 @@ const Layout = () => {
             </div>
             {
                 <TMTaskDialog 
+                    dialogLabel="Create Task"
                     showTaskDialog={showTaskDialog}
                     onClose={closeTaskDialog} 
                     register={register}

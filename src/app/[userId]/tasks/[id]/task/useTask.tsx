@@ -1,27 +1,30 @@
-import { uniqTaskFetch } from "@/lib/apiDataFetch/taskFetch";
+import { uniqTaskFetch, updateTaskFetch, updateTaskStatusFetch } from "@/lib/apiDataFetch/taskFetch";
 import { FcHighPriority, FcLowPriority, FcMediumPriority } from "react-icons/fc";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Priority, Status } from "@/constants";
 import { deleteTaskFetch } from "@/lib/apiDataFetch/taskFetch";
+import { useForm } from "react-hook-form";
 
 const useTask = () => {
     const [userId, setUserId] = useState<string | string[] | undefined>(undefined);
-    const [taskId, setTaskId] = useState<string | string[] | undefined>(undefined);
+    const [taskChanged, setTaskChanged] = useState<boolean>(false);
     const [task, setTask] = useState<TaskType | undefined>(undefined);
     const [showDeleteDialog, setShowDeleteDialog] = useState<boolean>(false);
     const [showToast, setShowToast] = useState<boolean>(false);
     const [responseData, setResponseData] = useState<any>();
+    const [showTaskDialog, setShowTaskDialog] = useState<boolean>(false);
+    
+    const openTaskDialog = () => setShowTaskDialog(true);
+    const closeTaskDialog = () => setShowTaskDialog(false);
     const closeDeleteDialog = () => setShowDeleteDialog(false);
     const openDeleteDialog = () => setShowDeleteDialog(true);
     const params = useParams();
     const router = useRouter();
-    
+
     useEffect(() => {
         if(params.userId && params.id) {
             setUserId(params.userId);
-            setTaskId(params.id);
-
             async function getUniqTask() {
                 try {
                     const response = await uniqTaskFetch(params.id);
@@ -29,24 +32,72 @@ const useTask = () => {
                         setTask(response.task);
                     }
                 } catch (error) {
-                    
+                    console.error("Error to get Task", error)
                 }
             }
-            
             getUniqTask()
         }
-
-    }, [params]);
+    }, [params, taskChanged]);
 
     const handleDeleteTask = async() => {
         const response = await deleteTaskFetch(task?.id)
         if(response.success) {
-            router.replace(`..`);
+            router.replace('..');
         }
         setResponseData(response);
         setShowToast(true);
         closeDeleteDialog();
     } 
+
+    const handleChangeStatus = async(data: any) => {
+        const response = await updateTaskStatusFetch(data)
+        if(response.success) {
+            setTaskChanged((v) => !v);
+        }
+        setResponseData(response);
+        setShowToast(true);
+    }
+
+    const form = useForm({
+        defaultValues: {
+            taskId: task?.id,
+            taskName: task?.title,
+            taskDescription: task?.description,
+            taskPriority: task?.priority || Priority.MIDDLE,
+            taskStatus: task?.status || Status.PENDING,
+            taskStartDate: task?.startDate || new Date(),
+            taskEndDate: task?.dueDate || null,
+            workspaceId: task?.workspaceId,
+        }
+    });
+
+    const { reset, register, handleSubmit } = form;
+
+    useEffect(() => {
+        if(task) {
+            reset({
+                taskId: task?.id,
+                taskName: task?.title,
+                taskDescription: task?.description,
+                taskPriority: task?.priority || Priority.MIDDLE,
+                taskStatus: task?.status || Status.PENDING,
+                taskStartDate: task?.startDate || new Date(),
+                taskEndDate: task?.dueDate || null,
+                workspaceId: task?.workspaceId,
+            })
+        }
+    }, [task, reset]);
+
+    const handleOnSubmitTask = async(data: FormType) => {
+        const response = await updateTaskFetch(data);
+        if(response.success) {
+            setTaskChanged((v) => !v);
+        }
+        setResponseData(response);
+        setShowToast(true);
+        closeTaskDialog();
+        reset();
+    };
 
     const getBadgeClass = (status: string) => {
         switch (status) {
@@ -113,20 +164,28 @@ const useTask = () => {
         }
     };
     return {
+        handleOnSubmitTask,
+        handleChangeStatus,
         closeDeleteDialog,
         openDeleteDialog,
         handleDeleteTask, 
         getPriorityClass,
         getPriorityIcon,
+        closeTaskDialog,
         getButtonstatus,
+        openTaskDialog,
         getBadgeClass,
         getButtonText,
+        handleSubmit,
+        register,
         showDeleteDialog,
+        showTaskDialog,
         responseData, 
         showToast,
         Status,
         userId,
         task,
+        form,
     }
 }
 

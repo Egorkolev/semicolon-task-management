@@ -59,6 +59,7 @@ const Layout = () => {
             }
             {
                 <TMTaskDialog 
+                    dialogLabel="Create Task"
                     showTaskDialog={showTaskDialog}
                     onClose={closeTaskDialog} 
                     register={register}

@@ -16,4 +16,6 @@ export const apiKeys = {
     GET_USER_TASKS: process.env.NEXT_PUBLIC_GET_USER_TASKS as string,
     GET_TASK: process.env.NEXT_PUBLIC_GET_TASK as string,
     DELETE_TASK: process.env.NEXT_PUBLIC_DELETE_TASK as string,
+    PATCH_TASK_STATUS: process.env.NEXT_PUBLIC_PATCH_TASK_STATUS as string,
+    PUT_TASK: process.env.NEXT_PUBLIC_PUT_TASK as string,
 }

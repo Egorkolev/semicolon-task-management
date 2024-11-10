@@ -74,3 +74,41 @@ export async function deleteTaskFetch(taskId: string | undefined) {
         console.error('Error submiting data:', (error as Error).message)
     }
 }
+
+export async function updateTaskStatusFetch(data: any) {
+    const token = localStorage.getItem('accessToken');
+    try {
+        const response = await apiRequest({
+            method: "PATCH",
+            url: apiKeys.PATCH_TASK_STATUS,
+            data: data,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        return response;
+
+    } catch (error) {
+        console.error('Error submiting data:', (error as Error).message)
+    }
+}
+
+export async function updateTaskFetch(data: any) {
+    const token = localStorage.getItem('accessToken');
+    try {
+        const response = await apiRequest({
+            method: "PUT",
+            url: apiKeys.PUT_TASK,
+            data: data,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        return response;
+
+    } catch (error) {
+        console.error('Error submiting data:', (error as Error).message)
+    }
+}

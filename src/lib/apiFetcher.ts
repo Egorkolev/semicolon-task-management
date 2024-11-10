@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 interface RequestType {
-    method: 'POST' | 'GET' | 'DELETE' | 'PUT';
+    method: 'POST' | 'GET' | 'DELETE' | 'PUT' | 'PATCH';
     url: string;
     data?: any;
     headers?: Record<string, string>;

@@ -17,6 +17,7 @@ import TMDatePicker from "../TMDatePicker";
 
 interface TMTaskType {
   showTaskDialog: boolean;
+  dialogLabel: string
   onClose: () => void;
   register: UseFormRegister<any>;
   form: UseFormReturn<any>;
@@ -24,7 +25,7 @@ interface TMTaskType {
   handleOnSubmit: (data: FormType) => Promise<void>;
 }
 
-const TMTaskDialog = ({form, showTaskDialog, onClose, register, handleSubmit, handleOnSubmit}: TMTaskType) => {
+const TMTaskDialog = ({form, showTaskDialog, dialogLabel, onClose, register, handleSubmit, handleOnSubmit}: TMTaskType) => {
     const {taskPriorityOption, taskStatusOption} = useTaskDialog();
   return (
     <Dialog open={showTaskDialog} onOpenChange={onClose}>
@@ -32,7 +33,7 @@ const TMTaskDialog = ({form, showTaskDialog, onClose, register, handleSubmit, ha
       <DialogContent className="sm:max-w-[425px] flex flex-col justify-center items-center text-center z-[70]">
         <DialogHeader>
           <DialogTitle className="text-darkBlue m-2 p-0">
-            Create Task
+            {dialogLabel}
           </DialogTitle>
           <DialogDescription></DialogDescription>
         </DialogHeader>
@@ -103,7 +104,7 @@ const TMTaskDialog = ({form, showTaskDialog, onClose, register, handleSubmit, ha
                 label="Description"
                 description="Description of your task"
               />
-              <PrimaryButton type="submit" label="Create Task" />
+              <PrimaryButton type="submit" label={dialogLabel} />
             </form>
           </Form>
         </FormProvider>

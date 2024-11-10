@@ -11,14 +11,25 @@ import TMBreadcrumb from "@/app/customComponents/TMBreadcrumb";
 import useTask from "./useTask";
 import TMDeleteDialog from "@/app/customComponents/TMDeleteDialog";
 import TMToast from "@/app/customComponents/TMToast";
+import TMTaskDialog from "@/app/customComponents/TMTaskDialog/TMTaskDialog";
 
 const Layout = () => {
-    const { getPriorityClass, getPriorityIcon, getButtonstatus, getBadgeClass, getButtonText, openDeleteDialog,
-    handleDeleteTask, closeDeleteDialog, showDeleteDialog, responseData, showToast, Status, userId, task } = useTask();
+    const { getPriorityClass, getPriorityIcon, getButtonstatus, getBadgeClass, getButtonText, openDeleteDialog, openTaskDialog,
+    handleDeleteTask, closeDeleteDialog, handleChangeStatus, handleOnSubmitTask, handleSubmit, register, closeTaskDialog, 
+    form, showTaskDialog, showDeleteDialog, responseData, showToast, Status, userId, task } = useTask();
 
     return (
         <div>
             <TMToast response={responseData} trigger={showToast} />
+            <TMTaskDialog
+                dialogLabel="Update Task"
+                showTaskDialog={showTaskDialog}
+                onClose={closeTaskDialog} 
+                register={register}
+                handleSubmit={handleSubmit}
+                handleOnSubmit={handleOnSubmitTask}
+                form={form}
+            />
             <TMDeleteDialog 
                 showDeleteDialog={showDeleteDialog} 
                 onClose={closeDeleteDialog} 
@@ -47,14 +58,17 @@ const Layout = () => {
                             {task.description}
                         </div>
                         <div className="flex items-center gap-2">
-                            <Button className={`${getButtonstatus(task.status)} items-center flex gap-2`}>
+                            <Button
+                                onClick={() => handleChangeStatus(task)}
+                                className={`${getButtonstatus(task.status)} items-center flex gap-2`}
+                            >
                                 {task.status === Status.COMPLETE && <IoCheckmarkDoneCircle className="w-8 h-8" />}
                                 {getButtonText(task.status)}
                             </Button>
                             <Button onClick={openDeleteDialog} className="px-2 bg-errorRed bg-opacity-10 hover:bg-errorRed hover:bg-opacity-20">
                                 <FiTrash className="w-5 h-5 text-errorRed" />
                             </Button>
-                            <Button className="px-2 bg-blue bg-opacity-10 hover:bg-blue hover:bg-opacity-20">
+                            <Button onClick={openTaskDialog} className="px-2 bg-blue bg-opacity-10 hover:bg-blue hover:bg-opacity-20">
                                 <FiEdit className="w-5 h-5 text-blue" />
                             </Button>
                         </div>

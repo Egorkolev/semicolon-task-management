@@ -45,8 +45,7 @@ const TMInput = forwardRef<HTMLInputElement, InputType>(({
                 name={name}
                 type={type}
                 placeholder={placeholder}
-                className="
-                  rounded-xl 
+                className={`
                   focus:ring-0
                   focus:border[1px]
                   focus:border-blue 
@@ -55,7 +54,8 @@ const TMInput = forwardRef<HTMLInputElement, InputType>(({
                   focus:outline-none 
                   transition-colors 
                   duration-200
-                "
+                  ${field.value && "border-blue bg-blue bg-opacity-5"}
+                `}
               />
               {icon && <span className="absolute bottom-2 right-4 cursor-pointer">{icon}</span>}
             </div>

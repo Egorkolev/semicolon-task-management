@@ -36,7 +36,7 @@ const TMSelect = React.forwardRef<HTMLSelectElement, SelectedType>(({option, nam
         <Select {...field} defaultValue={field.value} onValueChange={field.onChange}>
           <div className="flex flex-col w-[-webkit-fill-available] gap-2">
             <Label>{label}</Label>
-            <SelectTrigger className="w-auto">
+            <SelectTrigger className={`w-auto ${field.value && "border-blue bg-blue bg-opacity-5"}`}>
               <SelectValue placeholder={placeholder} />
             </SelectTrigger>
           </div>

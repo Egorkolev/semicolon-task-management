@@ -15,7 +15,7 @@ import {
 import { useFormContext } from "react-hook-form"
 import { Label } from "@/components/ui/label"
 import { FormControl, FormField, FormItem } from "@/components/ui/form"
-
+import { IoCloseCircleOutline } from "react-icons/io5";
 interface DatePickType {
     placeholder?: string;
     label?:       string;
@@ -24,6 +24,7 @@ interface DatePickType {
  
 const TMDatePicker = React.forwardRef<HTMLDivElement, DatePickType>(({placeholder, name, label}, ref) => {
   const {control} = useFormContext();
+  const dueDate = name === "taskEndDate";
 
   return (
     <FormField 
@@ -36,16 +37,21 @@ const TMDatePicker = React.forwardRef<HTMLDivElement, DatePickType>(({placeholde
                 <Popover>
                     <div className="flex flex-col w-[-webkit-fill-available] gap-2">
                         <Label>{label}</Label>
-                        <PopoverTrigger asChild>
+                        <PopoverTrigger className={`${field.value && "border-blue bg-blue bg-opacity-5"}`} asChild>
                             <Button
-                            variant={"outline"}
-                            className={cn(
-                                "w-auto justify-start flex text-left font-normal gap-2",
-                                !field.value && "text-muted-foreground"
-                            )}
+                                variant={"outline"}
+                                className={cn(
+                                    `w-auto ${dueDate && "justify-between"}justify-start flex text-left font-normal gap-2`,
+                                    !field.value && "text-muted-foreground"
+                                )}
                             >
-                            <CalendarIcon />
-                            {field.value ? format(new Date(field.value), "MM/dd/yyyy") : <span>{placeholder}</span>}
+                                <CalendarIcon />
+                                {field.value ? format(new Date(field.value), "MM/dd/yyyy") : <span>{placeholder}</span>}
+                                {field.value && dueDate && (
+                                <div onClick={() => field.onChange(null)}>
+                                    <IoCloseCircleOutline className="w-5 h-5 text-blue bg-blue bg-opacity-20 rounded-full" />
+                                </div>
+                                )}
                             </Button>
                         </PopoverTrigger>
                     </div>

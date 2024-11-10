@@ -39,8 +39,7 @@ const TMTextArea = forwardRef<HTMLTextAreaElement, InputType>(({
                             ref={ref}
                             name={name}
                             placeholder={placeholder}
-                            className="
-                            rounded-xl 
+                            className={`
                             focus:ring-0
                             focus:border[1px]
                             focus:border-blue 
@@ -50,7 +49,8 @@ const TMTextArea = forwardRef<HTMLTextAreaElement, InputType>(({
                             transition-colors 
                             duration-200
                             resize-none
-                            "
+                            ${field.value && "border-blue bg-blue bg-opacity-5"}
+                            `}
                         />
                     </FormControl>
                     <FormDescription>{description}</FormDescription>
