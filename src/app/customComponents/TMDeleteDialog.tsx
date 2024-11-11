@@ -35,11 +35,11 @@ const TMDeleteDialog = ({ showDeleteDialog, onClose, onClick, taskName, taskStat
         </DialogHeader>
         <div className="grid gap-4 py-2">
         </div>
-        <DialogFooter>
-          <Button onClick={onClose} className="text-white bg-blue bg-opacity-90 hover:bg-blue hover:bg-opacity-100">
+        <DialogFooter className="flex flex-row flex-nowrap w-full gap-2">
+          <Button onClick={onClose} className="text-white bg-blue bg-opacity-90 hover:bg-blue hover:bg-opacity-100 w-full">
               No
           </Button>
-          <Button onClick={onClick} className="text-errorRed bg-errorRed bg-opacity-10 hover:bg-errorRed hover:bg-opacity-20">
+          <Button onClick={onClick} className="text-errorRed bg-errorRed bg-opacity-10 hover:bg-errorRed hover:bg-opacity-20 w-full">
               Yes
           </Button>
         </DialogFooter>
