@@ -13,10 +13,10 @@ export const TMOverviewHeader = ({userName, welcomeText, textFrame, pageName}: H
     return (
         <div className="flex flex-col gap-5">
             <div className="flex gap-3 items-start">
-                {userName && <Image src={HelloImg} alt="Hello" className="max-w-[100%] max-h-[100%] w-15 h-15" />}
+                {userName && <Image src={HelloImg} alt="Hello" className="max-w-[100%] max-h-[100%] w-10 h-10 md:w-15 md:h-15" />}
                 <div>
                     <h1 className="text-darkBlue text-3xl font-bold">{pageName}</h1>
-                    {userName && <h1 className="text-darkBlue text-3xl font-bold">Hi {userName},</h1>}
+                    {userName && <h1 className="text-darkBlue text-xl md:text-3xl font-bold">Hi {userName},</h1>}
                     <p className="text-gray text-md">{welcomeText}</p>
                 </div>
             </div>
