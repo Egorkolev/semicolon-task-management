@@ -7,9 +7,9 @@ interface DateBadge {
     classNameDueDate?: string;
 }
 
-const TMDateBadge = ({ label, className, classNameDueDate, date = "Not selected" }: DateBadge) => {
+const TMDateBadge = ({ label, className, classNameDueDate, date = "Unselected" }: DateBadge) => {
   return (
-    <div className={`${classNameDueDate} px-2 items-center justify-between md:w-full gap-2`}>
+    <div className={`${classNameDueDate} items-center justify-between md:w-full gap-2`}>
       <div className="flex flex-col">
         <h2 className="text-sm md:text-md text-gray-500 truncate w-16 md:w-auto">{label}</h2>
         <h2 className="text-sm md:text-md font-bold truncate">{date}</h2>

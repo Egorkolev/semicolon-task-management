@@ -43,7 +43,7 @@ const Layout = () => {
             />
             <div className="max-w-3xl flex justify-between flex-wrap gap-10 overflow-auto m-auto mt-10">
                 {task && 
-                <div className="flex-1 flex flex-wrap gap-6 p-6 justify-between bg-white w-[340px] rounded-xl">
+                <div className="flex-1 flex flex-wrap gap-6 p-4 md:p-6 justify-between bg-white w-[340px] rounded-xl">
                     <div className="flex flex-col gap-5">
                         <h2 className="text-darkBlue text-lg">{task.title}</h2>
                         <div className="flex gap-2 items-center">
@@ -57,7 +57,7 @@ const Layout = () => {
                         <div className="text-gray max-w-[370px]">
                             {task.description}
                         </div>
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2 flex-wrap">
                             <Button
                                 onClick={() => handleChangeStatus(task)}
                                 className={`${getButtonstatus(task.status)} items-center flex gap-2`}
@@ -65,18 +65,21 @@ const Layout = () => {
                                 {task.status === Status.COMPLETE && <IoCheckmarkDoneCircle className="w-8 h-8" />}
                                 {getButtonText(task.status)}
                             </Button>
-                            <Button onClick={openDeleteDialog} className="px-2 bg-errorRed bg-opacity-10 hover:bg-errorRed hover:bg-opacity-20">
-                                <FiTrash className="w-5 h-5 text-errorRed" />
-                            </Button>
-                            <Button onClick={openTaskDialog} className="px-2 bg-blue bg-opacity-10 hover:bg-blue hover:bg-opacity-20">
-                                <FiEdit className="w-5 h-5 text-blue" />
-                            </Button>
+                            <>
+                                <Button onClick={openDeleteDialog} className="px-2 bg-errorRed bg-opacity-10 hover:bg-errorRed hover:bg-opacity-20">
+                                    <FiTrash className="w-5 h-5 text-errorRed" />
+                                </Button>
+                                <Button onClick={openTaskDialog} className="px-2 bg-blue bg-opacity-10 hover:bg-blue hover:bg-opacity-20">
+                                    <FiEdit className="w-5 h-5 text-blue" />
+                                </Button>
+                            </>
+ 
                         </div>
                     </div>
                     <div className="space-y-4 items-end flex md:flex-col justify-between w-full md:w-fit">
                         <TMDateBadge classNameDueDate="flex" className="bg-white" label="Created Date" date={task.startDate?.slice(0, 10)} />
                             <div className="relative">
-                                <div className="absolute h-px md:w-px min-w-16 md:min-w-fit md:min-h-24 right-[-52px] md:right-[4px] -top-[40px] md:-top-[68px] bg-gray m-5"></div>
+                                <div className="absolute h-px md:w-px min-w-16 md:min-w-fit md:min-h-24 right-[-52px] md:right-[-3px] -top-[40px] md:-top-[68px] bg-gray m-5"></div>
                             </div>
                         <TMDateBadge classNameDueDate="flex flex-row-reverse md:flex-row" className="bg-infoBlue" label="Due Date" date={task.dueDate?.slice(0, 10)} />
                     </div>
