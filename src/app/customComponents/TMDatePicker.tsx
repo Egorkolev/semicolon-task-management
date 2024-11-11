@@ -62,7 +62,6 @@ const TMDatePicker = React.forwardRef<HTMLDivElement, DatePickType>(({placeholde
                                 day_selected: "bg-blue text-primary-foreground hover:bg-blue hover:text-primary-foreground focus:bg-blue focus:text-primary-foreground",
                             }}
                             mode="single"
-                            initialFocus
                             selected={field.value ? new Date(field.value) : undefined}
                             onSelect={(selectedDate) => field.onChange(selectedDate?.toISOString())}
                         />
