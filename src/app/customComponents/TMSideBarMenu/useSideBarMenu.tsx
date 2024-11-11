@@ -12,6 +12,9 @@ import { useUserContext } from "@/context/UserContext";
 const useSideBarMenu = () => {
     const [showCalendar, setShowCalendat] = useState<boolean>(false);
     const {userData} = useUserContext();
+
+    const showCalendarDialog = () => setShowCalendat(true)
+    const onCloseCalendar = () => setShowCalendat(false)
   
     const pathname = usePathname();
     const user = useUserInfo();
@@ -36,7 +39,8 @@ const useSideBarMenu = () => {
       },
     ];
     return {
-        setShowCalendat,
+        showCalendarDialog,
+        onCloseCalendar,
         showCalendar,
         menuItems,
         pathname,

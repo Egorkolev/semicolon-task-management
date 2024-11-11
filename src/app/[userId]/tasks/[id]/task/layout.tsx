@@ -73,12 +73,12 @@ const Layout = () => {
                             </Button>
                         </div>
                     </div>
-                    <div className="space-y-4 flex flex-col justify-between">
-                        <TMDateBadge className="bg-white" label="Date Created" date={task.startDate?.slice(0, 10)} />
+                    <div className="space-y-4 items-end flex md:flex-col justify-between w-full md:w-fit">
+                        <TMDateBadge classNameDueDate="flex" className="bg-white" label="Created Date" date={task.startDate?.slice(0, 10)} />
                             <div className="relative">
-                                <div className="absolute w-px min-h-24 right-[3px] -top-[68px] bg-gray m-5"></div>
+                                <div className="absolute h-px md:w-px min-w-16 md:min-w-fit md:min-h-24 right-[-52px] md:right-[4px] -top-[40px] md:-top-[68px] bg-gray m-5"></div>
                             </div>
-                        <TMDateBadge className="bg-infoBlue" label="Due Date" date={task.dueDate?.slice(0, 10)} />
+                        <TMDateBadge classNameDueDate="flex flex-row-reverse md:flex-row" className="bg-infoBlue" label="Due Date" date={task.dueDate?.slice(0, 10)} />
                     </div>
                 </div>}
             </div>

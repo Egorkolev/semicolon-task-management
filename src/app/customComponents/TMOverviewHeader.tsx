@@ -27,6 +27,8 @@ export const TMOverviewHeader = ({userName, welcomeText, textFrame, pageName}: H
                     text-white
                     rounded-2xl
                     font-serif
+                    hidden
+                    md:block
                     "
                 style={{
                     backgroundImage: `url(${OverviweFrame.src})`,

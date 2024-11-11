@@ -7,26 +7,53 @@ import { ImCalendar } from "react-icons/im";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import TMCalendar from "../TMCalendar";
 import useSideBarMenu from "./useSideBarMenu";
+import TMAvatarDialog from "../TMAvatarDialog";
+import useOverview from "@/app/[userId]/overview/useOverview";
+import { Dialog, DialogContent, DialogDescription, DialogTrigger } from "@radix-ui/react-dialog";
+import { usePathname } from "next/navigation";
 
 const TMSideBarMenu = () => {
-  const {setShowCalendat, showCalendar, menuItems, pathname, userData} = useSideBarMenu();
+  const {showCalendarDialog, onCloseCalendar, showCalendar, menuItems, pathname, userData} = useSideBarMenu();
+  const {handleUploadFile, handleFileChange, closeDialog, openDialog, showAvatarDialog} = useOverview();
+
+  const pathName = usePathname();
+  const isCalendar = pathName.endsWith('/tasks');
   return (
     <>
       <div className="flex flex-col gap-8 w-16 pt-10 bg-blue z-[60]">
-        <TMAvatar key={userData?.userImg} logo={userData?.userImg} />
-        <div className="w-8 h-8"></div>
-        <ImCalendar
-          onClick={() => setShowCalendat((v) => !v)}
-          className="text-white w-8 h-8 mx-auto box md:hidden cursor-pointer"
+        <TMAvatar 
+          onClick={openDialog} 
+          key={userData?.userImg} 
+          logo={userData?.userImg} 
+          style="cursor-pointer"
         />
-        {showCalendar && (
-          <div
-            onMouseLeave={() => setShowCalendat(false)}
-            className="flex fixed shadow-xl bg-white rounded-lg left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          >
-            <TMCalendar />
-          </div>
-        )}
+        {showAvatarDialog && 
+          <TMAvatarDialog
+            key={userData?.userImg}
+            userImage={userData?.userImg} 
+            onChange={handleFileChange} 
+            onUpload={handleUploadFile} 
+            onClose={closeDialog} 
+            showAvatarDialog={showAvatarDialog} 
+          />
+        }
+        <div className="w-8 h-8"></div>
+        {isCalendar && <ImCalendar
+          onClick={showCalendarDialog}
+          className="text-white w-8 h-8 mx-auto box md:hidden cursor-pointer"
+        />}
+        <Dialog open={showCalendar} onOpenChange={onCloseCalendar}>
+          <DialogTrigger asChild></DialogTrigger>
+          <DialogContent className="sm:max-w-[425px] flex flex-col justify-between items-start text-center z-[60]">
+            <DialogDescription>
+              <div
+                className="flex fixed shadow-xl bg-white rounded-lg left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+              >
+                <TMCalendar />
+              </div>
+            </DialogDescription>
+          </DialogContent>
+        </Dialog>
       </div>
       <div className="relative">
         <Sheet>

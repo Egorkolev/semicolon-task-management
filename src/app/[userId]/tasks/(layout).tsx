@@ -23,14 +23,14 @@ const Layout = () => {
                 />
                 {taskData?.length !== 0 && <PrimaryButton onClick={openTaskDialog}>Create Task</PrimaryButton>}
             </div>
-            <div>
+            <div className="m-auto md:m-0">
                 {taskData?.length !== 0 && <ul className="flex flex-wrap">
                     {filters.map((filter) => {
                         return (
                             <li 
                                 onClick={() => setSelectedStatus(filter.status)}
                                 key={filter.status} 
-                                className={` pr-8 py-3 lg:py-5 lg:text-lg cursor-pointer ${selectedStatus === filter.status ? "text-blue border-b-blue border-b-2" : "text-gray border-b-gray border-b-2"}`}
+                                className={` md:pr-8 pr-2 py-3 text-sm lg:py-5 lg:text-lg cursor-pointer ${selectedStatus === filter.status ? "text-blue border-b-blue border-b-2" : "text-gray border-b-gray border-b-2"}`}
                             >
                                 {filter.name}
                             </li>

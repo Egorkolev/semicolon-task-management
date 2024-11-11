@@ -41,7 +41,7 @@ const RootLayout = ({
               </div>
               <div className="w-full fixed">
                 <div className={isRegistrationPage ? `py-10 px-3 h-[100vh]`
-                  : `py-10 max-w-7xl 3xl:mx-auto pl-[75px] 3xl:pl-[15px] md:mr-[301px] 3xl:pr-[301px] pr-[15px] h-[100vh] flex-1 overflow-auto`
+                  : `pt-10 pb-32 md:pb-10 max-w-7xl 3xl:mx-auto pl-[75px] 3xl:pl-[15px] md:mr-[301px] 3xl:pr-[301px] pr-[15px] h-[100vh] flex-1 overflow-auto`
                 }>
                   <AuthenticatedLayout />
                   <Toaster position="top-center" />

@@ -49,18 +49,18 @@ const TMTaskDialog = ({form, showTaskDialog, dialogLabel, onClose, register, han
                   minLength: {
                     value: 2,
                     message:
-                      "Task code must be at least 2 characters long",
+                      "Task name must be at least 2 characters long",
                   },
                   maxLength: {
-                    value: 6,
-                    message: "Task code cannot exceed 6 characters",
+                    value: 50,
+                    message: "Task name cannot exceed 50 characters",
                   },
                 })}
                 name="taskName"
                 type="text"
-                label="Task code"
-                placeholder="T-25"
-                description="Enter task code"
+                label="Task name"
+                placeholder="Some Task"
+                description="Enter task name"
               />
               <div className="flex justify-between gap-4">
                 <TMSelect 
