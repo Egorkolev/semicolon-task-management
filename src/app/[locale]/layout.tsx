@@ -8,7 +8,7 @@ import TMInfoSideBar from "./customComponents/TMInfoSideBar";
 import { Toaster } from "sonner";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
-import { Link, routing, usePathname } from "@/i18n/routing";
+import { routing, usePathname } from "@/i18n/routing";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
