@@ -1,0 +1,113 @@
+{
+    "message": {
+        "tasks": "Завдання",
+        "hi": "Привіт, {userName}",
+        "wecometoSemicolon": "Ласкаво просимо до Semicolon Управління Завданнями.",
+        "welcometoWorkspace": "Ласкаво просимо до вашого робочого простору.",
+        "letGetYouStarted": "Давайте розпочнемо.",
+        "tasksForToday": "Завдання на сьогодні.",
+        "motivationHelpYouWork": "Мотивація, щоб допомогти вам працювати.",
+        "churchill": "Успіх не є остаточним; невдача не є фатальною: це мужність <br/>продовжувати, що має значення. <br/><br/>-Вінстон С. Черчіль",
+        "yourProfilePicture": "Привіт {userName}, оновіть ваше фото профілю",
+        "yourFirstTask": "Створіть своє перше завдання у вашому робочому просторі",
+        "yourTasksInYourSpace": "Ваші завдання у вашому просторі.",
+        "noTasksYet": "Немає завдань",
+        "youHaveNoTaskCreated": "Ви ще не створили жодного завдання у вашому робочому просторі.",
+        "createTaskNow": "Будьте продуктивними. Створіть завдання зараз.",
+        "accountSettings": "Налаштування акаунта",
+        "unselected": "Не вибрано"
+    },
+    "button": {
+        "getStarted": "Розпочати",
+        "createTask": "Створити завдання",
+        "viewTask": "Переглянути завдання",
+        "uploadPicture": "Завантажити фото",
+        "createAccount": "Створити акаунт",
+        "myProfile": "Мій профіль",
+        "workNow": "Почати працювати",
+        "markAsDone": "Позначити як завершене",
+        "taskHasBeenCompleted": "Це завдання завершено",
+        "logIn": "Увійти",
+        "create": "Створити",
+        "no": "Ні",
+        "yes": "Так"
+    },
+    "nav": {
+        "overview": "Огляд",
+        "tasks": "Завдання",
+        "task": "Завдання",
+        "settings": "Налаштування"
+    },
+    "option": {
+        "low": "Низький",
+        "middle": "Середній",
+        "high": "Високий",
+        "pending": "В очікуванні",
+        "inProgress": "В процесі",
+        "complete": "Завершено",
+        "allTasks": "Усі завдання",
+        "completed": "Завершено"
+    },
+    "optionBadge": {
+        "low": "НИЗЬКИЙ",
+        "middle": "СЕРЕДНІЙ",
+        "high": "ВИСОКИЙ",
+        "pending": "В ОЧІКУВАННІ",
+        "inProgress": "В ПРОЦЕСІ",
+        "complete": "ЗАВЕРШЕНО"
+    },
+    "dialog": {
+        "deleteTitle": "Видалити завдання",
+        "updateTask": "Оновити завдання",
+        "taskName": "Ви впевнені, що хочете видалити це завдання?",
+        "taskStatus": "Це завдання є",
+        "uploadPicture": "Завантажте ваше фото профілю",
+        "createdDate": "Дата створення",
+        "dueDate": "Дата виконання"
+    },
+    "taskForm": {
+        "taskNameRequired": "Назва завдання обов'язкова",
+        "taskNameMinCharacters": "Назва завдання повинна містити не менше {taskMinCharacters} символів",
+        "taskNameMaxCharacters": "Назва завдання не може перевищувати {taskMaxCharacters} символів",
+        "taskName": "Назва завдання",
+        "taskNamePlaceholder": "Приклад завдання",
+        "taskNameDescription": "Введіть назву завдання",
+        "taskPriority": "Пріоритет",
+        "taskPriorityPlaceholder": "Оберіть пріоритет",
+        "taskStatus": "Статус",
+        "taskStatusPlaceholder": "Оберіть статус",
+        "taskStartDate": "Дата початку",
+        "taskEndDate": "Дата завершення",
+        "taskDatePlaceholder": "Виберіть дату",
+        "taskDescptionRequired": "Опис обов'язковий",
+        "descptionMaxCharacters": "Опис не може перевищувати {descptionMax} символів",
+        "taskDescriptionLabel": "Опис",
+        "taskDescription": "Опис вашого завдання"
+    },
+    "registrationForm": {
+        "userNameRequired": "Ім'я користувача обов'язкове",
+        "userNameCharactersMin": "Ім'я користувача повинно містити не менше {UserNameMin} символів",
+        "userNameCharactersMax": "Ім'я користувача не може перевищувати {UserNameMax} символів",
+        "userName": "Ім'я користувача",
+        "emailRequired": "Електронна пошта обов'язкова",
+        "invalidEmail": "Невірна адреса електронної пошти",
+        "emailAddress": "Адреса електронної пошти",
+        "passwordRequired": "Пароль обов'язковий",
+        "passwordCharactersMin": "Пароль повинен містити не менше {PasswordMin} символів",
+        "passwordCharactersMax": "Пароль не може перевищувати {PasswordMax} символів",
+        "password": "Пароль",
+        "createAccount": "Створити акаунт",
+        "logIn": "Увійти"
+    },
+    "workspaceForm": {
+        "workspaceRequired": "Назва робочого простору обов'язкова",
+        "workspaceCharactersMin": "Назва робочого простору повинна містити не менше {WorkspaceMin} символів",
+        "workspaceCharactersMax": "Назва робочого простору не може перевищувати {WorkspaceMax} символів",
+        "workspaceLabel": "Назва вашого робочого простору",
+        "workspaceDescription": "Текст для заповнення цього простору",
+        "workspaceDescriptionCharactersMax": "Опис не може перевищувати {workspaceDescriptionMax} символів",
+        "workspaceDescriptionLabel": "Опис робочого простору",
+        "describeWorkspace": "Опис того, для чого призначений ваш робочий простір.",
+        "create": "Створити"
+    }
+}

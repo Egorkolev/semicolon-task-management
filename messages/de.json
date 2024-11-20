@@ -1,0 +1,113 @@
+{
+    "message": {
+        "tasks": "Aufgaben",
+        "hi": "Hallo, {userName}",
+        "wecometoSemicolon": "Willkommen bei Semicolon Aufgabenmanagement.",
+        "welcometoWorkspace": "Willkommen in deinem Arbeitsbereich.",
+        "letGetYouStarted": "Lass uns starten.",
+        "tasksForToday": "Aufgaben für heute.",
+        "motivationHelpYouWork": "Motivation, um dir bei der Arbeit zu helfen.",
+        "churchill": "Erfolg ist nicht endgültig; Misserfolg ist nicht fatal: Es ist der Mut, <br/>weiterzumachen, der zählt. <br/><br/>-Winston S. Churchill",
+        "yourProfilePicture": "Hallo {userName}, aktualisiere dein Profilbild",
+        "yourFirstTask": "Erstelle deine erste Aufgabe in deinem Arbeitsbereich",
+        "yourTasksInYourSpace": "Deine Aufgaben in deinem Bereich.",
+        "noTasksYet": "Noch keine Aufgaben",
+        "youHaveNoTaskCreated": "Du hast noch keine Aufgaben in deinem Arbeitsbereich erstellt.",
+        "createTaskNow": "Werde produktiv. Erstelle jetzt eine Aufgabe.",
+        "accountSettings": "Kontoeinstellungen",
+        "unselected": "Nicht ausgewählt"
+    },
+    "button": {
+        "getStarted": "Loslegen",
+        "createTask": "Aufgabe erstellen",
+        "viewTask": "Aufgabe ansehen",
+        "uploadPicture": "Bild hochladen",
+        "createAccount": "Konto erstellen",
+        "myProfile": "Mein Profil",
+        "workNow": "Jetzt arbeiten",
+        "markAsDone": "Als erledigt markieren",
+        "taskHasBeenCompleted": "Diese Aufgabe wurde abgeschlossen",
+        "logIn": "Einloggen",
+        "create": "Erstellen",
+        "no": "Nein",
+        "yes": "Ja"
+    },
+    "nav": {
+        "overview": "Übersicht",
+        "tasks": "Aufgaben",
+        "task": "Aufgabe",
+        "settings": "Einstellungen"
+    },
+    "option": {
+        "low": "Niedrig",
+        "middle": "Mittel",
+        "high": "Hoch",
+        "pending": "Ausstehend",
+        "inProgress": "In Bearbeitung",
+        "complete": "Abgeschlossen",
+        "allTasks": "Alle Aufgaben",
+        "completed": "Abgeschlossen"
+    },
+    "optionBadge": {
+        "low": "NIEDRIG",
+        "middle": "MITTEL",
+        "high": "HOCH",
+        "pending": "AUSSTEHEND",
+        "inProgress": "IN BEARBEITUNG",
+        "complete": "ABGESCHLOSSEN"
+    },
+    "dialog": {
+        "deleteTitle": "Aufgabe löschen",
+        "updateTask": "Aufgabe aktualisieren",
+        "taskName": "Bist du sicher, dass du diese Aufgabe löschen möchtest?",
+        "taskStatus": "Diese Aufgabe ist",
+        "uploadPicture": "Lade dein Profilbild hoch",
+        "createdDate": "Erstellungsdatum",
+        "dueDate": "Fälligkeitsdatum"
+    },
+    "taskForm": {
+        "taskNameRequired": "Aufgabenname ist erforderlich",
+        "taskNameMinCharacters": "Der Aufgabenname muss mindestens {taskMinCharacters} Zeichen lang sein",
+        "taskNameMaxCharacters": "Der Aufgabenname darf {taskMaxCharacters} Zeichen nicht überschreiten",
+        "taskName": "Aufgabenname",
+        "taskNamePlaceholder": "Beispielaufgabe",
+        "taskNameDescription": "Geben Sie den Aufgabenname ein",
+        "taskPriority": "Priorität",
+        "taskPriorityPlaceholder": "Priorität auswählen",
+        "taskStatus": "Status",
+        "taskStatusPlaceholder": "Status auswählen",
+        "taskStartDate": "Startdatum",
+        "taskEndDate": "Enddatum",
+        "taskDatePlaceholder": "Wählen Sie ein Datum",
+        "taskDescptionRequired": "Beschreibung ist erforderlich",
+        "descptionMaxCharacters": "Beschreibung darf {descptionMax} Zeichen nicht überschreiten",
+        "taskDescriptionLabel": "Beschreibung",
+        "taskDescription": "Beschreibung der Aufgabe"
+    },
+    "registrationForm": {
+        "userNameRequired": "Benutzername ist erforderlich",
+        "userNameCharactersMin": "Der Benutzername muss mindestens {UserNameMin} Zeichen lang sein",
+        "userNameCharactersMax": "Der Benutzername darf {UserNameMax} Zeichen nicht überschreiten",
+        "userName": "Benutzername",
+        "emailRequired": "E-Mail-Adresse ist erforderlich",
+        "invalidEmail": "Ungültige E-Mail-Adresse",
+        "emailAddress": "E-Mail-Adresse",
+        "passwordRequired": "Passwort ist erforderlich",
+        "passwordCharactersMin": "Das Passwort muss mindestens {PasswordMin} Zeichen lang sein",
+        "passwordCharactersMax": "Das Passwort darf {PasswordMax} Zeichen nicht überschreiten",
+        "password": "Passwort",
+        "createAccount": "Konto erstellen",
+        "logIn": "Einloggen"
+    },
+    "workspaceForm": {
+        "workspaceRequired": "Workspace-Name ist erforderlich",
+        "workspaceCharactersMin": "Der Workspace-Name muss mindestens {WorkspaceMin} Zeichen lang sein",
+        "workspaceCharactersMax": "Der Workspace-Name darf {WorkspaceMax} Zeichen nicht überschreiten",
+        "workspaceLabel": "Benennen Sie Ihren Workspace",
+        "workspaceDescription": "Text zur Beschreibung des Workspaces",
+        "workspaceDescriptionCharactersMax": "Beschreibung darf {workspaceDescriptionMax} Zeichen nicht überschreiten",
+        "workspaceDescriptionLabel": "Workspace-Beschreibung",
+        "describeWorkspace": "Beschreiben Sie den Zweck Ihres Workspaces.",
+        "create": "Erstellen"
+    }
+}

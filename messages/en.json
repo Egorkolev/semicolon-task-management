@@ -1,0 +1,113 @@
+{
+    "message": {
+        "tasks": "Tasks",
+        "hi": "Hi, {userName}",
+        "wecometoSemicolon": "Wecome to Semicolon Task Management.",
+        "welcometoWorkspace":"Welcome to your workspace.",
+        "letGetYouStarted": "Let`s get you started.",
+        "tasksForToday": "Tasks for Today.",
+        "motivationHelpYouWork": "Motivation to help you work.",
+        "churchill": "Success is not final; failure is not fatal: It is the courage to <br/>continue that counts. <br/><br/>-Winston S. Churchill",
+        "yourProfilePicture": "Hey {userName}, Update your Profile Picture",
+        "yourFirstTask": "Create your First Task in your Workspace",
+        "yourTasksInYourSpace": "Your tasks in your space.",
+        "noTasksYet": "No Tasks Yet",
+        "youHaveNoTaskCreated": "You have no task created in your workspace yet.",
+        "createTaskNow": "Get productive. Create a Task Now.",
+        "accountSettings": "Account Settings",
+        "unselected": "Unselected"
+    },
+    "button": {
+        "getStarted": "Get Started",
+        "createTask": "Create Task",
+        "viewTask": "View Task",
+        "uploadPicture": "Upload Picture",
+        "createAccount": "Create Account",
+        "myProfile": "My Profile",
+        "workNow": "Work on it Now",
+        "markAsDone": "Mark As Done",
+        "taskHasBeenCompleted": "This task has been completed",
+        "logIn": "Log In",
+        "create": "Create",
+        "no": "No",
+        "yes": "Yes"
+    },
+    "nav": {
+        "overview": "Overview",
+        "tasks": "Tasks",
+        "task": "Task",
+        "settings": "Settings"
+    },
+    "option": {
+        "low": "Low",
+        "middle": "Middle",
+        "high": "High",
+        "pending": "Pending",
+        "inProgress": "In progress",
+        "complete": "Complete",
+        "allTasks": "All Tasks",
+        "completed": "Completed"
+    },
+    "optionBadge": {
+        "low": "LOW",
+        "middle": "MIDDLE",
+        "high": "HIGH",
+        "pending": "PENDING",
+        "inProgress": "IN PROGRESS",
+        "complete": "COMPLETE"
+    },
+    "dialog": {
+        "deleteTitle": "Delete Task",
+        "updateTask": "Update Task",
+        "taskName": "Are you sure you want to delete the task",
+        "taskStatus": " This task is",
+        "uploadPicture": "Upload your Profile Picture",
+        "createdDate": "Created Date",
+        "dueDate": "Due Date"
+    },
+    "taskForm": {
+        "taskNameRequired": "Task name is required",
+        "taskNameMinCharacters": "Task name must be at least {taskMinCharacters} characters long",
+        "taskNameMaxCharacters": "Task name cannot exceed {taskMaxCharacters} characters",
+        "taskName": "Task name",
+        "taskNamePlaceholder": "Some Task",
+        "taskNameDescription": "Enter task name",
+        "taskPriority": "Priority",
+        "taskPriorityPlaceholder": "Select Priority",
+        "taskStatus": "Status",
+        "taskStatusPlaceholder": "Select Status",
+        "taskStartDate": "Start Date",
+        "taskEndDate": "End Date",
+        "taskDatePlaceholder": "Pick a date",
+        "taskDescptionRequired": "Descption is required",
+        "descptionMaxCharacters": "Descption cannot exceed {descptionMax} characters long",
+        "taskDescriptionLabel": "Description",
+        "taskDescription": "Description of your task"
+    },
+    "registrationForm": {
+        "userNameRequired": "Username is required",
+        "userNameCharactersMin": "Username must be at least {UserNameMin} characters long",
+        "userNameCharactersMax": "Username cannot exceed {UserNameMax} characters",
+        "userName": "Username",
+        "emailRequired": "Email is required",
+        "invalidEmail": "Invalid email address",
+        "emailAddress": "Email Address",
+        "passwordRequired": "Password is required",
+        "passwordCharactersMin": "Password must be at least {PasswordMin} characters long",
+        "passwordCharactersMax": "Password cannot exceed {PasswordMax} characters long",
+        "password": "Password",
+        "createAccount": "Create Account",
+        "logIn": "Log In"
+    },
+    "workspaceForm": {
+        "workspaceRequired": "Workspace name is required",
+        "workspaceCharactersMin": "Workspace name must be at least {WorkspaceMin} characters long",
+        "workspaceCharactersMax": "Workspace name cannot exceed {WorkspaceMax} characters",
+        "workspaceLabel": "Tite your workspace",
+        "workspaceDescription": "Some text to fill in this space",
+        "workspaceDescriptionCharactersMax": "Descption cannot exceed {workspaceDescriptionMax} characters long",
+        "workspaceDescriptionLabel": "workspace Description",
+        "describeWorkspace": "Descption of what your workspace is for.",
+        "create": "Create"
+    }
+}

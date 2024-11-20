@@ -1,0 +1,113 @@
+{
+    "message": {
+        "tasks": "Задачи",
+        "hi": "Привет, {userName}",
+        "wecometoSemicolon": "Добро пожаловать в Semicolon Управление Задачами.",
+        "welcometoWorkspace": "Добро пожаловать в ваше рабочее пространство.",
+        "letGetYouStarted": "Давайте начнем.",
+        "tasksForToday": "Задачи на сегодня.",
+        "motivationHelpYouWork": "Мотивация, чтобы помочь вам работать.",
+        "churchill": "Успех не окончателен; неудача не фатальна: важен только мужество <br/>продолжать. <br/><br/>-Уинстон С. Черчилль",
+        "yourProfilePicture": "Привет {userName}, обновите ваше фото профиля",
+        "yourFirstTask": "Создайте вашу первую задачу в рабочем пространстве",
+        "yourTasksInYourSpace": "Ваши задачи в вашем пространстве.",
+        "noTasksYet": "Задачи пока нет",
+        "youHaveNoTaskCreated": "Вы еще не создали задачу в вашем рабочем пространстве.",
+        "createTaskNow": "Будьте продуктивными. Создайте задачу сейчас.",
+        "accountSettings": "Настройки аккаунта",
+        "unselected": "Не выбрано"
+    },
+    "button": {
+        "getStarted": "Начать",
+        "createTask": "Создать задачу",
+        "viewTask": "Просмотреть задачу",
+        "uploadPicture": "Загрузить фото",
+        "createAccount": "Создать аккаунт",
+        "myProfile": "Мой профиль",
+        "workNow": "Начать работать",
+        "markAsDone": "Отметить как выполнено",
+        "taskHasBeenCompleted": "Эта задача выполнена",
+        "logIn": "Войти",
+        "create": "Создать",
+        "no": "Нет",
+        "yes": "Да"
+    },
+    "nav": {
+        "overview": "Обзор",
+        "tasks": "Задачи",
+        "task": "Задача",
+        "settings": "Настройки"
+    },
+    "option": {
+        "low": "Низкий",
+        "middle": "Средний",
+        "high": "Высокий",
+        "pending": "Ожидает",
+        "inProgress": "В процессе",
+        "complete": "Завершено",
+        "allTasks": "Все задачи",
+        "completed": "Завершено"
+    },
+    "optionBadge": {
+        "low": "НИЗКИЙ",
+        "middle": "СРЕДНИЙ",
+        "high": "ВЫСОКИЙ",
+        "pending": "ОЖИДАЕТ",
+        "inProgress": "В ПРОЦЕССЕ",
+        "complete": "ЗАВЕРШЕНО"
+    },
+    "dialog": {
+        "deleteTitle": "Удалить задачу",
+        "updateTask": "Обновить задачу",
+        "taskName": "Вы уверены, что хотите удалить эту задачу?",
+        "taskStatus": "Эта задача",
+        "uploadPicture": "Загрузите ваше фото профиля",
+        "createdDate": "Дата создания",
+        "dueDate": "Срок выполнения"
+    },
+    "taskForm": {
+        "taskNameRequired": "Название задачи обязательно",
+        "taskNameMinCharacters": "Название задачи должно содержать не менее {taskMinCharacters} символов",
+        "taskNameMaxCharacters": "Название задачи не может превышать {taskMaxCharacters} символов",
+        "taskName": "Название задачи",
+        "taskNamePlaceholder": "Пример задачи",
+        "taskNameDescription": "Введите название задачи",
+        "taskPriority": "Приоритет",
+        "taskPriorityPlaceholder": "Выберите приоритет",
+        "taskStatus": "Статус",
+        "taskStatusPlaceholder": "Выберите статус",
+        "taskStartDate": "Дата начала",
+        "taskEndDate": "Дата завершения",
+        "taskDatePlaceholder": "Выберите дату",
+        "taskDescptionRequired": "Описание обязательно",
+        "descptionMaxCharacters": "Описание не может превышать {descptionMax} символов",
+        "taskDescriptionLabel": "Описание",
+        "taskDescription": "Описание вашей задачи"
+    },
+    "registrationForm": {
+        "userNameRequired": "Имя пользователя обязательно",
+        "userNameCharactersMin": "Имя пользователя должно содержать не менее {UserNameMin} символов",
+        "userNameCharactersMax": "Имя пользователя не может превышать {UserNameMax} символов",
+        "userName": "Имя пользователя",
+        "emailRequired": "Электронная почта обязательна",
+        "invalidEmail": "Неверный адрес электронной почты",
+        "emailAddress": "Адрес электронной почты",
+        "passwordRequired": "Пароль обязателен",
+        "passwordCharactersMin": "Пароль должен содержать не менее {PasswordMin} символов",
+        "passwordCharactersMax": "Пароль не может превышать {PasswordMax} символов",
+        "password": "Пароль",
+        "createAccount": "Создать аккаунт",
+        "logIn": "Войти"
+    },
+    "workspaceForm": {
+        "workspaceRequired": "Название рабочего пространства обязательно",
+        "workspaceCharactersMin": "Название рабочего пространства должно содержать не менее {WorkspaceMin} символов",
+        "workspaceCharactersMax": "Название рабочего пространства не может превышать {WorkspaceMax} символов",
+        "workspaceLabel": "Назовите ваше рабочее пространство",
+        "workspaceDescription": "Текст для заполнения этого пространства",
+        "workspaceDescriptionCharactersMax": "Описание не может превышать {workspaceDescriptionMax} символов",
+        "workspaceDescriptionLabel": "Описание рабочего пространства",
+        "describeWorkspace": "Опишите, для чего предназначено ваше рабочее пространство.",
+        "create": "Создать"
+    }
+}

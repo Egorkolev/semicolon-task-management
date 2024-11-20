@@ -1,0 +1,113 @@
+{
+    "message": {
+        "tasks": "Tâches",
+        "hi": "Salut, {userName}",
+        "wecometoSemicolon": "Bienvenue sur Semicolon Gestion des Tâches.",
+        "welcometoWorkspace": "Bienvenue dans votre espace de travail.",
+        "letGetYouStarted": "Commençons.",
+        "tasksForToday": "Tâches pour aujourd'hui.",
+        "motivationHelpYouWork": "Motivation pour vous aider à travailler.",
+        "churchill": "Le succès n'est pas final ; l'échec n'est pas fatal : c'est le courage de <br/>continuer qui compte. <br/><br/>-Winston S. Churchill",
+        "yourProfilePicture": "Salut {userName}, mettez à jour votre photo de profil",
+        "yourFirstTask": "Créez votre première tâche dans votre espace de travail",
+        "yourTasksInYourSpace": "Vos tâches dans votre espace.",
+        "noTasksYet": "Aucune tâche pour le moment",
+        "youHaveNoTaskCreated": "Vous n'avez pas encore créé de tâche dans votre espace de travail.",
+        "createTaskNow": "Soyez productif. Créez une tâche maintenant.",
+        "accountSettings": "Paramètres du compte",
+        "unselected": "Non sélectionné"
+    },
+    "button": {
+        "getStarted": "Commencer",
+        "createTask": "Créer une tâche",
+        "viewTask": "Voir la tâche",
+        "uploadPicture": "Télécharger une photo",
+        "createAccount": "Créer un compte",
+        "myProfile": "Mon profil",
+        "workNow": "Travaillez maintenant",
+        "markAsDone": "Marquer comme terminé",
+        "taskHasBeenCompleted": "Cette tâche a été complétée",
+        "logIn": "Se connecter",
+        "create": "Créer",
+        "no": "Non",
+        "yes": "Oui"
+    },
+    "nav": {
+        "overview": "Vue d'ensemble",
+        "tasks": "Tâches",
+        "task": "Tâche",
+        "settings": "Paramètres"
+    },
+    "option": {
+        "low": "Faible",
+        "middle": "Moyenne",
+        "high": "Haute",
+        "pending": "En attente",
+        "inProgress": "En cours",
+        "complete": "Terminé",
+        "allTasks": "Toutes les tâches",
+        "completed": "Terminées"
+    },
+    "optionBadge": {
+        "low": "FAIBLE",
+        "middle": "MOYENNE",
+        "high": "HAUTE",
+        "pending": "EN ATTENTE",
+        "inProgress": "EN COURS",
+        "complete": "TERMINÉ"
+    },
+    "dialog": {
+        "deleteTitle": "Supprimer la tâche",
+        "updateTask": "Mettre à jour la tâche",
+        "taskName": "Êtes-vous sûr de vouloir supprimer cette tâche",
+        "taskStatus": "Cette tâche est",
+        "uploadPicture": "Téléchargez votre photo de profil",
+        "createdDate": "Date de création",
+        "dueDate": "Date d'échéance"
+    },
+    "taskForm": {
+        "taskNameRequired": "Le nom de la tâche est requis",
+        "taskNameMinCharacters": "Le nom de la tâche doit comporter au moins {taskMinCharacters} caractères",
+        "taskNameMaxCharacters": "Le nom de la tâche ne peut pas dépasser {taskMaxCharacters} caractères",
+        "taskName": "Nom de la tâche",
+        "taskNamePlaceholder": "Exemple de tâche",
+        "taskNameDescription": "Entrez le nom de la tâche",
+        "taskPriority": "Priorité",
+        "taskPriorityPlaceholder": "Sélectionner la priorité",
+        "taskStatus": "Statut",
+        "taskStatusPlaceholder": "Sélectionner le statut",
+        "taskStartDate": "Date de début",
+        "taskEndDate": "Date de fin",
+        "taskDatePlaceholder": "Choisir une date",
+        "taskDescptionRequired": "La description est requise",
+        "descptionMaxCharacters": "La description ne peut pas dépasser {descptionMax} caractères",
+        "taskDescriptionLabel": "Description",
+        "taskDescription": "Description de votre tâche"
+    },
+    "registrationForm": {
+        "userNameRequired": "Le nom d'utilisateur est requis",
+        "userNameCharactersMin": "Le nom d'utilisateur doit comporter au moins {UserNameMin} caractères",
+        "userNameCharactersMax": "Le nom d'utilisateur ne peut pas dépasser {UserNameMax} caractères",
+        "userName": "Nom d'utilisateur",
+        "emailRequired": "L'email est requis",
+        "invalidEmail": "Adresse email invalide",
+        "emailAddress": "Adresse email",
+        "passwordRequired": "Le mot de passe est requis",
+        "passwordCharactersMin": "Le mot de passe doit comporter au moins {PasswordMin} caractères",
+        "passwordCharactersMax": "Le mot de passe ne peut pas dépasser {PasswordMax} caractères",
+        "password": "Mot de passe",
+        "createAccount": "Créer un compte",
+        "logIn": "Se connecter"
+    },
+    "workspaceForm": {
+        "workspaceRequired": "Le nom de l'espace de travail est requis",
+        "workspaceCharactersMin": "Le nom de l'espace de travail doit comporter au moins {WorkspaceMin} caractères",
+        "workspaceCharactersMax": "Le nom de l'espace de travail ne peut pas dépasser {WorkspaceMax} caractères",
+        "workspaceLabel": "Titre de votre espace de travail",
+        "workspaceDescription": "Texte pour remplir cet espace",
+        "workspaceDescriptionCharactersMax": "La description ne peut pas dépasser {workspaceDescriptionMax} caractères",
+        "workspaceDescriptionLabel": "Description de l'espace de travail",
+        "describeWorkspace": "Description de l'objectif de votre espace de travail.",
+        "create": "Créer"
+    }
+}

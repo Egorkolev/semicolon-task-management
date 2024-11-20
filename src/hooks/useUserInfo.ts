@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import jwt, { JwtPayload } from "jsonwebtoken";
-import { useRouter } from "next/navigation";
+import { useRouter } from "../i18n/routing";
 
 interface UserType {
     userId: string; 

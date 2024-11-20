@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import theme from "./src/app/customComponents/theme";
+import theme from "./src/app/[locale]/customComponents/theme";
 import tailwindcssAnimate from "tailwindcss-animate";
 
 const config: Config = {
