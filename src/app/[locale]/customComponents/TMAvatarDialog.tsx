@@ -37,12 +37,11 @@ const TMAvatarDialog = ({ showAvatarDialog, onClose, onChange, onUpload, userIma
         </DialogHeader>
         <div className="grid gap-4 py-2">
           <div className="grid w-full max-w-sm items-center gap-1.5">
-            <Label htmlFor="picture"></Label>
-            <Input className="cursor-pointer" onChange={onChange} id="picture" type="file" />
+            <Input className="cursor-pointer" onChange={onChange} type="file" />
           </div>
         </div>
         <DialogFooter>
-          <PrimaryButton onClick={onUpload}>{t("button.uploadPicture")}</PrimaryButton>
+          <PrimaryButton className="cursor-pointer" onClick={onUpload}>{t("button.uploadPicture")}</PrimaryButton>
         </DialogFooter>
       </DialogContent>
     </Dialog>
