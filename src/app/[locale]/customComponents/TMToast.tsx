@@ -23,7 +23,7 @@ const TMToast = ({ response, trigger }: any) => {
         response?.message || response?.warning || response?.error || "Something happened";
 
       toast(messageType, {
-        className: `${toastStyle} max-w-[300px] m-auto md:max-w-full md:m-0 z-[100]`,
+        className: `${toastStyle} max-w-[300px] m-auto md:max-w-full md:m-0`,
         description: messageContent,
         action: {  
           label: "Dismiss",
