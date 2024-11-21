@@ -11,16 +11,18 @@ import useOverview from "@/app/[locale]/[userId]/overview/useOverview";
 import { Dialog, DialogContent, DialogDescription, DialogTrigger } from "@radix-ui/react-dialog";
 import { Link, usePathname } from "../../../../i18n/routing";
 import TMLanguageSelect from "../TMLanguageSelect";
+import TMToast from "../TMToast";
 
 const TMSideBarMenu = () => {
   const {showCalendarDialog, onCloseCalendar, showCalendar, menuItems, pathname, userData} = useSideBarMenu();
-  const {handleUploadFile, handleFileChange, closeDialog, openDialog, showAvatarDialog, isUploading} = useOverview();
+  const {handleUploadFile, handleFileChange, closeDialog, openDialog, showToast, responseData, showAvatarDialog, isUploading} = useOverview();
 
   const pathName = usePathname();
   const isCalendar = pathName.endsWith('/tasks');
   return (
     <>
       <div className="flex flex-col gap-8 w-16 pt-10 bg-blue z-[60]">
+        <TMToast response={responseData} trigger={showToast} />
         <TMAvatar 
           onClick={openDialog} 
           key={userData?.userImg} 
