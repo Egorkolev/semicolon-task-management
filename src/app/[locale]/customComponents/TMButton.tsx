@@ -73,11 +73,11 @@ export const BadgeButton = ({label, children, className, onClick}: ButtonType) =
   )
 }
  
-export const ButtonLoading = ({className}: ButtonType) => {
+export const ButtonLoading = ({className, label}: ButtonType) => {
   return (
     <Button className={`${className}`} disabled>
       <Loader2 className="animate-spin" />
-        Please wait
+        {label}
     </Button>
   )
 }

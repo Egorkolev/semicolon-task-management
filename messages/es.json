@@ -29,6 +29,7 @@
         "taskHasBeenCompleted": "Esta tarea ha sido completada",
         "logIn": "Iniciar sesión",
         "create": "Crear",
+        "pleaseWait": "Por favor, espere",
         "no": "No",
         "yes": "Sí"
     },
@@ -109,5 +110,8 @@
         "workspaceDescriptionLabel": "Descripción del espacio de trabajo",
         "describeWorkspace": "Descripción de para qué sirve tu espacio de trabajo.",
         "create": "Crear"
+    },
+    "warning": {
+        "fileSize": "El tamaño del archivo excede los 2 MB"
     }
 }

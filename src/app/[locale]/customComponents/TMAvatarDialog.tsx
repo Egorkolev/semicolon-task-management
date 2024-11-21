@@ -23,7 +23,7 @@ interface TMAvatarType {
 }
 
 const TMAvatarDialog = ({ showAvatarDialog, onClose, onChange, onUpload, userImage, isUploading }: TMAvatarType) => {
-  const t = useTranslations()
+  const t = useTranslations("button")
   return (
     <Dialog open={showAvatarDialog} onOpenChange={onClose}>
       <DialogTrigger asChild></DialogTrigger>
@@ -42,8 +42,8 @@ const TMAvatarDialog = ({ showAvatarDialog, onClose, onChange, onUpload, userIma
           </div>
         </div>
         <DialogFooter>
-          {isUploading ? <ButtonLoading className="bg-blue text-white" />
-          : <PrimaryButton className="cursor-pointer" onClick={onUpload}>{t("button.uploadPicture")}</PrimaryButton>}
+          {isUploading ? <ButtonLoading label={t("pleaseWait")} className="bg-blue text-white" />
+          : <PrimaryButton className="cursor-pointer" onClick={onUpload}>{t("uploadPicture")}</PrimaryButton>}
         </DialogFooter>
       </DialogContent>
     </Dialog>

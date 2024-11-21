@@ -5,10 +5,11 @@ import { useUserContext } from "@/context/UserContext";
 import { useForm } from "react-hook-form";
 import { Status } from "../../../../constants";
 import { Priority } from "../../../../constants";
+import { useTranslations } from "next-intl";
 
 const useOverview = () => {
+    const t = useTranslations("warning");
     const {userData, setUserData} = useUserContext();
-
     const [showToast, setShowToast] = useState<boolean>(false);
     const [responseData, setResponseData] = useState<any>();
     const [taskData, setTaskData] = useState<TaskType[]>();
@@ -60,7 +61,7 @@ const useOverview = () => {
         if(selectedFile) {
             const fileSizeInMB = selectedFile.size / (1024 * 1024);
             if(fileSizeInMB > 2) {
-            setResponseData({warning: "File size exceeds 2MB"});
+            setResponseData({warning: t("fileSize")});
             setShowToast(true);
             return;
             }

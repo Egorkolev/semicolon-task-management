@@ -29,6 +29,7 @@
         "taskHasBeenCompleted": "This task has been completed",
         "logIn": "Log In",
         "create": "Create",
+        "pleaseWait": "Please wait",
         "no": "No",
         "yes": "Yes"
     },
@@ -109,5 +110,8 @@
         "workspaceDescriptionLabel": "workspace Description",
         "describeWorkspace": "Descption of what your workspace is for.",
         "create": "Create"
+    },
+    "warning": {
+        "fileSize": "File size exceeds 2MB"
     }
 }

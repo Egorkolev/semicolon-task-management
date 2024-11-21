@@ -67,7 +67,7 @@ const RootLayout = ({
                   }
                 >
                   <AuthenticatedLayout />
-                  <Toaster position="top-center" />
+                  <Toaster className="z-[100]" position="top-center" />
                 </div>
               </div>
 
