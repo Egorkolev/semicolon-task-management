@@ -18,7 +18,7 @@ const Layout = () => {
     const t = useTranslations();
     const {userData} = useUserContext();
     const {handleUploadFile, handleFileChange, closeDialog, closeTaskDialog, openDialog, openTaskDialog, setSelectedValue, register, handleOnSubmitTask, handleSubmit,
-    form, showAvatarDialog, showTaskDialog, responseData, showToast, taskData, selectedValue} = useOverview();
+    form, showAvatarDialog, showTaskDialog, responseData, showToast, taskData, selectedValue, isUploading} = useOverview();
     const startNotCompleted = !userData?.userImg || !taskData?.length;
     const startCompleted = userData?.userImg && taskData?.length !== 0;
     
@@ -51,6 +51,7 @@ const Layout = () => {
             </ToggleGroup>
             {showAvatarDialog && 
                 <TMAvatarDialog 
+                    isUploading={isUploading}
                     key={userData?.userImg}
                     userImage={userData?.userImg} 
                     onChange={handleFileChange} 
