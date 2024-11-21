@@ -11,6 +11,16 @@ async function getPublicKey() {
 }
 
 export async function middleware(req: NextRequest) {
+  const url = req.nextUrl;
+
+  // exclude Login / register endpoind
+  if (
+    url.pathname.startsWith("/api/logIn") ||
+    url.pathname.startsWith("/api/register")
+  ) {
+    return NextResponse.next();
+  }
+
   const authHeader = req.headers.get("authorization");
   const token = authHeader && authHeader.split(" ")[1];
 
@@ -18,18 +28,27 @@ export async function middleware(req: NextRequest) {
     try {
       const publicKey = await getPublicKey();
       const { payload } = await jwtVerify(token, publicKey);
+
+      // add user description
       const response = NextResponse.next();
       response.headers.set("tm-user-id", payload.userId as string);
       return response;
     } catch (error) {
       console.error("Token verification failed", error);
+
+      // return 401 if Token not Valid
       return new NextResponse("Unauthorized", { status: 401 });
     }
   }
 
+  // If we don`t have Token then continue
   return createMiddleware(routing)(req);
 }
 
 export const config = {
-  matcher: ["/", "/(en|fr|uk|de|es|ru)/:path*", "/((?!/api|_next|favicon.ico).*)"],
+  matcher: [
+    "/",
+    "/(en|fr|uk|de|es|ru)/:path*",
+    "/((?!/api|_next|favicon.ico).*)",
+  ],
 };

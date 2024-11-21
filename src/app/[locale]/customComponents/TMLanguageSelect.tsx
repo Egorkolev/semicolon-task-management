@@ -23,7 +23,6 @@ const TMLanguageSelect = ({className}: LanguageType) => {
     const router = useRouter();
     const path = pathNav();
     
-
     useEffect(() => {
         const storedLanguage = localStorage.getItem("language");
         if (storedLanguage) {
@@ -36,7 +35,7 @@ const TMLanguageSelect = ({className}: LanguageType) => {
             router.push(pathName, { locale: selectedLanguage }); 
             localStorage.setItem("language", selectedLanguage);
         }
-    }, []);
+    }, [pathName, router, path, selectedLanguage]);
 
     const handleLanguageChange = (lang: string) => {
         localStorage.setItem("language", lang);

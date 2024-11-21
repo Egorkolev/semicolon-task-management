@@ -1,4 +1,3 @@
-
 "use client";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -15,28 +14,26 @@ interface FormType {
 const useLogin = () => {
     const [showPass, setShowPass] = useState<boolean>(false);
     const [showToast, setShowToast] = useState<boolean>(false);
-    const [parsedUser, setParsedUser] = useState<FormType | null>(null);
-
     const [responseData, setResponseData] = useState<any>();
     const router = useRouter();
-    const user = useUserInfo();
-    
-    useEffect(() => {
-        if(typeof window !== undefined) {
-            const storedUser = localStorage.getItem("userSuccess");
-            setParsedUser(storedUser ? JSON.parse(storedUser) : null); 
-        }
-    }, [])
 
-    
     const form = useForm({
         defaultValues: {
-            email: parsedUser?.email || "",
-            password: parsedUser?.password || "",
+            email: "",
+            password: "",
         }
     });
 
     const { reset, register, handleSubmit } = form;
+
+    useEffect(() => {
+        if(typeof window !== undefined) {
+            const storedUser = localStorage.getItem("userSuccess"); 
+            if(storedUser) {
+                form.reset(JSON.parse(storedUser))
+            }
+        }
+    }, [form])
 
     const handleOnSubmit = async(data: FormType) => {
         const response = await userLoginFetch(data);
@@ -58,7 +55,7 @@ const useLogin = () => {
             if(isWorkspace?.success) {
                 router.push("/");
             } else {
-                router.push(`/${user?.userId}/workspace`);
+                router.push(`/${response?.userId}/workspace`);
             }
         };
         reset();

@@ -48,6 +48,7 @@ export async function POST(req: Request) {
             success: true,
             accessToken, 
             refreshToken,
+            userId: user.id,
         }, {status: 200});
     } catch (error) {
         console.error('An error occurred. Please try again later:', error);

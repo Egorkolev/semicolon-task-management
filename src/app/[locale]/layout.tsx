@@ -9,6 +9,7 @@ import { Toaster } from "sonner";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing, usePathname } from "@/i18n/routing";
+import { apiKeys } from "@/lib/apiKeys";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,8 +31,8 @@ const RootLayout = ({
 }>) => {
   const messages = require(`../../../messages/${locale}.json`);
   const pathName = usePathname();
-  const excludedPsths = ["/login", "/registration", "/workspace"];
-  const shouldShowContent = !excludedPsths.some((path) =>
+  const excludedPaths = ["/login", "/registration", "/workspace"];
+  const shouldShowContent = !excludedPaths.some((path) =>
     pathName.includes(path)
   );
   const isRegistrationPage =
@@ -51,7 +52,7 @@ const RootLayout = ({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray bg-opacity-10`}
       >
-        <NextIntlClientProvider messages={messages} locale={locale}>
+        <NextIntlClientProvider messages={messages} locale={locale} timeZone={apiKeys.NEXT_PUBLIC_TIME_ZONE}>
           <RootLayoutClient>
             <div className="flex justify-between">
               <div className="flex h-screen fixed z-[60]">

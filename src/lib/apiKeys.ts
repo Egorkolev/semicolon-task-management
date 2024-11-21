@@ -18,4 +18,5 @@ export const apiKeys = {
     DELETE_TASK: process.env.NEXT_PUBLIC_DELETE_TASK as string,
     PATCH_TASK_STATUS: process.env.NEXT_PUBLIC_PATCH_TASK_STATUS as string,
     PUT_TASK: process.env.NEXT_PUBLIC_PUT_TASK as string,
+    NEXT_PUBLIC_TIME_ZONE: 'America/Toronto',
 }

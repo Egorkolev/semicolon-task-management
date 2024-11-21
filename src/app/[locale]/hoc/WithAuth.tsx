@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useRouter } from "../../../i18n/routing";
+import { usePathname, useRouter } from "../../../i18n/routing";
 import { refreshedToken, verifiedToken } from "@/lib/apiDataFetch/tokenFetch";
 import TMToast from "../customComponents/TMToast";
 import { Progress } from "@/components/ui/progress"
@@ -11,6 +11,7 @@ const WithAuth = (WrappedComponent: React.ComponentType<any>) => {
         const [showToast, setShowToast] = useState<boolean>(false);
         const [responseData, setResponseData] = useState<any>();
         const router = useRouter();
+        const pathname = usePathname();
 
         useEffect(() => {
             const verificationToken = async () => {
@@ -50,13 +51,15 @@ const WithAuth = (WrappedComponent: React.ComponentType<any>) => {
 
             const handleLogout = () => {
                 setShowToast(true);
-                router.push("/login");
-                localStorage.removeItem("accessToken");
-                localStorage.removeItem("refreshToken");
+                if(!pathname.includes("login")) {
+                    router.push("/login");
+                    localStorage.removeItem("accessToken");
+                    localStorage.removeItem("refreshToken");
+                }
             };
 
             verificationToken();
-        }, [router]);
+        }, [router, pathname]);
 
         if (loading) {
             return <Progress className="bg-blue/40" value={10} />
