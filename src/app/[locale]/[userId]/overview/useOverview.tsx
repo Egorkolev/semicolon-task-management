@@ -17,6 +17,8 @@ const useOverview = () => {
     const [isImageUpload, setIsImageUpload] = useState<boolean>(false);
     const [selectedValue, setSelectedValue] = useState(!userData?.userImg ? "a" : "b");
     const [file, setFile] = useState<File | null>(null);
+    const [isUploading, setIsUploading] = useState<boolean>(false);
+    
   
     const openDialog = () => setShowAvatarDialog(true);
     const closeDialog = () => setShowAvatarDialog(false);
@@ -56,6 +58,12 @@ const useOverview = () => {
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const selectedFile = event.target.files?.[0];
         if(selectedFile) {
+            const fileSizeInMB = selectedFile.size / (1024 * 1024);
+            if(fileSizeInMB > 2) {
+            setResponseData({warning: "File size exceeds 2MB"});
+            setShowToast(true);
+            return;
+            }
             setFile(selectedFile);
         }
     }
@@ -65,6 +73,7 @@ const useOverview = () => {
             console.error("No file selected for upload");
             return;
         }
+        setIsUploading(true);
         try {
              const response = await userAvatarFetch(file); 
              if(response) {
@@ -75,6 +84,8 @@ const useOverview = () => {
             closeDialog(); 
         } catch (error) {
             console.error("Upload failed", error)
+        } finally {
+            setIsUploading(false);
         }
     }
 
@@ -132,6 +143,7 @@ const useOverview = () => {
         isImageUpload,
         selectedValue,
         responseData,
+        isUploading,
         showToast,
         taskData,
         form,

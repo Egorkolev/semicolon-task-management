@@ -13,7 +13,7 @@ import { useTranslations } from "next-intl";
 
 const TMInfoSideBar = () => {
     const t = useTranslations("button");
-    const {handleUploadFile, handleFileChange, closeDialog, openDialog, showAvatarDialog, responseData, showToast} = useOverview();
+    const {handleUploadFile, handleFileChange, closeDialog, openDialog, showAvatarDialog, responseData, showToast, isUploading} = useOverview();
     const [isHovered, setIsHovered] = useState<boolean>(false);
     const {userData} = useUserContext();
     
@@ -45,6 +45,7 @@ const TMInfoSideBar = () => {
             <TMToast response={responseData} trigger={showToast} />
             {showAvatarDialog && 
                 <TMAvatarDialog 
+                isUploading={isUploading}
                 key={userData?.userImg}
                 userImage={userData?.userImg} 
                 onChange={handleFileChange} 

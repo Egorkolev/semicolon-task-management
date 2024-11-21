@@ -14,7 +14,7 @@ import TMLanguageSelect from "../TMLanguageSelect";
 
 const TMSideBarMenu = () => {
   const {showCalendarDialog, onCloseCalendar, showCalendar, menuItems, pathname, userData} = useSideBarMenu();
-  const {handleUploadFile, handleFileChange, closeDialog, openDialog, showAvatarDialog} = useOverview();
+  const {handleUploadFile, handleFileChange, closeDialog, openDialog, showAvatarDialog, isUploading} = useOverview();
 
   const pathName = usePathname();
   const isCalendar = pathName.endsWith('/tasks');
@@ -29,6 +29,7 @@ const TMSideBarMenu = () => {
         />
         {showAvatarDialog && 
           <TMAvatarDialog
+            isUploading={isUploading}
             key={userData?.userImg}
             userImage={userData?.userImg} 
             onChange={handleFileChange} 

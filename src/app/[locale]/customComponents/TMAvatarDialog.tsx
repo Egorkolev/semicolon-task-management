@@ -9,19 +9,20 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { PrimaryButton } from "./TMButton";
+import { ButtonLoading, PrimaryButton } from "./TMButton";
 import TMAvatar from "./TMAvatar";
 import { useTranslations } from "next-intl";
 
 interface TMAvatarType {
   showAvatarDialog: boolean;
+  isUploading: boolean;
   onClose: () => void;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   onUpload: () => Promise<void>;
   userImage: string | undefined;
 }
 
-const TMAvatarDialog = ({ showAvatarDialog, onClose, onChange, onUpload, userImage }: TMAvatarType) => {
+const TMAvatarDialog = ({ showAvatarDialog, onClose, onChange, onUpload, userImage, isUploading }: TMAvatarType) => {
   const t = useTranslations()
   return (
     <Dialog open={showAvatarDialog} onOpenChange={onClose}>
@@ -41,7 +42,8 @@ const TMAvatarDialog = ({ showAvatarDialog, onClose, onChange, onUpload, userIma
           </div>
         </div>
         <DialogFooter>
-          <PrimaryButton className="cursor-pointer" onClick={onUpload}>{t("button.uploadPicture")}</PrimaryButton>
+          {isUploading ? <ButtonLoading className="bg-blue text-white" />
+          : <PrimaryButton className="cursor-pointer" onClick={onUpload}>{t("button.uploadPicture")}</PrimaryButton>}
         </DialogFooter>
       </DialogContent>
     </Dialog>

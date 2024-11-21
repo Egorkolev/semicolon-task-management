@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge"
-
- 
+import { Loader2 } from "lucide-react"
 interface ButtonType {
     label?: string;
     type?: "submit" | "reset" | "button" | undefined;
@@ -71,5 +70,14 @@ export const YellowButton = ({label, type, children, onClick}: ButtonType) => {
 export const BadgeButton = ({label, children, className, onClick}: ButtonType) => {
   return (
     <Badge className={`border-none ${className}`} onClick={onClick} variant="outline">{children || label}</Badge>
+  )
+}
+ 
+export const ButtonLoading = ({className}: ButtonType) => {
+  return (
+    <Button className={`${className}`} disabled>
+      <Loader2 className="animate-spin" />
+        Please wait
+    </Button>
   )
 }
