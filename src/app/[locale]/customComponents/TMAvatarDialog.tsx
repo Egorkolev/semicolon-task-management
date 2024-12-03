@@ -27,9 +27,9 @@ const TMAvatarDialog = ({ showAvatarDialog, onClose, onChange, onUpload, userIma
   return (
     <Dialog open={showAvatarDialog} onOpenChange={onClose}>
       <DialogTrigger asChild></DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] flex flex-col justify-center items-center text-center z-[60]">
+      <DialogContent className="sm:max-w-[425px] flex flex-col justify-center items-center text-center z-[60] dark:bg-slate-800 dark:shadow-blue dark:shadow-lg">
         <DialogHeader>
-          <DialogTitle className="text-darkBlue m-2 p-0">
+          <DialogTitle className="text-darkBlue dark:text-gray m-2 p-0">
             {t("dialog.uploadPicture")}
           </DialogTitle>
           <DialogDescription>
@@ -38,7 +38,7 @@ const TMAvatarDialog = ({ showAvatarDialog, onClose, onChange, onUpload, userIma
         </DialogHeader>
         <div className="grid gap-4 py-2">
           <div className="grid w-full max-w-sm items-center gap-1.5">
-            <Input className="cursor-pointer" onChange={onChange} type="file" />
+            <Input className="cursor-pointer dark:border-gray" onChange={onChange} type="file" />
           </div>
         </div>
         <DialogFooter>

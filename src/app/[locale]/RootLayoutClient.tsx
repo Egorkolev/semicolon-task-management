@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { UserProvider } from "../../context/UserContext";
 import { DateProvider } from "@/context/DateContext";
+import { ThemeProvider } from "@/context/ThemeContext";
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -15,7 +16,9 @@ const RootLayoutClient = ({
     return (
         <DateProvider>
             <UserProvider>
-                {children}
+                <ThemeProvider>
+                    {children}
+                </ThemeProvider>
             </UserProvider>
         </DateProvider>
     )

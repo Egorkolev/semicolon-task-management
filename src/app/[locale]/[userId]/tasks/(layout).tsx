@@ -54,7 +54,7 @@ const Layout = () => {
             {!taskData?.length ? 
             <div className="m-auto flex flex-col justify-center h-[50vh] items-center gap-2 text-center">
                 <Image src={NoteImg} alt="No Task Img" width={150} height={150} style={{width: "auto"}} />
-                <h2 className="text-darkBlue text-2xl">{t("message.noTasksYet")}</h2>
+                <h2 className="text-darkBlue dark:text-gray text-2xl">{t("message.noTasksYet")}</h2>
                 <p>{t("message.youHaveNoTaskCreated")}<br/>
                 {t("message.createTaskNow")}</p>
                 <PrimaryButton onClick={openTaskDialog}>{t("button.createTask")}</PrimaryButton>

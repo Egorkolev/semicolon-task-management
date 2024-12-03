@@ -48,7 +48,7 @@ const TMLanguageSelect = ({className}: LanguageType) => {
             <SelectTrigger className={`w-[180px] max-h-[34px] ${className}`}>
                 <SelectValue placeholder="Select a language" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="dark:bg-slate-600">
                 <SelectGroup>
                 <SelectItem value="uk">🇺🇦 Українська</SelectItem>
                 <SelectItem value="en">🏴󠁧󠁢󠁥󠁮󠁧󠁿 English</SelectItem>

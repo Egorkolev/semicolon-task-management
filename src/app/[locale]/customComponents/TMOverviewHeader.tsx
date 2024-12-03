@@ -17,8 +17,8 @@ export const TMOverviewHeader = ({userName, welcomeText, textFrame, pageName}: H
             <div className="flex gap-3 items-start">
                 {userName && <Image src={HelloImg} alt="Hello" className="max-w-[100%] max-h-[100%] w-10 h-10 md:w-15 md:h-15" />}
                 <div>
-                    <h1 className="text-darkBlue text-3xl font-bold">{pageName}</h1>
-                    {userName && <h1 className="text-darkBlue text-xl md:text-3xl font-bold">{t('hi', {userName: userName})}</h1>}
+                    <h1 className="text-darkBlue dark:text-gray text-3xl font-bold">{pageName}</h1>
+                    {userName && <h1 className="text-darkBlue dark:text-gray text-xl md:text-3xl font-bold">{t('hi', {userName: userName})}</h1>}
                     <p className="text-gray text-md">{welcomeText}</p>
                 </div>
             </div>
@@ -31,6 +31,8 @@ export const TMOverviewHeader = ({userName, welcomeText, textFrame, pageName}: H
                     font-serif
                     hidden
                     md:block
+                    dark:shadow-blue 
+                    dark:shadow-lg
                     "
                 style={{
                     backgroundImage: `url(${OverviweFrame.src})`,

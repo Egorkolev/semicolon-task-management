@@ -74,7 +74,7 @@ const RegistrationForm = () => {
                                 (<FaEyeSlash onClick={() => setShowPass(true)} />)
                             }
                         />
-                <PrimaryButton type="submit" label={t("createAccount")} />
+                <PrimaryButton className="dark:shadow-lg dark:shadow-gray" type="submit" label={t("createAccount")} />
                 </form>
             </Form>
         </FormProvider>

@@ -69,7 +69,7 @@ const TMTaskCard = ({tasks, filters}: any) => {
         }
     };
     return (
-        <div className="flex justify-between flex-wrap gap-10 overflow-auto">
+        <div className="flex justify-between flex-wrap gap-10 overflow-auto pb-10">
             {        
                 fileredTask && fileredTask?.map((task: TaskType) => {
                     let badgeStatus;
@@ -106,12 +106,12 @@ const TMTaskCard = ({tasks, filters}: any) => {
                             badgePriorityIcon = <FcLowPriority className="w-4 h-4" />;
                     }
                     return (
-                        <div key={task.id} className="flex-1 flex flex-col gap-6 p-6 justify-between bg-white w-[340px] rounded-xl">
+                        <div key={task.id} className="flex-1 flex flex-col gap-6 p-6 justify-between bg-white dark:bg-slate-600 dark:shadow-blue dark:shadow-lg w-[340px] rounded-xl">
                             <div className="flex justify-between items-center">
                                 <h2 className="text-gray">{task.title}</h2>
                                 <BadgeButton className={badgeStatus}>{getStatusName(task.status)}</BadgeButton>
                             </div>
-                            <div className="text-darkBlue">
+                            <div className="text-darkBlue dark:text-gray">
                                 {task.description}
                             </div>
                             <div className="flex justify-between items-center gap-2">

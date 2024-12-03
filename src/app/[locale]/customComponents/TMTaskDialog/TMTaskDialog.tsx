@@ -33,9 +33,9 @@ const TMTaskDialog = ({form, showTaskDialog, dialogLabel, onClose, register, han
   return (
     <Dialog open={showTaskDialog} onOpenChange={onClose}>
       <DialogTrigger asChild></DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] flex flex-col justify-center items-center text-center z-[70]">
+      <DialogContent className="sm:max-w-[425px] flex flex-col justify-center items-center text-center z-[70] dark:bg-slate-800 dark:shadow-blue dark:shadow-lg">
         <DialogHeader>
-          <DialogTitle className="text-darkBlue m-2 p-0">
+          <DialogTitle className="text-darkBlue dark:text-gray m-2 p-0">
             {dialogLabel}
           </DialogTitle>
           <DialogDescription></DialogDescription>

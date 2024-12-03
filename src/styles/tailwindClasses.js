@@ -12,6 +12,11 @@ export const styles = {
         space-y-8 
         flex-1 
         max-w-[397px]
+        dark:bg-slate-600 
+        dark:rounded-md 
+        dark:shadow-blue 
+        dark:shadow-lg
+        p-3 
     `,
     frameForm: `
         mx-auto
@@ -22,6 +27,8 @@ export const styles = {
         space-y-8
         max-w-[397px]
         bg-white bg-opacity-70
+        dark:bg-slate-600
+        dark:bg-opacity-70
         p-4
         rounded-lg
         shadow-xl
@@ -37,5 +44,7 @@ export const styles = {
         border border-transparent 
         data-[state=on]:border-1 
         data-[state=on]:border-blue
+        dark:bg-slate-600
+        dark:data-[state=on]:text-gray
     `
 }

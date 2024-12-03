@@ -60,7 +60,7 @@
     "dialog": {
         "deleteTitle": "Aufgabe löschen",
         "updateTask": "Aufgabe aktualisieren",
-        "taskName": "Bist du sicher, dass du diese Aufgabe löschen möchtest?",
+        "taskName": "Bist du sicher, dass du diese Aufgabe löschen möchtest -",
         "taskStatus": "Diese Aufgabe ist",
         "uploadPicture": "Lade dein Profilbild hoch",
         "createdDate": "Erstellungsdatum",

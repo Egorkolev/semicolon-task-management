@@ -12,6 +12,7 @@ import { Dialog, DialogContent, DialogDescription, DialogTrigger } from "@radix-
 import { Link, usePathname } from "../../../../i18n/routing";
 import TMLanguageSelect from "../TMLanguageSelect";
 import TMToast from "../TMToast";
+import ThemeToggle from "../ThemeToggle";
 
 const TMSideBarMenu = () => {
   const {showCalendarDialog, onCloseCalendar, showCalendar, menuItems, pathname, userData} = useSideBarMenu();
@@ -21,7 +22,7 @@ const TMSideBarMenu = () => {
   const isCalendar = pathName.endsWith('/tasks');
   return (
     <>
-      <div className="flex flex-col gap-8 w-16 pt-10 bg-blue z-[60]">
+      <div className="flex flex-col gap-8 w-16 pt-10 bg-blue dark:shadow-blue dark:shadow-lg dark:bg-slate-600 z-[60] items-center">
         <TMToast response={responseData} trigger={showToast} />
         <TMAvatar 
           onClick={openDialog} 
@@ -41,9 +42,10 @@ const TMSideBarMenu = () => {
           />
         }
         <div className="w-8 h-8"></div>
+        <ThemeToggle />
         {isCalendar && <ImCalendar
           onClick={showCalendarDialog}
-          className="text-white w-8 h-8 mx-auto box md:hidden cursor-pointer"
+          className="text-white dark:text-gray w-8 h-8 mx-auto box md:hidden cursor-pointer"
         />}
         <Dialog open={showCalendar} onOpenChange={onCloseCalendar}>
           <DialogTrigger asChild></DialogTrigger>
@@ -62,16 +64,16 @@ const TMSideBarMenu = () => {
         <Sheet>
           <div className="absolute -left-12 top-28 z-[60]">
             <SheetTrigger>
-              <BsReverseLayoutTextSidebarReverse className="text-white w-8 h-8 cursor-pointer" />
+              <BsReverseLayoutTextSidebarReverse className="text-white dark:text-gray w-8 h-8 cursor-pointer" />
             </SheetTrigger>
           </div>
           <SheetContent
             side="left"
-            className="w-[200px] sm:w-[200px] max-w-[200px] ml-16 pl-0 max-h-[100vh] pt-10"
+            className="w-[200px] sm:w-[200px] max-w-[200px] ml-16 pl-0 max-h-[100vh] pt-10 dark:bg-slate-800"
           >
             <SheetHeader>
               <SheetTitle className="w-full py-2 px-4">
-                <TMLanguageSelect className="max-w-36 bg-blue text-white" />
+                <TMLanguageSelect className="max-w-36 bg-blue text-white dark:text-gray" />
               </SheetTitle>
             </SheetHeader>
             <ul className="space-y-4">

@@ -42,11 +42,11 @@ const Layout = () => {
             <TMOverviewHeader
                 pageName={<TMBreadcrumb breadCrumbHref={`/${userId}/tasks`} breadCrumbLink={t("nav.tasks")} breadCrumbPage={`${t("nav.task")}: ${task?.title}`} />}
             />
-            <div className="max-w-3xl flex justify-between flex-wrap gap-10 overflow-auto m-auto mt-10">
+            <div className="max-w-3xl flex justify-between flex-wrap gap-10 overflow-auto m-auto mt-10 pb-10 px-3">
                 {task && 
-                <div className="flex-1 flex flex-wrap gap-6 p-4 md:p-6 justify-between bg-white w-[340px] rounded-xl">
+                <div className="flex-1 flex flex-wrap gap-6 p-4 md:p-6 justify-between bg-white dark:bg-slate-600 dark:shadow-blue dark:shadow-lg w-[340px] rounded-xl">
                     <div className="flex flex-col gap-5">
-                        <h2 className="text-darkBlue text-lg">{task.title}</h2>
+                        <h2 className="text-gray text-lg">{task.title}</h2>
                         <div className="flex gap-2 items-center">
                             <BadgeButton className={getBadgeClass(task.status)}>{getStatusName(task.status)}</BadgeButton>
                             <BadgeButton 
@@ -55,7 +55,7 @@ const Layout = () => {
                                 {getPriorityName(task.priority)}{getPriorityIcon(task.priority)}
                             </BadgeButton>
                         </div>
-                        <div className="text-gray max-w-[370px]">
+                        <div className="text-darkBlue dark:text-gray max-w-[370px]">
                             {task.description}
                         </div>
                         <div className="flex items-center gap-2 flex-wrap">

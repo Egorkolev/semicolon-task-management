@@ -60,7 +60,7 @@
     "dialog": {
         "deleteTitle": "Supprimer la tâche",
         "updateTask": "Mettre à jour la tâche",
-        "taskName": "Êtes-vous sûr de vouloir supprimer cette tâche",
+        "taskName": "Êtes-vous sûr de vouloir supprimer cette tâche -",
         "taskStatus": "Cette tâche est",
         "uploadPicture": "Téléchargez votre photo de profil",
         "createdDate": "Date de création",

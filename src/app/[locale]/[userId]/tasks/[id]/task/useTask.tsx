@@ -53,12 +53,14 @@ const useTask = () => {
     } 
 
     const handleChangeStatus = async(data: any) => {
-        const response = await updateTaskStatusFetch(data)
-        if(response.success) {
-            setTaskChanged((v) => !v);
+        if(data.status !== Status.COMPLETE) {
+            const response = await updateTaskStatusFetch(data)
+            if(response.success) {
+                setTaskChanged((v) => !v);
+            }
+            setResponseData(response);
+            setShowToast(true);
         }
-        setResponseData(response);
-        setShowToast(true);
     }
 
     const form = useForm({
@@ -148,7 +150,7 @@ const useTask = () => {
             case Status.IN_PROGRESS:
                 return 'bg-successGreen hover:bg-successGreen opacity-90 hover:opacity-100 rounded-lg';
             case Status.COMPLETE:
-                return 'text-successGreen bg-white shadow-none hover:bg-white cursor-default border-none pl-0';
+                return 'text-successGreen bg-white dark:bg-successGreen dark:bg-opacity-10  shadow-none hover:bg-white cursor-default border-none pl-0';
             default:
                 return 'bg-blue rounded-lg';
         }

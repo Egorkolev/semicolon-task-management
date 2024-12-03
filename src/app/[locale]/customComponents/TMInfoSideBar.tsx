@@ -18,7 +18,7 @@ const TMInfoSideBar = () => {
     const {userData} = useUserContext();
     
     return (
-        <div className="py-10 px-4 bg-white my-5 mr-5 rounded-xl flex flex-col gap-10">
+        <div className="py-10 px-4 bg-white dark:bg-slate-600 dark:shadow-blue dark:shadow-lg my-5 mr-5 rounded-xl flex flex-col gap-10">
             <div className="mx-auto text-center flex flex-col gap-4">
                 <div 
                     onMouseEnter={() => setIsHovered(true)}
@@ -34,7 +34,7 @@ const TMInfoSideBar = () => {
                     />
                 </div>
                 <div>
-                    <p className="text-darkBlue font-bold">{userData?.name}</p>
+                    <p className="text-darkBlue dark:text-gray font-bold">{userData?.name}</p>
                     <p className="text-gray text-sm">{userData?.email}</p>
                 </div>
                 <PrimaryButton type="button" label={t("myProfile")} />

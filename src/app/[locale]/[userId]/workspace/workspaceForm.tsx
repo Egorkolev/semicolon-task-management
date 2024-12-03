@@ -49,7 +49,7 @@ const WorkspaceForm = () => {
                     label={t("workspaceDescriptionLabel")}
                     description={t("describeWorkspace")}
                 />
-                <PrimaryButton type="submit" label={t("create")} />
+                <PrimaryButton className="dark:shadow-lg dark:shadow-gray" type="submit" label={t("create")} />
             </form>
         </Form>
     </FormProvider>

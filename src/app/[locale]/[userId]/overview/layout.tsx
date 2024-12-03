@@ -33,20 +33,20 @@ const Layout = () => {
                 userName={userData?.name} 
             />
             <div className="flex items-center justify-between gap-2 flex-wrap">
-                <h2 className="text-darkBlue text-1xl font-bold">{startNotCompleted ? t('message.letGetYouStarted') : t('message.tasksForToday')}</h2>
+                <h2 className="text-darkBlue dark:text-gray text-1xl font-bold">{startNotCompleted ? t('message.letGetYouStarted') : t('message.tasksForToday')}</h2>
                 {startCompleted && <PrimaryButton onClick={openTaskDialog}>{t("button.createTask")}</PrimaryButton>}
             </div>
             
             <ToggleGroup className="flex flex-col gap-2" type="single" value={selectedValue} onValueChange={setSelectedValue}>
                 {!userData?.userImg && <ToggleGroupItem className={styles.toggleGroupItem} value="a">
-                    <GiTeamIdea className="text-blue bg-gray bg-opacity-10 w-8 h-8 p-1 rounded-md" />
+                    <GiTeamIdea className="text-blue dark:text-gray dark:bg-slate-800 bg-gray bg-opacity-10 w-8 h-8 p-1 rounded-md" />
                     <h3>{t("message.yourProfilePicture", {userName: userData?.name})}</h3>
-                    <BadgeButton onClick={openDialog} type="button" className="hover:text-blue hover:bg-blue hover:bg-opacity-5">{t('button.getStarted')} <FaCaretRight /></BadgeButton>
+                    <BadgeButton onClick={openDialog} type="button" className="hover:text-blue hover:bg-blue hover:bg-opacity-5 dark:bg-blue dark:bg-opacity-20">{t('button.getStarted')} <FaCaretRight /></BadgeButton>
                 </ToggleGroupItem>}
                 {!taskData?.length && <ToggleGroupItem className={styles.toggleGroupItem}  value="b">
-                    <GiDesk className="text-blue bg-gray bg-opacity-10 w-8 h-8 p-1 rounded-md" />
+                    <GiDesk className="text-blue dark:text-gray dark:bg-slate-800 bg-gray bg-opacity-10 w-8 h-8 p-1 rounded-md" />
                     <h3>{t("message.yourFirstTask")}</h3>
-                    <BadgeButton onClick={openTaskDialog} type="button" className="hover:text-blue hover:bg-blue hover:bg-opacity-5">{t('button.getStarted')} <FaCaretRight /></BadgeButton>
+                    <BadgeButton onClick={openTaskDialog} type="button" className="hover:text-blue hover:bg-blue hover:bg-opacity-5 dark:bg-blue dark:bg-opacity-20">{t('button.getStarted')} <FaCaretRight /></BadgeButton>
                 </ToggleGroupItem>}
             </ToggleGroup>
             {showAvatarDialog && 

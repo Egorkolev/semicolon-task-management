@@ -38,9 +38,9 @@ const TMDeleteDialog = ({ showDeleteDialog, onClose, onClick, taskName, taskStat
   return (
     <Dialog open={showDeleteDialog} onOpenChange={onClose}>
       <DialogTrigger asChild></DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] flex flex-col justify-between items-start text-center z-[60]">
+      <DialogContent className="sm:max-w-[425px] flex flex-col justify-between items-start text-center z-[60] dark:bg-slate-800 dark:shadow-blue dark:shadow-lg">
         <DialogHeader>
-          <DialogTitle className="text-darkBlue text-xl my-2 p-0">
+          <DialogTitle className="text-darkBlue dark:text-gray text-xl my-2 p-0">
             {t("dialog.deleteTitle")}
           </DialogTitle>
           <DialogDescription>

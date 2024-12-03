@@ -57,7 +57,7 @@ const LoginForm = () => {
                             (<FaEyeSlash onClick={() => setShowPass(true)} />)
                         }
                     />
-                    <PrimaryButton type="submit" label={t("logIn")} />
+                    <PrimaryButton className="dark:shadow-lg dark:shadow-gray" type="submit" label={t("logIn")} />
                 </form>
             </Form>
         </FormProvider>

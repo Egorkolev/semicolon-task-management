@@ -60,7 +60,7 @@
     "dialog": {
         "deleteTitle": "Delete Task",
         "updateTask": "Update Task",
-        "taskName": "Are you sure you want to delete the task",
+        "taskName": "Are you sure you want to delete the task -",
         "taskStatus": " This task is",
         "uploadPicture": "Upload your Profile Picture",
         "createdDate": "Created Date",

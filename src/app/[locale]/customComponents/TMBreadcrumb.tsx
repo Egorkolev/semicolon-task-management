@@ -18,11 +18,11 @@ import {
       <Breadcrumb>
         <BreadcrumbList className="items-baseline">
           <BreadcrumbItem>
-            <BreadcrumbLink className="text-darkBlue text-3xl font-bold" href={breadCrumbHref}>{breadCrumbLink}</BreadcrumbLink>
+            <BreadcrumbLink className="text-darkBlue dark:text-gray text-3xl font-bold" href={breadCrumbHref}>{breadCrumbLink}</BreadcrumbLink>
           </BreadcrumbItem>
-          <BreadcrumbSeparator className="text-darkBlue font-bold" />
+          <BreadcrumbSeparator className="text-darkBlue dark:text-gray font-bold" />
           <BreadcrumbItem>
-            <BreadcrumbPage className="text-darkBlue text-xl font-bold">{breadCrumbPage}</BreadcrumbPage>
+            <BreadcrumbPage className="text-darkBlue dark:text-gray text-xl font-bold">{breadCrumbPage}</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>

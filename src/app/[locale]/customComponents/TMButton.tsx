@@ -9,39 +9,46 @@ interface ButtonType {
     onClick?: () => void;
 }
 
-export const PrimaryButton = ({label, type, children, onClick}: ButtonType) => {
+export const PrimaryButton = ({label, type, children, onClick, className}: ButtonType) => {
   return (
   <Button 
     onClick={onClick}
     type={type} 
-    className="
+    className={`
+      ${className}
       bg-blue 
       rounded-lg 
       opacity-90 
       hover:opacity-100
       hover:bg-blue
       shadow-xl
-    "
+      dark:text-gray
+    `}
   >
       {children || label}
   </Button>
   )
 }
 
-export const SecondaryButton = ({label, type, children, onClick}: ButtonType) => {
+export const SecondaryButton = ({label, type, children, onClick, className}: ButtonType) => {
     return (
     <Button 
       onClick={onClick}
       type={type} 
       variant="outline" 
-      className="
+      className={`
+        ${className}
+        opacity-90 
+        hover:opacity-100
         border-blue 
         text-blue 
         rounded-lg
         hover:bg-opacity-5
         hover:text-blue
         shadow-xl
-      "
+        dark:bg-blue
+        dark:text-gray
+      `}
     >
       {children || label}
     </Button>
@@ -69,7 +76,7 @@ export const YellowButton = ({label, type, children, onClick}: ButtonType) => {
 
 export const BadgeButton = ({label, children, className, onClick}: ButtonType) => {
   return (
-    <Badge className={`border-none ${className}`} onClick={onClick} variant="outline">{children || label}</Badge>
+    <Badge className={`border-none dark:text-gray ${className}`} onClick={onClick} variant="outline">{children || label}</Badge>
   )
 }
  

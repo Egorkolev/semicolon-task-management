@@ -50,7 +50,7 @@ const RootLayout = ({
   return (
     <html lang={locale}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray bg-opacity-10`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray bg-opacity-10 dark:bg-slate-800 dark:bg-opacity-100`}
       >
         <NextIntlClientProvider messages={messages} locale={locale} timeZone={apiKeys.NEXT_PUBLIC_TIME_ZONE}>
           <RootLayoutClient>
