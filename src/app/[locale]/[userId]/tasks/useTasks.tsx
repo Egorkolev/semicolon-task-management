@@ -23,6 +23,21 @@ const useTasks = () => {
         {name: t("completed"), status: Status.COMPLETE},
     ]
 
+    const getStatusColor = (status: string) => {
+        switch (status) {
+            case Status.ALL:
+                return "blue";
+            case Status.PENDING:
+                return "warningYellow";
+            case Status.IN_PROGRESS:
+                return "infoBlue";
+            case Status.COMPLETE:
+                return "successGreen";
+            default:
+                return "warningYellow";
+        }
+    };
+
     useEffect(() => {
         async function getUserTasks() {
             try {
@@ -78,6 +93,7 @@ const useTasks = () => {
         setSelectedStatus,
         closeTaskDialog,
         openTaskDialog,
+        getStatusColor,
         handleSubmit,
         register,
         showTaskDialog,

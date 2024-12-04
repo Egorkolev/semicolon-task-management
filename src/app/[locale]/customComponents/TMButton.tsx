@@ -76,7 +76,7 @@ export const YellowButton = ({label, type, children, onClick}: ButtonType) => {
 
 export const BadgeButton = ({label, children, className, onClick}: ButtonType) => {
   return (
-    <Badge className={`border-none dark:text-gray ${className}`} onClick={onClick} variant="outline">{children || label}</Badge>
+    <Badge className={`border-none whitespace-nowrap ${className}`} onClick={onClick} variant="outline">{children || label}</Badge>
   )
 }
  

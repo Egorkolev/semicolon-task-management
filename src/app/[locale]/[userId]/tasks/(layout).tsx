@@ -1,6 +1,6 @@
 "use client";
 
-import { PrimaryButton } from "@/app/[locale]/customComponents/TMButton";
+import { BadgeButton, PrimaryButton } from "@/app/[locale]/customComponents/TMButton";
 import { TMOverviewHeader } from "@/app/[locale]/customComponents/TMOverviewHeader";
 import TMTaskDialog from "@/app/[locale]/customComponents/TMTaskDialog/TMTaskDialog";
 import TMToast from "@/app/[locale]/customComponents/TMToast";
@@ -9,12 +9,13 @@ import NoteImg from "../../public/note.png";
 import Image from "next/image";
 import useTasks from "./useTasks";
 import { useTranslations } from "next-intl";
+import { Status } from "@/constants";
 
 const Layout = () => {
     const t = useTranslations();
-    const { closeTaskDialog, openTaskDialog, register, handleOnSubmitTask, handleSubmit, setSelectedStatus,
+    const { closeTaskDialog, openTaskDialog, register, handleOnSubmitTask, handleSubmit, setSelectedStatus, getStatusColor,
         form, showTaskDialog, responseData, showToast, taskData, filters, selectedStatus } = useTasks();
-
+        
     return (
         <div className="flex flex-col gap-5">
             <TMToast response={responseData} trigger={showToast} />
@@ -25,17 +26,31 @@ const Layout = () => {
                 />
                 {taskData?.length !== 0 && <PrimaryButton onClick={openTaskDialog}>{t("button.createTask")}</PrimaryButton>}
             </div>
-            <div className="m-auto md:m-0">
-                {taskData?.length !== 0 && <ul className="flex flex-wrap">
+            <div className="m-auto gap-1">
+                {taskData?.length !== 0 && <ul className="flex gap-1 md:gap-4 flex-wrap">
                     {filters.map((filter) => {
+                        const count = taskData?.filter((task) => {
+                            if(filter.status === Status.ALL) {
+                                return taskData
+                            } else {
+                                return (task.status === filter.status)
+                            }
+                        }).length;
+
                         return (
-                            <li 
+                            <BadgeButton 
                                 onClick={() => setSelectedStatus(filter.status)}
                                 key={filter.status} 
-                                className={` md:pr-8 pr-2 py-3 text-sm lg:py-5 lg:text-lg cursor-pointer ${selectedStatus === filter.status ? "text-blue border-b-blue border-b-2" : "text-gray border-b-gray border-b-2"}`}
+                                className={`
+                                    bg-${getStatusColor(filter.status)} relative
+                                    text-sm m-auto lg:py-2 mb-3 lg:text-md cursor-pointer text-${getStatusColor(filter.status)} bg-opacity-10
+                                    ${selectedStatus === filter.status ? `dark:text-white dark:bg-opacity-70 dark:shadow-${getStatusColor(filter.status)} dark:shadow-md shadow-lg bg-opacity-30`
+                                    : "dark:text-gray dark:bg-opacity-30"}
+                                `}
                             >
-                                {filter.name}
-                            </li>
+                                {filter.name.toUpperCase()}
+                                <span className={`text-white absolute -top-2.5 -right-2.5 bg-${getStatusColor(filter.status)} rounded-full py-0.5 px-1.5 text-xs`}>{count}</span>
+                            </BadgeButton>
                         ) 
                     })}
                 </ul>}
