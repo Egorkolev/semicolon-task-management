@@ -146,9 +146,9 @@ const useTask = () => {
     const getButtonstatus = (status: string) => {
         switch (status) {
             case Status.PENDING:
-                return 'bg-blue hover:bg-blue opacity-90 hover:opacity-100 rounded-lg';
+                return 'bg-blue hover:bg-blue opacity-90 hover:opacity-100 rounded-lg dark:text-gray';
             case Status.IN_PROGRESS:
-                return 'bg-successGreen hover:bg-successGreen opacity-90 hover:opacity-100 rounded-lg';
+                return 'bg-successGreen hover:bg-successGreen opacity-90 hover:opacity-100 rounded-lg dark:text-white';
             case Status.COMPLETE:
                 return 'text-successGreen bg-white dark:bg-successGreen dark:bg-opacity-10  shadow-none hover:bg-white cursor-default border-none pl-0';
             default:

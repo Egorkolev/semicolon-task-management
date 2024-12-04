@@ -6,9 +6,11 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator,
   } from "@/components/ui/breadcrumb"
+import { Link } from "@/i18n/routing";
+import { UrlObject } from "url";
 
   interface BreadCrumbType {
-    breadCrumbHref?: string;
+    breadCrumbHref: string | UrlObject;
     breadCrumbLink?: string;
     breadCrumbPage?: string;
   }
@@ -18,7 +20,11 @@ import {
       <Breadcrumb>
         <BreadcrumbList className="items-baseline">
           <BreadcrumbItem>
-            <BreadcrumbLink className="text-darkBlue dark:text-gray text-3xl font-bold" href={breadCrumbHref}>{breadCrumbLink}</BreadcrumbLink>
+              <Link href={breadCrumbHref} passHref> 
+                <BreadcrumbLink className="text-darkBlue dark:text-gray text-3xl font-bold">
+                  {breadCrumbLink}
+                </BreadcrumbLink>
+              </Link>
           </BreadcrumbItem>
           <BreadcrumbSeparator className="text-darkBlue dark:text-gray font-bold" />
           <BreadcrumbItem>
