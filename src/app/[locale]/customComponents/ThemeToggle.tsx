@@ -8,9 +8,6 @@ import { useEffect, useState } from "react";
 const ThemeToggle = () => {
     const {theme, toggleTheme} = useTheme();
     const [storageTheme, setStorageTheme] = useState<string | null>(null);
-    console.log("storageTheme", storageTheme);
-    console.log("theme", theme);
-    
 
     useEffect(() => {
         if(typeof window !== "undefined") {
