@@ -124,7 +124,7 @@ const useTask = () => {
             case Priority.MIDDLE:
                 return 'text-warningYellow bg-warningYellow bg-opacity-10';
             case Priority.HIGH:
-                return 'text-errorRed bg-errorRed bg-opacity-10';
+                return 'text-errorRed dark:text-red-400 bg-errorRed bg-opacity-10';
             default:
                 return 'text-successGreen bg-successGreen bg-opacity-10';
         }

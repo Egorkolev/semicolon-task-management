@@ -68,17 +68,17 @@ const Layout = () => {
                             </Button>
                             <div className="flex items-center gap-2 flex-nowrap">
                                 <Button onClick={openDeleteDialog} className="px-2 bg-errorRed bg-opacity-10 hover:bg-errorRed hover:bg-opacity-20">
-                                    <FiTrash className="w-5 h-5 text-errorRed" />
+                                    <FiTrash className="w-5 h-5 text-errorRed dark:text-red-400" />
                                 </Button>
                                 <Button onClick={openTaskDialog} className="px-2 bg-blue bg-opacity-10 hover:bg-blue hover:bg-opacity-20">
-                                    <FiEdit className="w-5 h-5 text-blue" />
+                                    <FiEdit className="w-5 h-5 text-blue dark:text-infoBlue" />
                                 </Button>
                             </div>
  
                         </div>
                     </div>
                     <div className="space-y-4 items-end flex md:flex-col justify-between w-full md:w-fit">
-                        <TMDateBadge classNameDueDate="flex" className="bg-white" label={t("dialog.createdDate")} date={task.startDate?.slice(0, 10)} />
+                        <TMDateBadge classNameDueDate="flex" className="bg-white dark:bg-gray" label={t("dialog.createdDate")} date={task.startDate?.slice(0, 10)} />
                             <div className="relative">
                                 <div className="absolute h-px md:w-px min-w-16 md:min-w-fit md:min-h-24 right-[-52px] md:right-[-3px] -top-[40px] md:-top-[68px] bg-gray m-5"></div>
                             </div>

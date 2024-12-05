@@ -100,7 +100,7 @@ const TMTaskCard = ({tasks, filters}: any) => {
                             break;
                         case Priority.HIGH: 
                             badgePriorityIcon = <FcHighPriority className="w-4 h-4" />;
-                            badgePriorityStyle="text-errorRed bg-errorRed bg-opacity-10";
+                            badgePriorityStyle="text-errorRed dark:text-red-400 bg-errorRed bg-opacity-10";
                             break;
                         default: 
                             badgePriorityIcon = <FcLowPriority className="w-4 h-4" />;

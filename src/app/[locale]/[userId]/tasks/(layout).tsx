@@ -42,10 +42,11 @@ const Layout = () => {
                                 onClick={() => setSelectedStatus(filter.status)}
                                 key={filter.status} 
                                 className={`
-                                    bg-${getStatusColor(filter.status)} relative
+                                    bg-${getStatusColor(filter.status)} dark:bg-blue relative
                                     text-sm m-auto lg:py-2 mb-3 lg:text-md cursor-pointer text-${getStatusColor(filter.status)} bg-opacity-10
-                                    ${selectedStatus === filter.status ? `dark:text-white dark:bg-opacity-70 dark:shadow-${getStatusColor(filter.status)} dark:shadow-md shadow-lg bg-opacity-30`
-                                    : "dark:text-gray dark:bg-opacity-30"}
+                                    ${selectedStatus === filter.status 
+                                    ? `dark:text-white dark:bg-opacity-70 dark:shadow-blue dark:shadow-md shadow-lg bg-opacity-30`
+                                    : `dark:text-gray dark:bg-opacity-30`}
                                 `}
                             >
                                 {filter.name.toUpperCase()}

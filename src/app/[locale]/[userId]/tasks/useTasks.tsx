@@ -34,7 +34,7 @@ const useTasks = () => {
             case Status.COMPLETE:
                 return "successGreen";
             default:
-                return "warningYellow";
+                return "blue";
         }
     };
 
