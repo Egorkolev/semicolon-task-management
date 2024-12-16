@@ -10,6 +10,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing, usePathname } from "@/i18n/routing";
 import { apiKeys } from "@/lib/apiKeys";
+import { Analytics } from "@vercel/analytics/react"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -68,6 +69,7 @@ const RootLayout = ({
                 >
                   <AuthenticatedLayout />
                   <Toaster position="top-center" />
+                  <Analytics />
                 </div>
               </div>
 
