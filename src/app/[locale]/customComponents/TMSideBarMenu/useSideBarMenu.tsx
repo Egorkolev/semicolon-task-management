@@ -1,4 +1,4 @@
-import { usePathname } from "../../../../i18n/routing";
+import { usePathname, useRouter } from "@/i18n/routing";
 import { BsFillGridFill } from "react-icons/bs";
 import { BsGrid } from "react-icons/bs";
 import { FaListAlt } from "react-icons/fa";
@@ -20,6 +20,14 @@ const useSideBarMenu = () => {
   
     const pathname = usePathname();
     const user = useUserInfo();
+    const router = useRouter()
+
+    const handleLogOut = () => {
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
+      router.push("/login");
+  }
+
     const menuItems = [
       {
         name: t("overview"),
@@ -43,6 +51,7 @@ const useSideBarMenu = () => {
     return {
         showCalendarDialog,
         onCloseCalendar,
+        handleLogOut,
         showCalendar,
         menuItems,
         pathname,

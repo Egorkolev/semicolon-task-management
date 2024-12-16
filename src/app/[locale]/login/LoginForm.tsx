@@ -13,7 +13,7 @@ import { CharactersLimits } from "@/constants";
 
 const LoginForm = () => {
     const t = useTranslations("registrationForm");
-    const {form, responseData, showToast, showPass, setShowPass, handleOnSubmit, register, handleSubmit} = useLogin();
+    const {form, responseData, showToast, showPass, handleLogInGuest, setShowPass, handleOnSubmit, register, handleSubmit} = useLogin();
     return (
         <FormProvider {...form}>
             <TMToast response={responseData} trigger={showToast} />
@@ -57,7 +57,10 @@ const LoginForm = () => {
                             (<FaEyeSlash onClick={() => setShowPass(true)} />)
                         }
                     />
-                    <PrimaryButton className="dark:shadow-lg dark:shadow-gray" type="submit" label={t("logIn")} />
+                    <div className="flex justify-between flex-wrap gap-2">
+                        <PrimaryButton className="dark:shadow-lg dark:shadow-gray" type="submit" label={t("logIn")} />
+                        <PrimaryButton onClick={handleLogInGuest} className="dark:shadow-lg dark:shadow-gray" label={t("useGuestAccount")} />
+                    </div>
                 </form>
             </Form>
         </FormProvider>

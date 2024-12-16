@@ -8,9 +8,12 @@ import WorkspaceForm from "./workspaceForm";
 import { useRouter } from "../../../../i18n/routing";
 import TMLanguageSelect from "../../customComponents/TMLanguageSelect";
 import ThemeToggle from "../../customComponents/ThemeToggle";
+import { useTranslations } from "next-intl";
 
 const Layout = () => {
+    const t = useTranslations();
     const router = useRouter()
+
     const handleLogOut = () => {
         localStorage.removeItem("accessToken");
         localStorage.removeItem("refreshToken");
@@ -33,7 +36,7 @@ const Layout = () => {
                         <WorkspaceForm />
                     </div>
                     <div className="flex justify-between items-center gap-1">
-                        <SecondaryButton className="dark:shadow-lg dark:shadow-gray" onClick={handleLogOut} type="button" label="Log Out" />
+                        <SecondaryButton className="dark:shadow-lg dark:shadow-gray" onClick={handleLogOut} type="button" label={t("button.logOut")} />
                         <a className="text-infoBlue" href="/https://github.com/Egorkolev/semicolon-task-management" target="_blank">
                             <YellowButton type="button"><FaGithub className="mr-2" /> GitHub code review</YellowButton>
                         </a>

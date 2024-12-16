@@ -1,9 +1,20 @@
 import { Calendar } from "@/components/ui/calendar"
 import { useDateContext } from "@/context/DateContext";
+import useOverview from "../[userId]/overview/useOverview";
+import { useEffect, useState } from "react";
 
 const TMCalendar = () => {
-    const {newDate ,setNewDate} = useDateContext()
-    
+    const [taskDates, setTaskDates] = useState<string[]>([]);
+    const {taskData} = useOverview();
+    const {newDate ,setNewDate} = useDateContext();
+
+    useEffect(() => {
+        if(taskData){
+            const dates = taskData?.map((task) => new Date(task.startDate!).toISOString().slice(0, 10))
+            setTaskDates(dates); 
+        }
+    }, [taskData])
+
     return (
         <Calendar
             mode="single"

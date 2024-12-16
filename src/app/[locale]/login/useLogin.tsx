@@ -60,15 +60,23 @@ const useLogin = () => {
         };
         reset();
     };
+
+    const handleLogInGuest = () => {
+        handleOnSubmit({
+            email: "guest@gmail.com",
+            password: "12345678",
+        })
+    }
     return {
-        form,
-        showPass,
-        showToast,
-        responseData,
-        register,
-        setShowPass,
-        handleSubmit,
+        handleLogInGuest,
         handleOnSubmit,
+        handleSubmit,
+        setShowPass,
+        register,
+        responseData,
+        showToast,
+        showPass,
+        form,
     }
 }
 

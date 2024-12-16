@@ -27,6 +27,8 @@
         "workNow": "Travaillez maintenant",
         "markAsDone": "Marquer comme terminé",
         "taskHasBeenCompleted": "Cette tâche a été complétée",
+        "useGuestAccount": "Utiliser un compte invité",
+        "logOut": "Se déconnecter",
         "logIn": "Se connecter",
         "create": "Créer",
         "pleaseWait": "Veuillez patienter",
@@ -98,6 +100,7 @@
         "passwordCharactersMax": "Le mot de passe ne peut pas dépasser {PasswordMax} caractères",
         "password": "Mot de passe",
         "createAccount": "Créer un compte",
+        "useGuestAccount": "Utiliser un compte invité",
         "logIn": "Se connecter"
     },
     "workspaceForm": {

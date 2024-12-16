@@ -27,6 +27,8 @@
         "workNow": "Work on it Now",
         "markAsDone": "Mark As Done",
         "taskHasBeenCompleted": "This task has been completed",
+        "useGuestAccount": "Use Guest Account",
+        "logOut": "Log Out",
         "logIn": "Log In",
         "create": "Create",
         "pleaseWait": "Please wait",
@@ -98,6 +100,7 @@
         "passwordCharactersMax": "Password cannot exceed {PasswordMax} characters long",
         "password": "Password",
         "createAccount": "Create Account",
+        "useGuestAccount": "Use Guest Account",
         "logIn": "Log In"
     },
     "workspaceForm": {

@@ -27,6 +27,8 @@
         "workNow": "Почати працювати",
         "markAsDone": "Позначити як завершене",
         "taskHasBeenCompleted": "Це завдання завершено",
+        "useGuestAccount": "Використовувати гостьовий акаунт",
+        "logOut": "Вийти",
         "logIn": "Увійти",
         "create": "Створити",
         "pleaseWait": "Будь ласка, зачекайте",
@@ -98,6 +100,7 @@
         "passwordCharactersMax": "Пароль не може перевищувати {PasswordMax} символів",
         "password": "Пароль",
         "createAccount": "Створити акаунт",
+        "useGuestAccount": "Використовувати гостьовий акаунт",
         "logIn": "Увійти"
     },
     "workspaceForm": {
