@@ -7,8 +7,8 @@ interface UserType {
 }
 
 const UserContext = createContext<{
-userData: UserType | undefined;
-setUserData: (data: UserType) => void;
+    userData: UserType | undefined;
+    setUserData: (data: UserType) => void;
 } | undefined>(undefined)
 
 export const UserProvider: React.FC<{children: ReactNode}> = ({ children }) => {

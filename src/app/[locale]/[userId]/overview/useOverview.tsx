@@ -6,13 +6,14 @@ import { useForm } from "react-hook-form";
 import { Status } from "../../../../constants";
 import { Priority } from "../../../../constants";
 import { useTranslations } from "next-intl";
+import { useTaskContext } from "@/context/TaskContext";
 
 const useOverview = () => {
     const t = useTranslations("warning");
     const {userData, setUserData} = useUserContext();
+    const {taskData, setTaskData} = useTaskContext();
     const [showToast, setShowToast] = useState<boolean>(false);
     const [responseData, setResponseData] = useState<any>();
-    const [taskData, setTaskData] = useState<TaskType[]>();
     const [showAvatarDialog, setShowAvatarDialog] = useState<boolean>(false);
     const [showTaskDialog, setShowTaskDialog] = useState<boolean>(false);
     const [isImageUpload, setIsImageUpload] = useState<boolean>(false);
@@ -20,7 +21,6 @@ const useOverview = () => {
     const [file, setFile] = useState<File | null>(null);
     const [isUploading, setIsUploading] = useState<boolean>(false);
     
-  
     const openDialog = () => setShowAvatarDialog(true);
     const closeDialog = () => setShowAvatarDialog(false);
     const openTaskDialog = () => setShowTaskDialog(true);
@@ -124,7 +124,7 @@ const useOverview = () => {
         }
         setResponseData(response);
         setShowToast(true);
-        closeTaskDialog()
+        closeTaskDialog();
         reset();
     };
 

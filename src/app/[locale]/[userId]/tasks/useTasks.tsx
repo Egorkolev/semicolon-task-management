@@ -4,15 +4,16 @@ import { useForm } from "react-hook-form";
 import { Status } from "../../../../constants";
 import { Priority } from "../../../../constants";
 import { useTranslations } from "next-intl";
+import { useDateContext } from "@/context/DateContext";
+import { useTaskContext } from "@/context/TaskContext";
 
 const useTasks = () => {
     const t = useTranslations("option")
     const [showToast, setShowToast] = useState<boolean>(false);
     const [responseData, setResponseData] = useState<any>();
-    const [taskData, setTaskData] = useState<TaskType[]>();
     const [showTaskDialog, setShowTaskDialog] = useState<boolean>(false);
     const [selectedStatus, setSelectedStatus] = useState<string>(Status.ALL)
-  
+    const {taskData, setTaskData} = useTaskContext();
     const openTaskDialog = () => setShowTaskDialog(true);
     const closeTaskDialog = () => setShowTaskDialog(false);
 

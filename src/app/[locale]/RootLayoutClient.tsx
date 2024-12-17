@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { UserProvider } from "../../context/UserContext";
 import { DateProvider } from "@/context/DateContext";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { TaskProvider } from "@/context/TaskContext";
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -14,13 +15,15 @@ const RootLayoutClient = ({
     children: React.ReactNode;
 }) => {
     return (
-        <DateProvider>
-            <UserProvider>
-                <ThemeProvider>
-                    {children}
-                </ThemeProvider>
-            </UserProvider>
-        </DateProvider>
+        <TaskProvider>
+            <DateProvider>
+                <UserProvider>
+                    <ThemeProvider>
+                        {children}
+                    </ThemeProvider>
+                </UserProvider>
+            </DateProvider>
+        </TaskProvider>
     )
 }
 

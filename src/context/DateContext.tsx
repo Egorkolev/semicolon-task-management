@@ -4,6 +4,7 @@ const DateContext = createContext<{
     newDate: Date | undefined;
     setNewDate: (data: Date | undefined) => void;
     dateISO: string | undefined;
+
 } | undefined>(undefined);
 
 export const DateProvider: React.FC<{children: ReactNode}> = ({children}) => {
