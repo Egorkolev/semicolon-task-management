@@ -15,7 +15,9 @@
         "youHaveNoTaskCreated": "You have no task created in your workspace yet.",
         "createTaskNow": "Get productive. Create a Task Now.",
         "accountSettings": "Account Settings",
-        "unselected": "Unselected"
+        "unselected": "Unselected",
+        "notificationSettings": "Notification Settings",
+        "accessibilitySettings": "Accessibility Settings"
     },
     "button": {
         "getStarted": "Get Started",
@@ -32,8 +34,10 @@
         "logIn": "Log In",
         "create": "Create",
         "pleaseWait": "Please wait",
+        "edit": "Edit",
         "no": "No",
         "yes": "Yes"
+        
     },
     "nav": {
         "overview": "Overview",

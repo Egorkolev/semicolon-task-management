@@ -15,7 +15,9 @@
         "youHaveNoTaskCreated": "Вы еще не создали задачу в вашем рабочем пространстве.",
         "createTaskNow": "Будьте продуктивными. Создайте задачу сейчас.",
         "accountSettings": "Настройки аккаунта",
-        "unselected": "Не выбрано"
+        "unselected": "Не выбрано",
+        "notificationSettings": "Настройки уведомлений",
+        "accessibilitySettings": "Настройки доступности"
     },
     "button": {
         "getStarted": "Начать",
@@ -32,6 +34,7 @@
         "logIn": "Войти",
         "create": "Создать",
         "pleaseWait": "Пожалуйста, подождите",
+        "edit": "Редактировать",
         "no": "Нет",
         "yes": "Да"
     },

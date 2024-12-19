@@ -15,7 +15,9 @@
         "youHaveNoTaskCreated": "Du hast noch keine Aufgaben in deinem Arbeitsbereich erstellt.",
         "createTaskNow": "Werde produktiv. Erstelle jetzt eine Aufgabe.",
         "accountSettings": "Kontoeinstellungen",
-        "unselected": "Nicht ausgewählt"
+        "unselected": "Nicht ausgewählt",
+        "notificationSettings": "Benachrichtigungseinstellungen",
+        "accessibilitySettings": "Barrierefreiheitseinstellungen"
     },
     "button": {
         "getStarted": "Loslegen",
@@ -32,6 +34,7 @@
         "logIn": "Einloggen",
         "create": "Erstellen",
         "pleaseWait": "Bitte warten",
+        "edit": "Bearbeiten",
         "no": "Nein",
         "yes": "Ja"
     },

@@ -15,7 +15,9 @@
         "youHaveNoTaskCreated": "Ви ще не створили жодного завдання у вашому робочому просторі.",
         "createTaskNow": "Будьте продуктивними. Створіть завдання зараз.",
         "accountSettings": "Налаштування акаунта",
-        "unselected": "Не вибрано"
+        "unselected": "Не вибрано",
+        "notificationSettings": "Налаштування сповіщень",
+        "accessibilitySettings": "Налаштування доступності"
     },
     "button": {
         "getStarted": "Розпочати",
@@ -32,6 +34,7 @@
         "logIn": "Увійти",
         "create": "Створити",
         "pleaseWait": "Будь ласка, зачекайте",
+        "edit": "Редагувати",
         "no": "Ні",
         "yes": "Так"
     },

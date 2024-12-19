@@ -15,7 +15,9 @@
         "youHaveNoTaskCreated": "Vous n'avez pas encore créé de tâche dans votre espace de travail.",
         "createTaskNow": "Soyez productif. Créez une tâche maintenant.",
         "accountSettings": "Paramètres du compte",
-        "unselected": "Non sélectionné"
+        "unselected": "Non sélectionné",
+        "notificationSettings": "Paramètres de notification",
+        "accessibilitySettings": "Paramètres d'accessibilité"
     },
     "button": {
         "getStarted": "Commencer",
@@ -32,6 +34,7 @@
         "logIn": "Se connecter",
         "create": "Créer",
         "pleaseWait": "Veuillez patienter",
+        "edit": "Modifier",
         "no": "Non",
         "yes": "Oui"
     },
