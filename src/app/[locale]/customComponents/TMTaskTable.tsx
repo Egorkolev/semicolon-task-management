@@ -76,7 +76,7 @@ export default function TMTaskTable({tasks, filters}: any) {
         }
     };
 
-  return (
+    return (
         <>
             <div>
                 <Table className='bg-white dark:bg-slate-600 rounded-md dark:shadow-blue dark:shadow-md'>
@@ -87,60 +87,59 @@ export default function TMTaskTable({tasks, filters}: any) {
                                 <TableHead className='font-bold'>{t("taskTable.description")}</TableHead>
                                 <TableHead className='font-bold'>{t("taskTable.priority")}</TableHead>
                                 <TableHead className='font-bold'>{t("taskTable.status")}</TableHead>
-                                <TableHead className="text-right font-bold">{t("taskTable.action")}</TableHead>
+                                <TableHead className="font-bold">{t("taskTable.action")}</TableHead>
                             </TableRow>
                         </TableHeader>
                     <TableBody>
-                    {fileredTask && fileredTask?.map((task: TaskType) => {
-                    let badgeStatus;
-                    let badgePriorityIcon;
-                    let badgePriorityStyle: any;
+                        {fileredTask && fileredTask?.map((task: TaskType) => {
+                        let badgeStatus;
+                        let badgePriorityIcon;
+                        let badgePriorityStyle: any;
 
-                    switch(task.status) {
-                        case Status.PENDING:
-                            badgeStatus = "text-warningYellow bg-warningYellow bg-opacity-10";
-                            break;
-                        case Status.IN_PROGRESS:
-                            badgeStatus = "text-infoBlue bg-infoBlue bg-opacity-10";
-                            break;
-                        case Status.COMPLETE: 
-                            badgeStatus = "text-successGreen bg-successGreen bg-opacity-10";
-                            break;
-                        default: 
-                            badgeStatus = "text-darkBlue bg-darkBlue bg-opacity-10";
-                    }
-                    switch(task.priority) {
-                        case Priority.LOW:
-                            badgePriorityIcon = <FcLowPriority className="w-4 h-4" />;
-                            badgePriorityStyle="text-successGreen bg-successGreen bg-opacity-10";
-                            break;
-                        case Priority.MIDDLE:
-                            badgePriorityIcon = <FcMediumPriority className="w-4 h-4" />;
-                            badgePriorityStyle="text-warningYellow bg-warningYellow bg-opacity-10";
-                            break;
-                        case Priority.HIGH: 
-                            badgePriorityIcon = <FcHighPriority className="w-4 h-4" />;
-                            badgePriorityStyle="text-errorRed dark:text-red-400 bg-errorRed bg-opacity-10";
-                            break;
-                        default: 
-                            badgePriorityIcon = <FcLowPriority className="w-4 h-4" />;
-                    }
-                    return (
-                        <TableRow key={task.id} className='dark:shadow-blue dark:shadow-md'>
-                            <TableCell className="font-medium text-gray">{task.description}</TableCell>
-                            <TableCell className='text-darkBlue dark:text-gray'>{task.description}</TableCell>
-                            <TableCell><BadgeButton className={`flex justify-between gap-2 px-2 ${badgePriorityStyle}`}>{getPriorityName(task.priority)}{badgePriorityIcon}</BadgeButton></TableCell>
-                            <TableCell><BadgeButton className={badgeStatus}>{getStatusName(task.status)}</BadgeButton></TableCell>
-                            <TableCell>
-                                <Link className="text-infoBlue" href={`/${user?.userId}/tasks/${task.id}/task`}>
-                                    <SecondaryButton>{t("button.viewTask")}<FaCaretRight /></SecondaryButton>
-                                </Link>
-                            </TableCell>               
-                        </TableRow>
-                    )
-                })}
-                </TableBody>
-            </Table>
+                        switch(task.status) {
+                            case Status.PENDING:
+                                badgeStatus = "text-warningYellow bg-warningYellow bg-opacity-10";
+                                break;
+                            case Status.IN_PROGRESS:
+                                badgeStatus = "text-infoBlue bg-infoBlue bg-opacity-10";
+                                break;
+                            case Status.COMPLETE: 
+                                badgeStatus = "text-successGreen bg-successGreen bg-opacity-10";
+                                break;
+                            default: 
+                                badgeStatus = "text-darkBlue bg-darkBlue bg-opacity-10";
+                        }
+                        switch(task.priority) {
+                            case Priority.LOW:
+                                badgePriorityIcon = <FcLowPriority className="w-4 h-4" />;
+                                badgePriorityStyle="text-successGreen bg-successGreen bg-opacity-10";
+                                break;
+                            case Priority.MIDDLE:
+                                badgePriorityIcon = <FcMediumPriority className="w-4 h-4" />;
+                                badgePriorityStyle="text-warningYellow bg-warningYellow bg-opacity-10";
+                                break;
+                            case Priority.HIGH: 
+                                badgePriorityIcon = <FcHighPriority className="w-4 h-4" />;
+                                badgePriorityStyle="text-errorRed dark:text-red-400 bg-errorRed bg-opacity-10";
+                                break;
+                            default: 
+                                badgePriorityIcon = <FcLowPriority className="w-4 h-4" />;
+                        }
+                        return (
+                            <TableRow key={task.id} className='dark:shadow-blue dark:shadow-md'>
+                                <TableCell className="font-bold text-gray">{task.title}</TableCell>
+                                <TableCell className='text-darkBlue dark:text-gray truncate max-w-52'>{task.description}</TableCell>
+                                <TableCell><BadgeButton className={`flex justify-between gap-2 px-2 ${badgePriorityStyle}`}>{getPriorityName(task.priority)}{badgePriorityIcon}</BadgeButton></TableCell>
+                                <TableCell><BadgeButton className={badgeStatus}>{getStatusName(task.status)}</BadgeButton></TableCell>
+                                <TableCell>
+                                    <Link className="text-infoBlue" href={`/${user?.userId}/tasks/${task.id}/task`}>
+                                        <SecondaryButton>{t("button.viewTask")}<FaCaretRight /></SecondaryButton>
+                                    </Link>
+                                </TableCell>               
+                            </TableRow>
+                        )})}
+                    </TableBody>
+                </Table>
             </div>
         </>
     )
