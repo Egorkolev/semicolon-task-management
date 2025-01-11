@@ -4,12 +4,12 @@ import { useForm } from "react-hook-form";
 import { Status } from "../../../../constants";
 import { Priority } from "../../../../constants";
 import { useTranslations } from "next-intl";
-import { useDateContext } from "@/context/DateContext";
 import { useTaskContext } from "@/context/TaskContext";
 
 const useTasks = () => {
     const t = useTranslations("option")
     const [showToast, setShowToast] = useState<boolean>(false);
+    const [taskView, setTaskView] = useState<boolean>(false);
     const [responseData, setResponseData] = useState<any>();
     const [showTaskDialog, setShowTaskDialog] = useState<boolean>(false);
     const [selectedStatus, setSelectedStatus] = useState<string>(Status.ALL)
@@ -48,6 +48,8 @@ const useTasks = () => {
                 console.error("An error occurred. Please try again later", error)
             }
         }
+        const taskViewStorage = localStorage.getItem("taskView");
+        setTaskView(taskViewStorage === "true" ? true : false);
         getUserTasks();
     }, []);
 
@@ -61,6 +63,15 @@ const useTasks = () => {
             taskEndDate: null,
         }
     });
+
+    const handleViewTaskTable = () => {
+        setTaskView(true);
+        localStorage.setItem('taskView', "true");
+    }
+    const handleViewTaskCard = () => {
+        setTaskView(false);
+        localStorage.setItem('taskView', "false");
+    }
 
     const { reset, register, handleSubmit } = form;
 
@@ -96,12 +107,16 @@ const useTasks = () => {
         openTaskDialog,
         getStatusColor,
         handleSubmit,
+        setTaskView,
         register,
+        handleViewTaskTable,
+        handleViewTaskCard, 
         showTaskDialog,
         selectedStatus,
         responseData,
         showToast,
         taskData,
+        taskView,
         filters,
         form,
     }

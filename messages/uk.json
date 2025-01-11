@@ -119,5 +119,12 @@
     },
     "warning": {
         "fileSize": "Розмір файлу перевищує 2 МБ"
+    },
+    "taskTable": {
+        "title": "Заголовок",
+        "description": "Опис",
+        "priority": "Пріоритет",
+        "status": "Статус",
+        "action": "Дія"
     }
 }

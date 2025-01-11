@@ -120,5 +120,12 @@
     },
     "warning": {
         "fileSize": "File size exceeds 2MB"
+    },
+    "taskTable": {
+        "title": "Title",
+        "description": "Description",
+        "priority": "Priority",
+        "status": "Status",
+        "action": "Action"
     }
 }

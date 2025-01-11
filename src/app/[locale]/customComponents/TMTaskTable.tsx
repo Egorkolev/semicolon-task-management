@@ -1,17 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { BadgeButton, SecondaryButton } from "./TMButton";
-import { FaCaretRight } from "react-icons/fa6";
-import { Status } from "../../../constants";
-import { Priority } from "../../../constants";
-import { FcMediumPriority } from "react-icons/fc";
-import { FcLowPriority } from "react-icons/fc";
-import { FcHighPriority } from "react-icons/fc";
-import { useDateContext } from "@/context/DateContext";
-import useUserInfo from "@/hooks/useUserInfo";
-import { Link } from "../../../i18n/routing";
-import { useTranslations } from "next-intl";
+import React, { useEffect, useState } from 'react';
+import {
+    Table,
+    TableBody,
+    TableCaption,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+  } from "@/components/ui/table";
+import { Priority, Status } from '@/constants';
+import { useTranslations } from 'next-intl';
+import { useDateContext } from '@/context/DateContext';
+import useUserInfo from '@/hooks/useUserInfo';
+import { FcHighPriority, FcLowPriority, FcMediumPriority } from 'react-icons/fc';
+import { BadgeButton, SecondaryButton } from './TMButton';
+import { Link } from '@/i18n/routing';
+import { FaCaretRight } from 'react-icons/fa';
 
-const TMTaskCard = ({tasks, filters}: any) => {
+export default function TMTaskTable({tasks, filters}: any) {
+
     const t = useTranslations();
     const [fileredTask, setFileredTask] = useState<TaskType[]>()
     const {dateISO} = useDateContext();
@@ -68,13 +75,26 @@ const TMTaskCard = ({tasks, filters}: any) => {
                 return t("optionBadge.low");
         }
     };
-    return (
-        <div className="flex justify-between flex-wrap gap-10 overflow-auto pb-10">
-            {        
-                fileredTask && fileredTask?.map((task: TaskType) => {
+
+  return (
+        <>
+            <div>
+                <Table className='bg-white dark:bg-slate-600 rounded-md dark:shadow-blue dark:shadow-md'>
+                    <TableCaption></TableCaption>
+                        <TableHeader>
+                            <TableRow className='dark:shadow-blue dark:shadow-md'>
+                                <TableHead className='font-bold'>{t("taskTable.title")}</TableHead>
+                                <TableHead className='font-bold'>{t("taskTable.description")}</TableHead>
+                                <TableHead className='font-bold'>{t("taskTable.priority")}</TableHead>
+                                <TableHead className='font-bold'>{t("taskTable.status")}</TableHead>
+                                <TableHead className="text-right font-bold">{t("taskTable.action")}</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                    <TableBody>
+                    {fileredTask && fileredTask?.map((task: TaskType) => {
                     let badgeStatus;
                     let badgePriorityIcon;
-                    let badgePriorityStyle;
+                    let badgePriorityStyle: any;
 
                     switch(task.status) {
                         case Status.PENDING:
@@ -106,27 +126,22 @@ const TMTaskCard = ({tasks, filters}: any) => {
                             badgePriorityIcon = <FcLowPriority className="w-4 h-4" />;
                     }
                     return (
-                        <div key={task.id} className="flex-1 flex flex-col gap-6 p-6 justify-between bg-white dark:bg-slate-600 dark:shadow-blue dark:shadow-md w-[340px] rounded-md">
-                            <div className="flex justify-between items-center">
-                                <h2 className="text-gray">{task.title}</h2>
-                                <BadgeButton className={badgeStatus}>{getStatusName(task.status)}</BadgeButton>
-                            </div>
-                            <div className="text-darkBlue dark:text-gray">
-                                {task.description}
-                            </div>
-                            <div className="flex justify-between items-center gap-2">
-                            <Link className="text-infoBlue" href={`/${user?.userId}/tasks/${task.id}/task`}>
-                                <SecondaryButton>{t("button.viewTask")}<FaCaretRight /></SecondaryButton>
-                            </Link>
-                                <BadgeButton className={`flex justify-between gap-2 px-2 ${badgePriorityStyle}`}>{getPriorityName(task.priority)}{badgePriorityIcon}</BadgeButton>
-                            </div>
-                        </div>
+                        <TableRow key={task.id} className='dark:shadow-blue dark:shadow-md'>
+                            <TableCell className="font-medium text-gray">{task.description}</TableCell>
+                            <TableCell className='text-darkBlue dark:text-gray'>{task.description}</TableCell>
+                            <TableCell><BadgeButton className={`flex justify-between gap-2 px-2 ${badgePriorityStyle}`}>{getPriorityName(task.priority)}{badgePriorityIcon}</BadgeButton></TableCell>
+                            <TableCell><BadgeButton className={badgeStatus}>{getStatusName(task.status)}</BadgeButton></TableCell>
+                            <TableCell>
+                                <Link className="text-infoBlue" href={`/${user?.userId}/tasks/${task.id}/task`}>
+                                    <SecondaryButton>{t("button.viewTask")}<FaCaretRight /></SecondaryButton>
+                                </Link>
+                            </TableCell>               
+                        </TableRow>
                     )
-                })
-            }
-        </div>
-
+                })}
+                </TableBody>
+            </Table>
+            </div>
+        </>
     )
 }
-
-export default TMTaskCard;

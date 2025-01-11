@@ -99,7 +99,7 @@ const TMSideBarMenu = () => {
           </div>
           <SheetContent
             side="left"
-            className="pb-32 md:pb-10 w-[200px] sm:w-[200px] max-w-[200px] ml-16 pl-0 max-h-[100vh] pt-10 dark:bg-slate-800 flex flex-col justify-between gap-3"
+            className="pb-28 md:pb-10 w-[200px] sm:w-[200px] max-w-[200px] ml-16 pl-0 max-h-[100vh] pt-10 dark:bg-slate-800 flex flex-col justify-between gap-3"
           >
             <div>
               <SheetHeader>
