@@ -36,7 +36,9 @@
         "pleaseWait": "Veuillez patienter",
         "edit": "Modifier",
         "no": "Non",
-        "yes": "Oui"
+        "yes": "Oui",
+        "previous": "Précédent",
+        "next": "Suivant"
     },
     "nav": {
         "overview": "Vue d'ensemble",
@@ -125,6 +127,7 @@
         "description": "Description",
         "priority": "Priorité",
         "status": "Statut",
-        "action": "Action"
+        "action": "Action",
+        "pagination": "Affichage de {from} à {to} sur {total} tâches"
     }
 }

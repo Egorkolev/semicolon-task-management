@@ -36,7 +36,9 @@
         "pleaseWait": "Будь ласка, зачекайте",
         "edit": "Редагувати",
         "no": "Ні",
-        "yes": "Так"
+        "yes": "Так",
+        "previous": "Попередній",
+        "next": "Наступний"
     },
     "nav": {
         "overview": "Огляд",
@@ -125,6 +127,7 @@
         "description": "Опис",
         "priority": "Пріоритет",
         "status": "Статус",
-        "action": "Дія"
+        "action": "Дія",
+        "pagination": "Показано з {from} по {to} з {total} завдань"
     }
 }

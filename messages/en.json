@@ -36,7 +36,9 @@
         "pleaseWait": "Please wait",
         "edit": "Edit",
         "no": "No",
-        "yes": "Yes"
+        "yes": "Yes",
+        "previous": "Previous",
+        "next": "Next"
         
     },
     "nav": {
@@ -126,6 +128,7 @@
         "description": "Description",
         "priority": "Priority",
         "status": "Status",
-        "action": "Action"
+        "action": "Action",
+        "pagination": "Showing {from} to {to} of {total} tasks"
     }
 }

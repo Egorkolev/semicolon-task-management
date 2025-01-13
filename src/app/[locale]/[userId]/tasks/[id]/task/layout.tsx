@@ -74,7 +74,6 @@ const Layout = () => {
                                     <FiEdit className="w-5 h-5 text-blue dark:text-infoBlue" />
                                 </Button>
                             </div>
- 
                         </div>
                     </div>
                     <div className="space-y-4 items-end flex md:flex-col justify-between w-full md:w-fit">

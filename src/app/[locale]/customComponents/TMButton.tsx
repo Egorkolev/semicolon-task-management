@@ -7,11 +7,13 @@ interface ButtonType {
     className?: string;
     children?: React.ReactNode;
     onClick?: () => void;
+    disabled?: boolean;
 }
 
-export const PrimaryButton = ({label, type, children, onClick, className}: ButtonType) => {
+export const PrimaryButton = ({label, type, children, onClick, className, disabled}: ButtonType) => {
   return (
   <Button 
+    disabled={disabled}
     onClick={onClick}
     type={type} 
     className={`
@@ -30,9 +32,10 @@ export const PrimaryButton = ({label, type, children, onClick, className}: Butto
   )
 }
 
-export const SecondaryButton = ({label, type, children, onClick, className}: ButtonType) => {
+export const SecondaryButton = ({label, type, children, onClick, className, disabled}: ButtonType) => {
     return (
     <Button 
+      disabled={disabled}
       onClick={onClick}
       type={type} 
       variant="outline" 
@@ -55,9 +58,10 @@ export const SecondaryButton = ({label, type, children, onClick, className}: But
   )
 }
 
-export const YellowButton = ({label, type, children, onClick}: ButtonType) => {
+export const YellowButton = ({label, type, children, onClick, disabled}: ButtonType) => {
   return (
   <Button 
+    disabled={disabled}
     onClick={onClick}
     type={type} 
     className="

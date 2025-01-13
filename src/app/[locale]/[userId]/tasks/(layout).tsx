@@ -29,10 +29,10 @@ const Layout = () => {
                 />
                 {taskData?.length !== 0 && <PrimaryButton onClick={openTaskDialog}>{t("button.createTask")}</PrimaryButton>}
             </div>
-            <div className="gap-4 flex justify-center md:justify-between items-start">
+            <div className="gap-4 flex justify-between items-start">
                 <div className="md:flex hidden"></div>
                 {taskData?.length !== 0 && 
-                <ul className="flex gap-1 md:gap-4 flex-wrap">
+                <ul className="flex gap-2 flex-wrap">
                     {filters.map((filter) => {
                         const count = taskData?.filter((task) => {
                             if(filter.status === Status.ALL) {
@@ -47,8 +47,8 @@ const Layout = () => {
                                 onClick={() => setSelectedStatus(filter.status)}
                                 key={filter.status} 
                                 className={`
-                                    bg-${getStatusColor(filter.status)} dark:bg-blue relative
-                                    text-sm m-auto lg:py-2 mb-3 lg:text-md cursor-pointer text-${getStatusColor(filter.status)} bg-opacity-10
+                                    bg-${getStatusColor(filter.status)} dark:bg-blue relative flex-1
+                                    m-auto lg:py-2 mb-0 md:mb-1 text-md cursor-pointer text-${getStatusColor(filter.status)} bg-opacity-10
                                     ${selectedStatus === filter.status 
                                     ? `dark:text-white dark:bg-opacity-70 dark:shadow-blue dark:shadow-md shadow-lg bg-opacity-30`
                                     : `dark:text-gray dark:bg-opacity-30`}
@@ -60,18 +60,18 @@ const Layout = () => {
                         ) 
                     })}
                 </ul>}
-                <div className="flex gap-3 flex-wrap">
+                {taskData?.length !== 0 && <div className="flex gap-2 flex-wrap">
                     <FaTableCells 
                         onClick={handleViewTaskCard} 
-                        className={`text-blue dark:text-gray bg-gray dark:bg-blue bg-opacity-10 w-8 h-8 p-1 rounded-md cursor-pointer
+                        className={`text-blue dark:text-gray bg-gray dark:bg-blue bg-opacity-10 w-7 h-7 lg:w-9 lg:h-9 p-1 rounded-md cursor-pointer
                         ${!taskView && "dark:text-white dark:bg-opacity-70 dark:shadow-blue dark:shadow-md shadow-md bg-opacity-40"}`
                     } />
                     <FaTableList 
                         onClick={handleViewTaskTable} 
-                        className={`text-blue dark:text-gray dark:bg-blue bg-gray bg-opacity-10 w-8 h-8 p-1 rounded-md cursor-pointer
+                        className={`text-blue dark:text-gray dark:bg-blue bg-gray bg-opacity-10 w-7 h-7 lg:w-9 lg:h-9 p-1 rounded-md cursor-pointer
                         ${taskView && "dark:text-white dark:bg-opacity-70 dark:shadow-blue dark:shadow-md shadow-md bg-opacity-40"}`
                     }/>
-                </div>
+                </div>}
             </div>
             {<TMTaskDialog 
                 dialogLabel={t("button.createTask")}
@@ -82,15 +82,15 @@ const Layout = () => {
                 handleOnSubmit={handleOnSubmitTask}
                 form={form}
             />}
-            {!taskData?.length &&
+            {!taskData?.length ?
             <div className="m-auto flex flex-col justify-center h-[50vh] items-center gap-2 text-center">
                 <Image src={NoteImg} alt="No Task Img" width={150} height={150} style={{width: "auto"}} />
                 <h2 className="text-darkBlue dark:text-gray text-2xl">{t("message.noTasksYet")}</h2>
                 <p>{t("message.youHaveNoTaskCreated")}<br/>
                 {t("message.createTaskNow")}</p>
                 <PrimaryButton onClick={openTaskDialog}>{t("button.createTask")}</PrimaryButton>
-            </div>}
-            {!taskView 
+            </div> :
+            !taskView
             ? <TMTaskCard tasks={taskData} filters={selectedStatus} />
             : <TMTaskTable tasks={taskData} filters={selectedStatus} />}
         </div>
