@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BadgeButton, SecondaryButton } from "./TMButton";
 import { FaCaretRight } from "react-icons/fa6";
-import { Status } from "../../../constants";
-import { Priority } from "../../../constants";
+import { Priority, Status } from '@/constants';
 import { FcMediumPriority } from "react-icons/fc";
 import { FcLowPriority } from "react-icons/fc";
 import { FcHighPriority } from "react-icons/fc";
@@ -43,73 +42,59 @@ const TMTaskCard = ({tasks, filters}: any) => {
         }
     }, [dateISO, tasks, filters])
 
-    const getStatusName = (status: string) => {
-        switch (status) {
-            case Status.PENDING:
-                return t("optionBadge.pending");
-            case Status.IN_PROGRESS:
-                return t("optionBadge.inProgress");
-            case Status.COMPLETE:
-                return t("optionBadge.complete");
-            default:
-                return t("optionBadge.pending");
+    const getStatusName = (status: TaskType["status"]) => {
+        const statusName: any = {
+            [Status.PENDING]: t("optionBadge.pending"),
+            [Status.IN_PROGRESS]: t("optionBadge.inProgress"),
+            [Status.COMPLETE]: t("optionBadge.complete")
         }
+        return statusName[status] || t("optionBadge.pending");
     };
 
-    const getPriorityName = (priority: string) => {
-        switch (priority) {
-            case Priority.LOW:
-                return t("optionBadge.low");
-            case Priority.MIDDLE:
-                return t("optionBadge.middle");
-            case Priority.HIGH:
-                return t("optionBadge.high");
-            default:
-                return t("optionBadge.low");
+    const getPriorityName = (priority: TaskType["priority"]) => {
+        const priorityName: any = {
+            [Priority.LOW]: t("optionBadge.low"),
+            [Priority.MIDDLE]: t("optionBadge.middle"),
+            [Priority.HIGH]: t("optionBadge.high")
         }
+        return priorityName[priority] || t("optionBadge.low");
     };
+
+    const badgeStatus = (status: TaskType["status"]) => {
+        const statusStyle: any = {
+            [Status.PENDING]: "text-warningYellow bg-warningYellow bg-opacity-10",
+            [Status.IN_PROGRESS]: "text-infoBlue bg-infoBlue bg-opacity-10",
+            [Status.COMPLETE]: "text-successGreen bg-successGreen bg-opacity-10"
+        }
+        return statusStyle[status] || "text-darkBlue bg-darkBlue bg-opacity-10";
+    };
+
+    const badgePriorityIcon = (priority: TaskType["priority"]) => {
+        const priorityIcon: any = {
+            [Priority.LOW]: <FcLowPriority className="w-4 h-4" />,
+            [Priority.MIDDLE]: <FcMediumPriority className="w-4 h-4" />,
+            [Priority.HIGH]: <FcHighPriority className="w-4 h-4" />
+        }
+        return priorityIcon[priority] || <FcLowPriority className="w-4 h-4" />;
+    }
+
+    const badgePriorityStyle = (priority: TaskType["priority"]) => {
+        const priorityStyle: any = {
+            [Priority.LOW]: "text-successGreen bg-successGreen bg-opacity-10",
+            [Priority.MIDDLE]: "text-warningYellow bg-warningYellow bg-opacity-10",
+            [Priority.HIGH]: "text-errorRed dark:text-red-400 bg-errorRed bg-opacity-10"
+        }
+        return priorityStyle[priority];
+    }
     return (
         <div className="flex justify-between flex-wrap gap-10 overflow-auto pb-10">
             {        
                 fileredTask && fileredTask?.map((task: TaskType) => {
-                    let badgeStatus;
-                    let badgePriorityIcon;
-                    let badgePriorityStyle;
-
-                    switch(task.status) {
-                        case Status.PENDING:
-                            badgeStatus = "text-warningYellow bg-warningYellow bg-opacity-10";
-                            break;
-                        case Status.IN_PROGRESS:
-                            badgeStatus = "text-infoBlue bg-infoBlue bg-opacity-10";
-                            break;
-                        case Status.COMPLETE: 
-                            badgeStatus = "text-successGreen bg-successGreen bg-opacity-10";
-                            break;
-                        default: 
-                            badgeStatus = "text-darkBlue bg-darkBlue bg-opacity-10";
-                    }
-                    switch(task.priority) {
-                        case Priority.LOW:
-                            badgePriorityIcon = <FcLowPriority className="w-4 h-4" />;
-                            badgePriorityStyle="text-successGreen bg-successGreen bg-opacity-10";
-                            break;
-                        case Priority.MIDDLE:
-                            badgePriorityIcon = <FcMediumPriority className="w-4 h-4" />;
-                            badgePriorityStyle="text-warningYellow bg-warningYellow bg-opacity-10";
-                            break;
-                        case Priority.HIGH: 
-                            badgePriorityIcon = <FcHighPriority className="w-4 h-4" />;
-                            badgePriorityStyle="text-errorRed dark:text-red-400 bg-errorRed bg-opacity-10";
-                            break;
-                        default: 
-                            badgePriorityIcon = <FcLowPriority className="w-4 h-4" />;
-                    }
                     return (
                         <div key={task.id} className="flex-1 flex flex-col gap-6 p-6 justify-between bg-white dark:bg-slate-600 dark:shadow-blue dark:shadow-md w-[340px] rounded-md">
                             <div className="flex justify-between items-center">
                                 <h2 className="text-gray">{task.title}</h2>
-                                <BadgeButton className={badgeStatus}>{getStatusName(task.status)}</BadgeButton>
+                                <BadgeButton className={badgeStatus(task.status)}>{getStatusName(task.status)}</BadgeButton>
                             </div>
                             <div className="text-darkBlue dark:text-gray">
                                 {task.description}
@@ -118,7 +103,9 @@ const TMTaskCard = ({tasks, filters}: any) => {
                             <Link className="text-infoBlue" href={`/${user?.userId}/tasks/${task.id}/task`}>
                                 <SecondaryButton>{t("button.viewTask")}<FaCaretRight /></SecondaryButton>
                             </Link>
-                                <BadgeButton className={`flex justify-between gap-2 px-2 ${badgePriorityStyle}`}>{getPriorityName(task.priority)}{badgePriorityIcon}</BadgeButton>
+                                <BadgeButton className={`flex justify-between gap-2 px-2 ${badgePriorityStyle(task.priority)}`}>
+                                    {getPriorityName(task.priority)}{badgePriorityIcon(task.priority)}
+                                </BadgeButton>
                             </div>
                         </div>
                     )

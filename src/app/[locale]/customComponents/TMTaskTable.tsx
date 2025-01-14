@@ -18,7 +18,7 @@ import { useTranslations } from 'next-intl';
 import { useDateContext } from '@/context/DateContext';
 import useUserInfo from '@/hooks/useUserInfo';
 import { FcHighPriority, FcLowPriority, FcMediumPriority } from 'react-icons/fc';
-import { BadgeButton, PrimaryButton, SecondaryButton } from './TMButton';
+import { BadgeButton, PrimaryButton } from './TMButton';
 import { Link } from '@/i18n/routing';
 import { FaCaretRight } from 'react-icons/fa';
 
@@ -58,67 +58,53 @@ export default function TMTaskTable({tasks, filters}: any) {
         }
     }, [dateISO, tasks, filters])
 
-    const getStatusName = (status: string) => {
-        switch (status) {
-            case Status.PENDING:
-                return t("optionBadge.pending");
-            case Status.IN_PROGRESS:
-                return t("optionBadge.inProgress");
-            case Status.COMPLETE:
-                return t("optionBadge.complete");
-            default:
-                return t("optionBadge.pending");
+    const getStatusName = (status: Status) => {
+        const statusName: any = {
+            [Status.PENDING]: t("optionBadge.pending"),
+            [Status.IN_PROGRESS]: t("optionBadge.inProgress"),
+            [Status.COMPLETE]: t("optionBadge.complete"),
+            default: t("optionBadge.pending")
         }
+        return statusName[status] || statusName.default
     };
 
-    const getPriorityName = (priority: string) => {
-        switch (priority) {
-            case Priority.LOW:
-                return t("optionBadge.low");
-            case Priority.MIDDLE:
-                return t("optionBadge.middle");
-            case Priority.HIGH:
-                return t("optionBadge.high");
-            default:
-                return t("optionBadge.low");
+    const badgeStatus = (status: Status) => {
+        const statusStyle: any = {
+            [Status.PENDING]: "text-warningYellow bg-warningYellow bg-opacity-10",
+            [Status.IN_PROGRESS]: "text-infoBlue bg-infoBlue bg-opacity-10",
+            [Status.COMPLETE]: "text-successGreen bg-successGreen bg-opacity-10",
+            default: "text-darkBlue bg-darkBlue bg-opacity-10"
         }
+        return statusStyle[status] || statusStyle.default;
     };
 
-    const badgeStatus = (status: string) => {
-        switch(status) {
-            case Status.PENDING:
-                return "text-warningYellow bg-warningYellow bg-opacity-10";
-            case Status.IN_PROGRESS:
-                return "text-infoBlue bg-infoBlue bg-opacity-10";
-            case Status.COMPLETE: 
-                return "text-successGreen bg-successGreen bg-opacity-10";
-            default: 
-                return "text-darkBlue bg-darkBlue bg-opacity-10";
+    const getPriorityName = (priority: Priority) => {
+        const priorityName: any = {
+            [Priority.LOW]: t("optionBadge.low"),
+            [Priority.MIDDLE]: t("optionBadge.middle"),
+            [Priority.HIGH]: t("optionBadge.high"),
+            default: t("optionBadge.low")
         }
+        return priorityName[priority] || priorityName.default;
     };
 
-    const badgePriorityIcon = (priority: string) => {
-        switch(priority) {
-            case Priority.LOW:
-                return <FcLowPriority className="w-4 h-4" />;
-            case Priority.MIDDLE:
-                return <FcMediumPriority className="w-4 h-4" />;
-            case Priority.HIGH: 
-                return <FcHighPriority className="w-4 h-4" />;
-            default: 
-                return <FcLowPriority className="w-4 h-4" />;
+    const badgePriorityIcon = (priority: Priority) => {
+        const priorityIcon = {
+            [Priority.LOW]: <FcLowPriority className="w-4 h-4" />,
+            [Priority.MIDDLE]: <FcMediumPriority className="w-4 h-4" />,
+            [Priority.HIGH]: <FcHighPriority className="w-4 h-4" />,
+            default: <FcLowPriority className="w-4 h-4" />
         }
+        return priorityIcon[priority] || priorityIcon.default;
     }
 
-    const badgePriorityStyle = (priority: string) => {
-        switch(priority) {
-            case Priority.LOW:
-                return "text-successGreen bg-successGreen bg-opacity-10";
-            case Priority.MIDDLE:
-                return "text-warningYellow bg-warningYellow bg-opacity-10";
-            case Priority.HIGH:
-                return "text-errorRed dark:text-red-400 bg-errorRed bg-opacity-10";
+    const badgePriorityStyle = (priority: Priority) => {
+        const priorityStyle = {
+            [Priority.LOW]: "text-successGreen bg-successGreen bg-opacity-10",
+            [Priority.MIDDLE]: "text-warningYellow bg-warningYellow bg-opacity-10",
+            [Priority.HIGH]: "text-errorRed dark:text-red-400 bg-errorRed bg-opacity-10"
         }
+        return priorityStyle[priority];
     }
 
     const table = useReactTable({

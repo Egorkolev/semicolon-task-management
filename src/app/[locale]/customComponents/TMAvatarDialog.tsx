@@ -8,7 +8,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { ButtonLoading, PrimaryButton } from "./TMButton";
 import TMAvatar from "./TMAvatar";
 import { useTranslations } from "next-intl";
