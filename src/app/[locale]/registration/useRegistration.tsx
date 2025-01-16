@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "../../../i18n/routing";
 import { userRegisterFetch } from "@/lib/apiDataFetch/userFetch";
-
+import { track } from '@vercel/analytics';
 interface FormType {
     fullName: string,
     email: string;
@@ -26,6 +26,7 @@ const useRegistration = () => {
     const {reset, register, handleSubmit } = form;
 
     const handleOnSubmit = async(data: FormType) => {
+        track("Register");
         const response = await userRegisterFetch(data);
         setResponseData(response);
         setShowToast(true);

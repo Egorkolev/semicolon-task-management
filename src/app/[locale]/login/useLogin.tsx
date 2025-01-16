@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "../../../i18n/routing";
 import { userLoginFetch } from "@/lib/apiDataFetch/userFetch";
 import { userWorkspaceFetch } from "@/lib/apiDataFetch/workspaceFetch";
-import useUserInfo from "@/hooks/useUserInfo";
+import { track } from '@vercel/analytics';
 
 interface FormType {
     email: string;
@@ -36,6 +36,7 @@ const useLogin = () => {
     }, [form])
 
     const handleOnSubmit = async(data: FormType) => {
+        track('LogIn');
         const response = await userLoginFetch(data);
         setResponseData(response);
         setShowToast(true);
@@ -62,6 +63,7 @@ const useLogin = () => {
     };
 
     const handleLogInGuest = () => {
+        track('Guest Account');
         handleOnSubmit({
             email: "guest@gmail.com",
             password: "12345678",

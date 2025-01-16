@@ -16,6 +16,7 @@ const LoginForm = () => {
     const {form, responseData, showToast, showPass, handleLogInGuest, setShowPass, handleOnSubmit, register, handleSubmit} = useLogin();
     return (
         <FormProvider {...form}>
+            <PrimaryButton onClick={handleLogInGuest} className="dark:shadow-lg dark:shadow-gray" label={t("useGuestAccount")} />
             <TMToast response={responseData} trigger={showToast} />
             <Form {...form}>
                 <form
@@ -59,7 +60,6 @@ const LoginForm = () => {
                     />
                     <div className="flex justify-between flex-wrap gap-2">
                         <PrimaryButton className="dark:shadow-lg dark:shadow-gray" type="submit" label={t("logIn")} />
-                        <PrimaryButton onClick={handleLogInGuest} className="dark:shadow-lg dark:shadow-gray" label={t("useGuestAccount")} />
                     </div>
                 </form>
             </Form>

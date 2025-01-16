@@ -28,35 +28,36 @@ const useSideBarMenu = () => {
       router.push("/login");
   }
 
-    const menuItems = [
-      {
-        name: t("overview"),
-        path: `/${user?.userId}/overview`,
-        icon: <BsFillGridFill />,
-        iconActive: <BsGrid />,
-      },
-      {
-        name: t("tasks"),
-        path: `/${user?.userId}/tasks`,
-        icon: <FaListAlt />,
-        iconActive: <FaRegRectangleList />,
-      },
-      {
-        name: t("settings"),
-        path: `/${user?.userId}/settings`,
-        icon: <IoSettings />,
-        iconActive: <IoSettingsOutline />,
-      },
-    ];
-    return {
-        showCalendarDialog,
-        onCloseCalendar,
-        handleLogOut,
-        showCalendar,
-        menuItems,
-        pathname,
-        userData,
-    }
+  const menuItems = [
+    {
+      name: t("overview"),
+      path: `/${user?.userId}/overview`,
+      icon: <BsFillGridFill />,
+      iconActive: <BsGrid />,
+    },
+    {
+      name: t("tasks"),
+      path: `/${user?.userId}/tasks`,
+      icon: <FaListAlt />,
+      iconActive: <FaRegRectangleList />,
+    },
+    {
+      name: t("settings"),
+      path: `/${user?.userId}/settings`,
+      icon: <IoSettings />,
+      iconActive: <IoSettingsOutline />,
+    },
+  ];
+  
+  return {
+      showCalendarDialog,
+      onCloseCalendar,
+      handleLogOut,
+      showCalendar,
+      menuItems,
+      pathname,
+      userData,
+  }
 }
 
 export default useSideBarMenu;
