@@ -29,7 +29,7 @@ export interface TaskTypes {
     openDeleteDialog: VoidFunction;
     closeTaskDialog: VoidFunction;
     openTaskDialog: VoidFunction;
-    handleDeleteTask: (data: string) => Promise<void>;
+    handleDeleteTask: () => Promise<void>;
     handleSubmit: UseFormHandleSubmit<FormDataType>;
     register: UseFormRegister<FormDataType>;
     showTaskDialog: boolean;
