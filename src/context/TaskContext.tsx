@@ -1,3 +1,4 @@
+import { TaskType } from "@/app/[locale]/[userId]/overview/types";
 import React, { createContext, useContext, useState, ReactNode, useEffect } from "react";
 
 const TaskContext = createContext<{

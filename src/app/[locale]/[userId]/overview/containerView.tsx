@@ -1,4 +1,3 @@
-"use client";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { GiTeamIdea } from "react-icons/gi";
 import { GiDesk } from "react-icons/gi";
@@ -8,23 +7,24 @@ import { BadgeButton, PrimaryButton } from "@/app/[locale]/customComponents/TMBu
 import { styles } from "@/styles/tailwindClasses";
 import TMAvatarDialog from "@/app/[locale]/customComponents/TMAvatarDialog";
 import TMToast from "@/app/[locale]/customComponents/TMToast";
-import useOverview from "./useOverview";
 import { useUserContext } from "@/context/UserContext";
 import TMTaskDialog from "@/app/[locale]/customComponents/TMTaskDialog/TMTaskDialog";
 import TMTaskCard from "@/app/[locale]/customComponents/TMTaskCard";
 import { useTranslations } from "next-intl";
+import { OwerviewTypes } from "./types";
 
-const Layout = () => {
+const ContainerView: React.FC<OwerviewTypes> = (props) => {
     const t = useTranslations();
     const {userData} = useUserContext();
-    const {handleUploadFile, handleFileChange, closeDialog, closeTaskDialog, openDialog, openTaskDialog, setSelectedValue, register, handleOnSubmitTask, handleSubmit,
-    form, showAvatarDialog, showTaskDialog, responseData, showToast, taskData, selectedValue, isUploading} = useOverview();
+    const {handleUploadFile, handleFileChange, closeDialog, closeTaskDialog, openDialog, openTaskDialog, setSelectedValue, register, 
+    handleOnSubmitTask, handleSubmit, form, showAvatarDialog, showTaskDialog, responseData, showToast, taskData, selectedValue, isUploading} = props;
     const startNotCompleted = !userData?.userImg || !taskData?.length;
     const startCompleted = userData?.userImg && taskData?.length !== 0;
     
     return (
         <div className="flex flex-col gap-5">
             <TMToast response={responseData} trigger={showToast} />
+            
             <TMOverviewHeader
                 welcomeText= {startNotCompleted ? t('message.wecometoSemicolon') : t('message.welcometoWorkspace')}
                 textFrame={startNotCompleted ? 
@@ -32,6 +32,7 @@ const Layout = () => {
                     : <p dangerouslySetInnerHTML = {{__html: t.raw("message.churchill")}} />}
                 userName={userData?.name} 
             />
+
             <div className="flex items-center justify-between gap-2 flex-wrap">
                 <h2 className="text-darkBlue dark:text-gray text-1xl font-bold">{startNotCompleted ? t('message.letGetYouStarted') : t('message.tasksForToday')}</h2>
                 {startCompleted && <PrimaryButton onClick={openTaskDialog}>{t("button.createTask")}</PrimaryButton>}
@@ -49,31 +50,30 @@ const Layout = () => {
                     <BadgeButton onClick={openTaskDialog} type="button" className="hover:text-blue hover:bg-blue hover:bg-opacity-5 dark:bg-blue dark:bg-opacity-20">{t('button.getStarted')} <FaCaretRight /></BadgeButton>
                 </ToggleGroupItem>}
             </ToggleGroup>
-            {showAvatarDialog && 
-                <TMAvatarDialog 
-                    isUploading={isUploading}
-                    key={userData?.userImg}
-                    userImage={userData?.userImg} 
-                    onChange={handleFileChange} 
-                    onUpload={handleUploadFile} 
-                    onClose={closeDialog} 
-                    showAvatarDialog={showAvatarDialog} 
-                />
-            }
-            {
-                <TMTaskDialog 
-                    dialogLabel={t('button.createTask')}
-                    showTaskDialog={showTaskDialog}
-                    onClose={closeTaskDialog} 
-                    register={register}
-                    handleSubmit={handleSubmit}
-                    handleOnSubmit={handleOnSubmitTask}
-                    form={form}
-                />
-            }
+
+            {showAvatarDialog && <TMAvatarDialog 
+                isUploading={isUploading}
+                key={userData?.userImg}
+                userImage={userData?.userImg} 
+                onChange={handleFileChange} 
+                onUpload={handleUploadFile} 
+                onClose={closeDialog} 
+                showAvatarDialog={showAvatarDialog} 
+            />}
+
+            <TMTaskDialog 
+                dialogLabel={t('button.createTask')}
+                showTaskDialog={showTaskDialog}
+                onClose={closeTaskDialog} 
+                register={register}
+                handleSubmit={handleSubmit}
+                handleOnSubmit={handleOnSubmitTask}
+                form={form}
+            />
+            
             <TMTaskCard tasks={taskData} />
         </div>
     );
 };
 
-export default Layout;
+export default ContainerView;

@@ -3,19 +3,18 @@ import TMAvatar from "./TMAvatar";
 import { PrimaryButton } from "./TMButton";
 import TMCalendar from "./TMCalendar";
 import { useUserContext } from "@/context/UserContext";
-import PhotoFrame from "../public/photo.png";
+import PhotoFrame from "../../public/photo.png";
 import Image from "next/image";
 import { useState } from "react";
 import TMAvatarDialog from "./TMAvatarDialog";
-import useOverview from "../[userId]/overview/useOverview";
-import TMToast from "./TMToast";
 import { useTranslations } from "next-intl";
+import { useFileContext } from "@/context/FileUploadContext";
 
 const TMInfoSideBar = () => {
     const t = useTranslations("button");
-    const {handleUploadFile, handleFileChange, closeDialog, openDialog, showAvatarDialog, responseData, showToast, isUploading} = useOverview();
-    const [isHovered, setIsHovered] = useState<boolean>(false);
+    const {handleUploadFile, handleFileChange, closeDialog, openDialog, showAvatarDialog, isUploading} = useFileContext();
     const {userData} = useUserContext();
+    const [isHovered, setIsHovered] = useState<boolean>(false);
     
     return (
         <div className="py-10 px-4 bg-white dark:bg-slate-600 dark:shadow-blue dark:shadow-lg my-5 mr-5 rounded-xl flex flex-col gap-10">
@@ -42,9 +41,7 @@ const TMInfoSideBar = () => {
             <div>
                 <TMCalendar />
             </div>
-            <TMToast response={responseData} trigger={showToast} />
-            {showAvatarDialog && 
-                <TMAvatarDialog 
+            {showAvatarDialog && <TMAvatarDialog 
                 isUploading={isUploading}
                 key={userData?.userImg}
                 userImage={userData?.userImg} 
@@ -52,8 +49,7 @@ const TMInfoSideBar = () => {
                 onUpload={handleUploadFile} 
                 onClose={closeDialog} 
                 showAvatarDialog={showAvatarDialog} 
-            />
-            }
+            />}
         </div>
     )
 }

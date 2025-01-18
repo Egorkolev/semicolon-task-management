@@ -1,10 +1,6 @@
+import { Status } from "@/constants";
 import { UseFormHandleSubmit, UseFormRegister, UseFormReturn } from "react-hook-form";
 
-export interface UserType {
-    name:    string;
-    email:   string;
-    userImg: string;
-}
 export interface TaskType {
     id: string;
     title: string;
@@ -25,24 +21,28 @@ export interface FormDataType {
     taskEndDate?: string | null;
   }
 
-export interface OwerviewTypes {
-    handleUploadFile: () => Promise<void>;
-    setSelectedValue: (value: string) => void;
-    handleFileChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+export interface FilterStatus {
+    name: string;
+    status: Status;
+}
+
+export interface TaskTypes {
+    handleOnSubmitTask: (data: FormType) => Promise<void>;
+    setSelectedStatus: React.Dispatch<React.SetStateAction<string>>;
     closeTaskDialog: VoidFunction;
     openTaskDialog: VoidFunction;
-    handleOnSubmitTask: (data: FormType) => Promise<void>;
+    getStatusColor: (status: Status) => string;
     handleSubmit: UseFormHandleSubmit<FormDataType>;
-    closeDialog: VoidFunction;
-    openDialog: VoidFunction;
+    setTaskView: React.Dispatch<React.SetStateAction<boolean>>;
     register: UseFormRegister<FormDataType>;
-    showAvatarDialog: boolean;
+    handleViewTaskTable: VoidFunction;
+    handleViewTaskCard: VoidFunction;
     showTaskDialog: boolean;
-    isImageUpload: boolean;
-    selectedValue: string;
+    selectedStatus: string;
     responseData: any;
-    isUploading: boolean;
     showToast: boolean;
     taskData: TaskType[] | null;
+    taskView: boolean;
+    filters: FilterStatus[];
     form: UseFormReturn<FormDataType>;
 }

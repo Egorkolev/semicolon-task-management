@@ -2,13 +2,16 @@ export const styles = {
     formWrapper: `
         flex 
         justify-center 
-        gap-8 
+        gap-8
         flex-wrap 
         items-center
+        relative
     `,
     outsideForm: `
-        hidden 
-        md:block 
+        w-[90%]
+        z-index-10
+        absolute
+        md:static
         space-y-8 
         flex-1 
         max-w-[397px]
@@ -16,14 +19,13 @@ export const styles = {
         dark:rounded-md 
         dark:shadow-blue 
         dark:shadow-lg
-        p-3 
+        p-3
     `,
     frameForm: `
         mx-auto
         text-start
         w-[-webkit-fill-available]
         block 
-        md:hidden 
         space-y-8
         max-w-[397px]
         bg-white bg-opacity-70

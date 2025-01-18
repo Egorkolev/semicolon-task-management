@@ -13,19 +13,19 @@ import {
 import TMCalendar from "../TMCalendar";
 import useSideBarMenu from "./useSideBarMenu";
 import TMAvatarDialog from "../TMAvatarDialog";
-import useOverview from "@/app/[locale]/[userId]/overview/useOverview";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogTrigger,
 } from "@radix-ui/react-dialog";
-import { Link, usePathname } from "../../../../i18n/routing";
+import { Link, usePathname } from "@/i18n/routing";
 import TMLanguageSelect from "../TMLanguageSelect";
 import TMToast from "../TMToast";
 import ThemeToggle from "../ThemeToggle";
 import { SecondaryButton } from "../TMButton";
 import { useTranslations } from "next-intl";
+import { useFileContext } from "@/context/FileUploadContext";
 
 const TMSideBarMenu = () => {
   const {
@@ -46,7 +46,7 @@ const TMSideBarMenu = () => {
     responseData,
     showAvatarDialog,
     isUploading,
-  } = useOverview();
+  } = useFileContext();
   const t = useTranslations();
   const pathName = usePathname();
   const isCalendar = pathName.endsWith("/tasks");

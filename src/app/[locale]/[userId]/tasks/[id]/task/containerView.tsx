@@ -1,5 +1,3 @@
-"use client";
-
 import { BadgeButton } from "@/app/[locale]/customComponents/TMButton";
 import { TMOverviewHeader } from "@/app/[locale]/customComponents/TMOverviewHeader";
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
@@ -8,17 +6,18 @@ import { Button } from "@/components/ui/button";
 import { FiTrash } from "react-icons/fi";
 import { FiEdit } from "react-icons/fi";
 import TMBreadcrumb from "@/app/[locale]/customComponents/TMBreadcrumb";
-import useTask from "./useTask";
 import TMDeleteDialog from "@/app/[locale]/customComponents/TMDeleteDialog";
 import TMToast from "@/app/[locale]/customComponents/TMToast";
 import TMTaskDialog from "@/app/[locale]/customComponents/TMTaskDialog/TMTaskDialog";
 import { useTranslations } from "next-intl";
+import { TaskTypes } from "./types";
+import { Status } from "@/constants";
 
-const Layout = () => {
+const ContainerView = (props: TaskTypes) => {
     const t = useTranslations();
-    const { getPriorityClass, getPriorityIcon, getButtonstatus, getBadgeClass, getButtonText, openDeleteDialog, openTaskDialog, getStatusName,
+    const { getPriorityClass, getPriorityIcon, getButtonStatus, getBadgeClass, getButtonText, openDeleteDialog, openTaskDialog, getStatusName,
     handleDeleteTask, closeDeleteDialog, handleChangeStatus, handleOnSubmitTask, handleSubmit, register, closeTaskDialog, getPriorityName,
-    form, showTaskDialog, showDeleteDialog, responseData, showToast, Status, userId, task } = useTask();
+    form, showTaskDialog, showDeleteDialog, responseData, showToast, userId, task } = props;
 
     return (
         <div>
@@ -61,7 +60,7 @@ const Layout = () => {
                         <div className="flex items-center gap-2 flex-wrap">
                             <Button
                                 onClick={() => handleChangeStatus(task)}
-                                className={`${getButtonstatus(task.status)} items-center flex gap-2`}
+                                className={`${getButtonStatus(task.status)} items-center flex gap-2`}
                             >
                                 {task.status === Status.COMPLETE && <IoCheckmarkDoneCircle className="w-8 h-8" />}
                                 {getButtonText(task.status)}
@@ -89,4 +88,4 @@ const Layout = () => {
     );
 };
 
-export default Layout;
+export default ContainerView;

@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import { SecondaryButton, YellowButton } from "../customComponents/TMButton";
 import { TMFrame } from "../customComponents/TMFrame";
@@ -9,8 +8,9 @@ import { Link } from "../../../i18n/routing";
 import { useTranslations } from "next-intl";
 import TMLanguageSelect from "../customComponents/TMLanguageSelect";
 import ThemeToggle from "../customComponents/ThemeToggle";
+import { RegisterFormProps } from "./types";
 
-const Layout = () => {
+const ContainerView: React.FC<RegisterFormProps> = (props) => {
     const t = useTranslations("button");
     return (
         <div className={styles.formWrapper}>
@@ -21,11 +21,8 @@ const Layout = () => {
                         <ThemeToggle />
                     </div>
                     <h1 className="text-start text-6xl font-bold text-white dark:text-gray hidden md:block ">Take your productivity to the next level.</h1>
-                    <div className={styles.frameForm} >
-                        <RegistrationForm />
-                    </div>
                     <div className="flex justify-between items-center gap-1">
-                        <a className="text-infoBlue" href="/https://github.com/Egorkolev/semicolon-task-management" target="_blank">
+                        <a className="text-infoBlue" href="https://github.com/Egorkolev/semicolon-task-management" target="_blank">
                             <YellowButton type="button"><FaGithub className="mr-2" /> GitHub code review</YellowButton>
                         </a>
                         <Link href="/login">
@@ -36,10 +33,10 @@ const Layout = () => {
 
             } />
             <div className={styles.outsideForm}>
-                <RegistrationForm />
+                <RegistrationForm {...props} />
             </div>
         </div>
     );
 };
 
-export default Layout;
+export default ContainerView;

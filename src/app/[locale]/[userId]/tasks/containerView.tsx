@@ -5,19 +5,19 @@ import { TMOverviewHeader } from "@/app/[locale]/customComponents/TMOverviewHead
 import TMTaskDialog from "@/app/[locale]/customComponents/TMTaskDialog/TMTaskDialog";
 import TMToast from "@/app/[locale]/customComponents/TMToast";
 import TMTaskCard from "@/app/[locale]/customComponents/TMTaskCard";
-import NoteImg from "../../public/note.png";
+import NoteImg from "../../../public/note.png";
 import Image from "next/image";
-import useTasks from "./useTasks";
 import { useTranslations } from "next-intl";
 import { Status } from "@/constants";
 import TMTaskTable from "../../customComponents/TMTaskTable";
 import { FaTableList } from "react-icons/fa6";
 import { FaTableCells } from "react-icons/fa6";
+import { TaskTypes } from "./types";
 
-const Layout = () => {
+const ContainerView = (props: TaskTypes) => {
     const t = useTranslations();
     const { closeTaskDialog, openTaskDialog, register, handleOnSubmitTask, handleSubmit, setSelectedStatus, getStatusColor,
-        form, showTaskDialog, responseData, showToast, taskData, filters, selectedStatus, taskView, handleViewTaskCard, handleViewTaskTable } = useTasks();
+        form, showTaskDialog, responseData, showToast, taskData, filters, selectedStatus, taskView, handleViewTaskCard, handleViewTaskTable } = props;
         
     return (
         <div className="flex flex-col gap-5">
@@ -97,4 +97,4 @@ const Layout = () => {
     );
 };
 
-export default Layout;
+export default ContainerView;

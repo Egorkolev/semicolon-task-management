@@ -12,7 +12,7 @@ import TMSwitch from "../../customComponents/TMSwitch";
 import { useTheme } from "@/context/ThemeContext";
 
 
-const Layout = () => {
+const ContainerView = () => {
     const t = useTranslations();
     const {userData} = useUserContext();
     const {theme, toggleTheme} = useTheme();
@@ -87,4 +87,4 @@ const Layout = () => {
     );
 };
 
-export default Layout;
+export default ContainerView;
