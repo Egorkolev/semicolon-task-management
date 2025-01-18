@@ -7,8 +7,9 @@ import { FcLowPriority } from "react-icons/fc";
 import { FcHighPriority } from "react-icons/fc";
 import { useDateContext } from "@/context/DateContext";
 import useUserInfo from "@/hooks/useUserInfo";
-import { Link } from "../../../i18n/routing";
+import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
+import { TaskType } from "../[userId]/tasks/[id]/task/types";
 
 const TMTaskCard = ({tasks, filters}: any) => {
     const t = useTranslations();

@@ -21,6 +21,7 @@ import { FcHighPriority, FcLowPriority, FcMediumPriority } from 'react-icons/fc'
 import { BadgeButton, PrimaryButton } from './TMButton';
 import { Link } from '@/i18n/routing';
 import { FaCaretRight } from 'react-icons/fa';
+import { TaskType } from '../[userId]/tasks/[id]/task/types';
 
 export default function TMTaskTable({tasks, filters}: any) {
     const t = useTranslations();
