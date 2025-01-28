@@ -15,7 +15,13 @@ export const styles = {
         space-y-8 
         flex-1 
         max-w-[397px]
-        dark:bg-slate-600 
+        bg-white
+        bg-opacity-80
+        md:bg-opacity-0
+        dark:bg-slate-800 
+        md:dark:bg-slate-600 
+        dark:bg-opacity-80
+        rounded-md
         dark:rounded-md 
         dark:shadow-blue 
         dark:shadow-lg

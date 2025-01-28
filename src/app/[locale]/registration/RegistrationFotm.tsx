@@ -17,7 +17,7 @@ const RegistrationForm = (props: RegisterFormProps) => {
             <TMToast response={responseData} trigger={showToast} />
             <form
             onSubmit={handleSubmit(handleOnSubmit)}
-            className="space-y-8 flex-1 max-w-[397px]"
+            className="space-y-4 md:space-y-8 flex-1 max-w-[397px]"
             >
                 <TMInput 
                     {...register("fullName", {
@@ -34,7 +34,7 @@ const RegistrationForm = (props: RegisterFormProps) => {
                     name="fullName" 
                     type="text" 
                     label={t("userName")}
-                    description="Egor Kolev*"
+                    placeholder="Egor Kolev*"
                 />
                 <TMInput 
                     {...register("email", {
@@ -47,7 +47,7 @@ const RegistrationForm = (props: RegisterFormProps) => {
                     name="email" 
                     type="email"  
                     label={t("emailAddress")} 
-                    description="some@gmail.com*"
+                    placeholder="some@gmail.com*"
                 />
                     <TMInput 
                         {...register("password", {
@@ -64,7 +64,7 @@ const RegistrationForm = (props: RegisterFormProps) => {
                         name="password" 
                         type={showPass ? "text" : "password"}
                         label={t("password")} 
-                        description="12345678*"
+                        placeholder="12345678*"
                         icon={
                             showPass ? 
                             (<FaEye onClick={() => setShowPass(false)} />) : 

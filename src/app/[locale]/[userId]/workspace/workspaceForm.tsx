@@ -16,7 +16,7 @@ const WorkspaceForm = (props: WorkspaceFormProps) => {
         <TMToast response={responseData} trigger={showToast} />
         <form
         onSubmit={handleSubmit(handleOnSubmit)}
-        className="space-y-8 flex-1 max-w-[397px]"
+        className="space-y-4 md:space-y-8 flex-1 max-w-[397px]"
         >
             <TMInput 
                     {...register("workspaceName", {
@@ -33,7 +33,7 @@ const WorkspaceForm = (props: WorkspaceFormProps) => {
                 name="workspaceName" 
                 type="text"  
                 label={t("workspaceLabel")} 
-                description={t("workspaceDescription")}
+                placeholder={t("workspaceDescription")}
             />
             <TMTextArea
                 {...register("workspaceDescription", {
@@ -44,7 +44,7 @@ const WorkspaceForm = (props: WorkspaceFormProps) => {
                 })}
                 name="workspaceDescription"
                 label={t("workspaceDescriptionLabel")}
-                description={t("describeWorkspace")}
+                placeholder={t("describeWorkspace")}
             />
             <PrimaryButton className="dark:shadow-lg dark:shadow-gray" type="submit" label={t("create")} />
         </form>

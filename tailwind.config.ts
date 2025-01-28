@@ -21,6 +21,33 @@ const config: Config = {
 		"3xl": "1600px"
 	},
   	extend: {
+		animation: {
+			typing: "typing 3s steps(50, end), blink 0.5s step-end infinite",
+			blink: 'blink 0.5s step-end infinite',
+			glow: "glow 1.5s infinite",
+			scrollFast: "scroll 50s linear infinite",
+			scrollSlow: "scroll 35s linear infinite",
+			none: "none",
+		},
+		keyframes: {
+			typing: {
+			  "0%": { width: "0%" },
+			  "100%": { width: "100%" },
+			},
+			blink: {
+			  "50%": { borderColor: "#00FF00" },
+			  "100%": { borderColor: "transparent" },
+			},
+			glow: {
+			  "0%": { boxShadow: "0 0 5px #3754DB" },
+			  "50%": { boxShadow: "0 0 20px #3754DB" },
+			  "100%": { boxShadow: "0 0 5px #3754DB" },
+			},
+			scroll: {
+				"0%": { transform: "translateX(100%)" },
+				"100%": { transform: "translateX(-100%)" },
+			  },
+		},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',

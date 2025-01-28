@@ -62,8 +62,8 @@ const TMInput = forwardRef<HTMLInputElement, InputType>(({
             </div>
             </FormControl>
             <FormDescription>{description}</FormDescription>
-            <FormMessage>
-              {errors[name]?.message && (<p className="text-errorRed">{(errors[name] as FieldError).message}</p>)}
+            <FormMessage className="text-errorRed dark:text-red-500">
+              {errors[name]?.message && (<p className="text-errorRed dark:text-red-500">{(errors[name] as FieldError).message}</p>)}
             </FormMessage>
           </FormItem>
         )}

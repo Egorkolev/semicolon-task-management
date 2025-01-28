@@ -7,7 +7,7 @@ interface FrameType {
 export const TMFrame: React.FC<FrameType> = ({childeren}) => {
     return (
         <div 
-            className="flex-1 px-8 pt-4 pb-4 rounded-[20px]" 
+            className="flex-1 px-4 pt-4 rounded-[20px] pb-16 md:pb-14" 
             style={{
                 backgroundImage: `url(${Frame.src})`,
                 backgroundSize: 'cover',

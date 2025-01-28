@@ -14,11 +14,11 @@ const LoginForm = (props: LoginFormProps) => {
     const t = useTranslations("registrationForm");
     return (
         <FormProvider {...form}>
-            <PrimaryButton onClick={handleLogInGuest} className="dark:shadow-lg dark:shadow-gray" label={t("useGuestAccount")} />
+            <PrimaryButton onClick={handleLogInGuest} className="dark:shadow-lg dark:shadow-gray animate-glow" label={t("useGuestAccount")} />
             <TMToast response={responseData} trigger={showToast} />
             <form
                 onSubmit={handleSubmit(handleOnSubmit)}
-                className="space-y-8 flex-1 max-w-[397px]"
+                className="space-y-4 md:space-y-8 flex-1 max-w-[397px]"
             >
                 <TMInput 
                     {...register("email", {
@@ -31,7 +31,7 @@ const LoginForm = (props: LoginFormProps) => {
                     name="email" 
                     type="email"  
                     label={t("emailAddress")} 
-                    description="some@gmail.com*"
+                    placeholder="some@gmail.com*"
                 />
                 <TMInput 
                     {...register("password", {
@@ -48,7 +48,7 @@ const LoginForm = (props: LoginFormProps) => {
                     name="password" 
                     type={showPass ? "text" : "password"}
                     label={t("password")}  
-                    description="12345678*"
+                    placeholder="12345678*"
                     icon={
                         showPass ? 
                         (<FaEye onClick={() => setShowPass(false)} />) : 
