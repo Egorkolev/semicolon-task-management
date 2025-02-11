@@ -128,6 +128,9 @@
         "priority": "Пріоритет",
         "status": "Статус",
         "action": "Дія",
-        "pagination": "Показано з {from} по {to} з {total} завдань"
+        "pagination": "Показано з {from} по {to} з {total} завдань",
+        "noResults": "Немає результатів",
+        "filterTitle": "Фільтр",
+        "columns": "Колонки"
     }
 }

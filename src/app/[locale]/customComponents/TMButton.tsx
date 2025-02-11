@@ -4,15 +4,17 @@ import { Loader2 } from "lucide-react"
 interface ButtonType {
     label?: string;
     type?: "submit" | "reset" | "button" | undefined;
+    variant?: "link" | "default" | "outline" | "destructive" | "secondary" | "ghost" | null | undefined;
     className?: string;
     children?: React.ReactNode;
     onClick?: () => void;
     disabled?: boolean;
 }
 
-export const PrimaryButton = ({label, type, children, onClick, className, disabled}: ButtonType) => {
+export const PrimaryButton = ({label, type, children, onClick, className, disabled, variant}: ButtonType) => {
   return (
   <Button 
+    variant={variant}
     disabled={disabled}
     onClick={onClick}
     type={type} 

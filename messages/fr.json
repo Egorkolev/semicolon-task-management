@@ -128,6 +128,9 @@
         "priority": "Priorité",
         "status": "Statut",
         "action": "Action",
-        "pagination": "Affichage de {from} à {to} sur {total} tâches"
+        "pagination": "Affichage de {from} à {to} sur {total} tâches",
+        "noResults": "Aucun résultat",
+        "filterTitle": "Filtrer",
+        "columns": "Colonnes"
     }
 }

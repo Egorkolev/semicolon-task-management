@@ -129,6 +129,9 @@
         "priority": "Priority",
         "status": "Status",
         "action": "Action",
-        "pagination": "Showing {from} to {to} of {total} tasks"
+        "pagination": "Showing {from} to {to} of {total} tasks",
+        "noResults": "No Results",
+        "filterTitle": "Filter",
+        "columns": "Columns"
     }
 }

@@ -1,4 +1,20 @@
-import React, { useEffect, useState } from 'react';
+"use client"
+
+import * as React from "react"
+import {
+    ColumnDef,
+    ColumnFiltersState,
+    SortingState,
+    VisibilityState,
+    flexRender,
+    getCoreRowModel,
+    getFilteredRowModel,
+    getPaginationRowModel,
+    getSortedRowModel,
+    useReactTable,
+} from "@tanstack/react-table"
+import { FaCaretRight } from 'react-icons/fa'
+import { FcHighPriority, FcLowPriority, FcMediumPriority } from 'react-icons/fc'
 import {
     Table,
     TableBody,
@@ -6,56 +22,53 @@ import {
     TableHead,
     TableHeader,
     TableRow,
-} from "@/components/ui/table";
-import {
-    useReactTable,
-    getCoreRowModel,
-    getPaginationRowModel,
-    flexRender,
-} from "@tanstack/react-table";
-import { Priority, Status } from '@/constants';
-import { useTranslations } from 'next-intl';
-import { useDateContext } from '@/context/DateContext';
-import useUserInfo from '@/hooks/useUserInfo';
-import { FcHighPriority, FcLowPriority, FcMediumPriority } from 'react-icons/fc';
-import { BadgeButton, PrimaryButton } from './TMButton';
-import { Link } from '@/i18n/routing';
-import { FaCaretRight } from 'react-icons/fa';
-import { TaskType } from '../[userId]/tasks/[id]/task/types';
+} from "@/components/ui/table"
+import { Priority, Status } from '@/constants'
+import { useTranslations } from 'next-intl'
+import { useDateContext } from '@/context/DateContext'
+import useUserInfo from '@/hooks/useUserInfo'
+import { BadgeButton, PrimaryButton } from './TMButton'
+import { Link } from '@/i18n/routing'
+import { TaskType } from '../[userId]/tasks/[id]/task/types'
+import TMSearchInput from "./TMSearchInput"
+import TMDropDown from "./TMDropDown"
 
-export default function TMTaskTable({tasks, filters}: any) {
-    const t = useTranslations();
-    const [filteredTask, setFilteredTask] = useState<TaskType[]>();
-    const [pagination, setPagination] = useState({
-        pageIndex: 0,
-        pageSize: 10,
-    });
-    const {dateISO} = useDateContext();
-    const user = useUserInfo();
-     
-    useEffect(() => {
-        if(dateISO && filters) {
-            if(filters !== Status.ALL) {
-                const filtered = tasks?.filter((task: TaskType) => task?.startDate?.includes(dateISO) && task?.status === filters);
-                setFilteredTask(filtered);
-            } else if(filters === Status.ALL) {
-                const filtered = tasks?.filter((task: TaskType) => task?.startDate?.includes(dateISO));
-                setFilteredTask(filtered);
+export default function TMTaskDataTable({ tasks, filters }: { tasks: TaskType[], filters: any }) {
+    const t = useTranslations()
+    const { dateISO } = useDateContext()
+    const user = useUserInfo()
+    const [sorting, setSorting] = React.useState<SortingState>([])
+    const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
+    const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({})
+    const [filteredTasks, setFilteredTasks] = React.useState<TaskType[]>([])
+
+    React.useEffect(() => {
+        if (dateISO && filters) {
+            if (filters !== Status.ALL) {
+                const filtered = tasks?.filter((task: TaskType) => 
+                    task?.startDate?.includes(dateISO) && task?.status === filters)
+                setFilteredTasks(filtered)
+            } else if (filters === Status.ALL) {
+                const filtered = tasks?.filter((task: TaskType) => 
+                    task?.startDate?.includes(dateISO))
+                setFilteredTasks(filtered)
             } else {
-                setFilteredTask(tasks);
+                setFilteredTasks(tasks)
             }
-        } else if(dateISO) {
-            const filtered = tasks?.filter((task: TaskType) => task?.startDate?.includes(dateISO));
-            setFilteredTask(filtered);
-        } else if(filters) {
-            if(filters !== Status.ALL) {
-                const filtered = tasks?.filter((task: TaskType) => task?.status === filters);
-                setFilteredTask(filtered);
+        } else if (dateISO) {
+            const filtered = tasks?.filter((task: TaskType) => 
+                task?.startDate?.includes(dateISO))
+            setFilteredTasks(filtered)
+        } else if (filters) {
+            if (filters !== Status.ALL) {
+                const filtered = tasks?.filter((task: TaskType) => 
+                    task?.status === filters)
+                setFilteredTasks(filtered)
             } else {
-                setFilteredTask(tasks);
+                setFilteredTasks(tasks)
             }
         } else {
-            setFilteredTask(tasks);
+            setFilteredTasks(tasks)
         }
     }, [dateISO, tasks, filters])
 
@@ -67,7 +80,7 @@ export default function TMTaskTable({tasks, filters}: any) {
             default: t("optionBadge.pending")
         }
         return statusName[status] || statusName.default
-    };
+    }
 
     const badgeStatus = (status: Status) => {
         const statusStyle: any = {
@@ -76,8 +89,8 @@ export default function TMTaskTable({tasks, filters}: any) {
             [Status.COMPLETE]: "text-successGreen bg-successGreen bg-opacity-10",
             default: "text-darkBlue bg-darkBlue bg-opacity-10"
         }
-        return statusStyle[status] || statusStyle.default;
-    };
+        return statusStyle[status] || statusStyle.default
+    }
 
     const getPriorityName = (priority: Priority) => {
         const priorityName: any = {
@@ -86,8 +99,8 @@ export default function TMTaskTable({tasks, filters}: any) {
             [Priority.HIGH]: t("optionBadge.high"),
             default: t("optionBadge.low")
         }
-        return priorityName[priority] || priorityName.default;
-    };
+        return priorityName[priority] || priorityName.default
+    }
 
     const badgePriorityIcon = (priority: Priority) => {
         const priorityIcon = {
@@ -96,7 +109,7 @@ export default function TMTaskTable({tasks, filters}: any) {
             [Priority.HIGH]: <FcHighPriority className="w-4 h-4" />,
             default: <FcLowPriority className="w-4 h-4" />
         }
-        return priorityIcon[priority] || priorityIcon.default;
+        return priorityIcon[priority] || priorityIcon.default
     }
 
     const badgePriorityStyle = (priority: Priority) => {
@@ -105,111 +118,163 @@ export default function TMTaskTable({tasks, filters}: any) {
             [Priority.MIDDLE]: "text-warningYellow bg-warningYellow bg-opacity-10",
             [Priority.HIGH]: "text-errorRed dark:text-red-400 bg-errorRed bg-opacity-10"
         }
-        return priorityStyle[priority];
+        return priorityStyle[priority]
     }
 
-    const table = useReactTable({
-        data: filteredTask || [],
-        columns: [
-            {
-                id: "title",
-                header: t("taskTable.title"),
-                cell: (info: any) => <TableCell className="font-bold text-gray truncate max-w-56">{info.row.original.title}</TableCell>
-            },
-            {
-                id: "description",
-                header: t("taskTable.description"),
-                cell: (info: any) => <TableCell className='text-darkBlue dark:text-gray truncate max-w-52'>{info.row.original.description}</TableCell>
-            },
-            {
-                id: "priority",
-                header: t("taskTable.priority"),
-                cell: (info: any) => <TableCell><BadgeButton className={`flex justify-between gap-2 px-2 ${badgePriorityStyle(info.row.original.priority)}`}>{getPriorityName(info.row.original.priority)}{badgePriorityIcon(info.row.original.priority)}</BadgeButton></TableCell>
-            },
-            {
-                id: "status",
-                header: t("taskTable.status"),
-                cell: (info: any) => <TableCell><BadgeButton className={badgeStatus(info.row.original.status)}>{getStatusName(info.row.original.status)}</BadgeButton></TableCell>
-            },
-            {
-                id: "action",
-                header: t("taskTable.action"),
-                cell: (info: any) => (
-                    <TableCell>
-                        <Link className="text-infoBlue" href={`/${user?.userId}/tasks/${info.row.original.id}/task`}>
-                            <BadgeButton className='uppercase bg-blue bg-opacity-10 dark:bg-opacity-30 hover:bg-opacity-40 dark:hover:bg-opacity-60 text-infoBlue'>{t("button.viewTask")}<FaCaretRight /></BadgeButton>
-                        </Link>
-                    </TableCell>  
+    const columns: ColumnDef<TaskType>[] = [
+        {
+            accessorKey: "title",
+            header: t("taskTable.title"),
+            cell: ({ row }) => (
+                <div className="font-bold text-gray truncate max-w-56">
+                    {row.getValue("title")}
+                </div>
+            ),
+        },
+        {
+            accessorKey: "description",
+            header: t("taskTable.description"),
+            cell: ({ row }) => (
+                <div className="text-darkBlue dark:text-gray truncate max-w-52">
+                    {row.getValue("description")}
+                </div>
+            ),
+        },
+        {
+            accessorKey: "priority",
+            header: t("taskTable.priority"),
+            cell: ({ row }) => {
+                const priority = row.getValue("priority") as Priority
+                return (
+                    <BadgeButton className={`flex justify-between gap-2 px-2 ${badgePriorityStyle(priority)}`}>
+                        {getPriorityName(priority)}
+                        {badgePriorityIcon(priority)}
+                    </BadgeButton>
                 )
             },
-        ],
+        },
+        {
+            accessorKey: "status",
+            header: t("taskTable.status"),
+            cell: ({ row }) => {
+                const status = row.getValue("status") as Status
+                return (
+                    <BadgeButton className={badgeStatus(status)}>
+                        {getStatusName(status)}
+                    </BadgeButton>
+                )
+            },
+        },
+        {
+            id: "actions",
+            header: t("taskTable.action"),
+            cell: ({ row }) => (
+                <Link className="text-infoBlue" href={`/${user?.userId}/tasks/${row.original.id}/task`}>
+                    <BadgeButton className="uppercase bg-blue bg-opacity-10 dark:bg-opacity-30 hover:bg-opacity-40 dark:hover:bg-opacity-60 text-infoBlue">
+                        {t("button.viewTask")}<FaCaretRight />
+                    </BadgeButton>
+                </Link>
+            ),
+        },
+    ]
+
+    const table = useReactTable({
+        data: filteredTasks,
+        columns,
+        onSortingChange: setSorting,
+        onColumnFiltersChange: setColumnFilters,
         getCoreRowModel: getCoreRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
+        getSortedRowModel: getSortedRowModel(),
+        getFilteredRowModel: getFilteredRowModel(),
+        onColumnVisibilityChange: setColumnVisibility,
         state: {
-            pagination,
+            sorting,
+            columnFilters,
+            columnVisibility,
         },
-        onPaginationChange: setPagination,
-        manualPagination: false,
-        pageCount: Math.ceil((filteredTask?.length || 0) / pagination.pageSize),
-    });
+    })
 
     return (
-        <>
-            <div>
-                <Table className='bg-white dark:bg-slate-600 mb-2 rounded-md dark:shadow-blue dark:shadow-md'>
-                        <TableHeader>
-                            <TableRow className='dark:shadow-blue dark:shadow-md'>
-                                {table.getAllColumns().map((column: any) => (
-                                    <TableHead key={column.id} className='font-bold'>{column.columnDef.header}</TableHead>
+        <div>
+            <div className="flex items-center py-4 flex-wrap-reverse gap-2">
+                <TMSearchInput
+                    placeholder={t("taskTable.filterTitle") + '...'}
+                    value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
+                    onChange={(event: any) =>
+                        table.getColumn("title")?.setFilterValue(event.target.value)
+                    }
+                />
+                <TMDropDown table={table} label={t("taskTable.columns")} />
+            </div>
+
+            <Table className="bg-white dark:bg-slate-600 mb-2 rounded-md dark:shadow-blue dark:shadow-md">
+                <TableHeader>
+                    <TableRow className="dark:shadow-blue dark:shadow-md">
+                        {table.getHeaderGroups().map((headerGroup) => (
+                            headerGroup.headers.map((header) => (
+                                <TableHead key={header.id} className="font-bold">
+                                    {header.isPlaceholder
+                                        ? null
+                                        : flexRender(
+                                            header.column.columnDef.header,
+                                            header.getContext()
+                                        )}
+                                </TableHead>
+                            ))
+                        ))}
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                    {table.getRowModel().rows?.length ? (
+                        table.getRowModel().rows.map((row) => (
+                            <TableRow key={row.id} className="dark:shadow-blue dark:shadow-md h-12">
+                                {row.getVisibleCells().map((cell) => (
+                                    <TableCell key={cell.id}>
+                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                    </TableCell>
                                 ))}
                             </TableRow>
-                        </TableHeader>
-                    <TableBody>
-                        {table.getRowModel().rows.map((row) => (
-                            <TableRow key={row.id} className='dark:shadow-blue dark:shadow-md'>
-                                {row.getVisibleCells().map((cell) => (
-                                    <TableCell key={cell.id} className="font-bold text-gray">
-                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                    </TableCell> 
-                                ))}   
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
+                        ))
+                    ) : (
+                        <TableRow>
+                            <TableCell colSpan={columns.length} className="h-24 text-center">
+                                {t("taskTable.noResults")}
+                            </TableCell>
+                        </TableRow>
+                    )}
+                </TableBody>
+            </Table>
 
-                <div className="flex justify-center md:justify-between py-2 gap-2 flex-wrap items-center">
-                    <div className="text-md text-gray">
-                        {t(
-                            "taskTable.pagination",
-                            {
-                                from: table.getState().pagination.pageIndex * table.getState().pagination.pageSize + 1,
-                                to: Math.min(
-                                    (table.getState().pagination.pageIndex + 1) * table.getState().pagination.pageSize,
-                                    filteredTask?.length || 0
-                                ),
-                                total: filteredTask?.length
-                            }
-                        )}
-                    </div>
+            <div className="flex justify-center md:justify-between py-2 gap-2 flex-wrap items-center">
+                <div className="text-md text-gray">
+                    {t("taskTable.pagination", {
+                        from: table.getState().pagination.pageIndex * table.getState().pagination.pageSize + 1,
+                        to: Math.min(
+                            (table.getState().pagination.pageIndex + 1) * table.getState().pagination.pageSize,
+                            filteredTasks.length
+                        ),
+                        total: filteredTasks.length
+                    })}
+                </div>
 
-                    <div className="flex gap-2">
-                        <PrimaryButton
-                            className='flex-1'
-                            onClick={() => table.previousPage()}
-                            disabled={!table.getCanPreviousPage()}
-                        >
-                            {t("button.previous")}
-                        </PrimaryButton>
-                        <PrimaryButton
-                            className='flex-1'
-                            onClick={() => table.nextPage()}
-                            disabled={!table.getCanNextPage()}
-                        >
-                            {t("button.next")}
-                        </PrimaryButton>
-                    </div>
+                <div className="flex gap-2">
+                    <PrimaryButton
+                        className="flex-1"
+                        onClick={() => table.previousPage()}
+                        disabled={!table.getCanPreviousPage()}
+                    >
+                        {t("button.previous")}
+                    </PrimaryButton>
+                    <PrimaryButton
+                        className="flex-1"
+                        onClick={() => table.nextPage()}
+                        disabled={!table.getCanNextPage()}
+                    >
+                        {t("button.next")}
+                    </PrimaryButton>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
