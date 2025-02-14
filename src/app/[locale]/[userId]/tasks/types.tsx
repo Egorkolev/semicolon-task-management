@@ -33,16 +33,16 @@ export interface TaskTypes {
     openTaskDialog: VoidFunction;
     getStatusColor: (status: Status) => string;
     handleSubmit: UseFormHandleSubmit<FormDataType>;
-    setTaskView: React.Dispatch<React.SetStateAction<boolean>>;
     register: UseFormRegister<FormDataType>;
     handleViewTaskTable: VoidFunction;
     handleViewTaskCard: VoidFunction;
+    handleViewTaskDrag: VoidFunction;
     showTaskDialog: boolean;
     selectedStatus: string;
     responseData: any;
     showToast: boolean;
     taskData: TaskType[] | null;
-    taskView: boolean;
+    taskView: string | null;
     filters: FilterStatus[];
     form: UseFormReturn<FormDataType>;
 }

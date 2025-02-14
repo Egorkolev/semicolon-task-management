@@ -146,7 +146,7 @@ export default function TMTaskDataTable({ tasks, filters }: { tasks: TaskType[],
             cell: ({ row }) => {
                 const priority = row.getValue("priority") as Priority
                 return (
-                    <BadgeButton className={`flex justify-between gap-2 px-2 ${badgePriorityStyle(priority)}`}>
+                    <BadgeButton className={`flex justify-between gap-2 px-2 w-fit ${badgePriorityStyle(priority)}`}>
                         {getPriorityName(priority)}
                         {badgePriorityIcon(priority)}
                     </BadgeButton>

@@ -5,7 +5,7 @@ import { Suspense, useCallback } from 'react';
 import { useEffect, useState } from "react";
 import { createNewTaskFetch, userTaskFetch } from "@/lib/apiDataFetch/taskFetch";
 import { useForm } from "react-hook-form";
-import { Status } from "@/constants";
+import {Status, TaskViewOptions} from "@/constants";
 import { Priority } from "@/constants";
 import { useTranslations } from "next-intl";
 import { useTaskContext } from "@/context/TaskContext";
@@ -15,7 +15,7 @@ const ContainerView = dynamic(() => import('./containerView'));
 const Tasks = () => {
     const t = useTranslations("option")
     const [showToast, setShowToast] = useState<boolean>(false);
-    const [taskView, setTaskView] = useState<boolean>(false);
+    const [taskView, setTaskView] = useState<string | null>(TaskViewOptions.DRAG);
     const [responseData, setResponseData] = useState<any>();
     const [showTaskDialog, setShowTaskDialog] = useState<boolean>(false);
     const [selectedStatus, setSelectedStatus] = useState<string>(Status.ALL)
@@ -50,7 +50,7 @@ const Tasks = () => {
             }
         }
         const taskViewStorage = localStorage.getItem("taskView");
-        setTaskView(taskViewStorage === "true" ? true : false);
+        setTaskView(taskViewStorage);
         getUserTasks();
     }, []);
 
@@ -67,13 +67,18 @@ const Tasks = () => {
     const { reset, register, handleSubmit } = form;
 
     const handleViewTaskTable = useCallback(() => {
-        setTaskView(true);
-        localStorage.setItem('taskView', "true");
+        setTaskView(TaskViewOptions.TABLE);
+        localStorage.setItem('taskView', TaskViewOptions.TABLE);
     }, []);
     const handleViewTaskCard = useCallback(() => {
-        setTaskView(false);
-        localStorage.setItem('taskView', "false");
+        setTaskView(TaskViewOptions.CARD);
+        localStorage.setItem('taskView', TaskViewOptions.CARD);
     }, []);
+    const handleViewTaskDrag = useCallback(() => {
+        setTaskView(TaskViewOptions.DRAG);
+        localStorage.setItem('taskView', TaskViewOptions.DRAG);
+    }, []);
+
 
     const handleOnSubmitTask = useCallback(async(data: FormType) => {
         const response = await createNewTaskFetch(data);
@@ -105,20 +110,20 @@ const Tasks = () => {
             <ContainerView 
                 {
                     ...{
+                        handleViewTaskTable,
+                        handleViewTaskDrag,
+                        handleViewTaskCard,
                         handleOnSubmitTask,
                         setSelectedStatus,
                         closeTaskDialog,
                         openTaskDialog,
                         getStatusColor,
-                        handleSubmit,
-                        setTaskView,
-                        register,
-                        handleViewTaskTable,
-                        handleViewTaskCard, 
                         showTaskDialog,
                         selectedStatus,
+                        handleSubmit,
                         responseData,
                         showToast,
+                        register,
                         taskData,
                         taskView,
                         filters,

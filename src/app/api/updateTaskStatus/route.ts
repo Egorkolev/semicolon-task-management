@@ -3,9 +3,8 @@ import prisma from "@/lib/prisma";
 import { Status } from "@/constants";
 
 export async function PATCH(req: Request) {
-    const {status, id: taskId, workspaceId} =  await req.json();
+    const {status, columnStatus, id: taskId, workspaceId} =  await req.json();
     const userId = req.headers.get('tm-user-id');
-    
 
     if(!userId || !status) {
         return NextResponse.json({warning: 'Task status is required'}, {status: 400});
@@ -21,13 +20,12 @@ export async function PATCH(req: Request) {
             }
         }
 
-
         const updateTask = await prisma.task.update({
             where: {
                 id: taskId,
             },
             data: {
-                status: getReplaceStatus(),
+                status: columnStatus? columnStatus : getReplaceStatus(),
                 workspace: {
                     connect: {id: workspaceId},
                 }

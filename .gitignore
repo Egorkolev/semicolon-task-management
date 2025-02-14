@@ -39,3 +39,5 @@ next-env.d.ts
 # keys
 private.key
 public.key
+
+.idea

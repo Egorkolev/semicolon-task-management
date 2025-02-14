@@ -11,6 +11,12 @@ export enum Priority {
     HIGH="HIGH"
 }
 
+export enum TaskViewOptions {
+    DRAG="DRAG",
+    CARD="CARD",
+    TABLE="TABLE",
+}
+
 export enum CharactersLimits {
     TaskNameMax = 50,
     TextAreaMax = 200,

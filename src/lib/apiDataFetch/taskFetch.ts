@@ -75,13 +75,16 @@ export async function deleteTaskFetch(taskId: string | undefined) {
     }
 }
 
-export async function updateTaskStatusFetch(data: any) {
+export async function updateTaskStatusFetch(data: any, columnStatus?: string) {
     const token = localStorage.getItem('accessToken');
     try {
         const response = await apiRequest({
             method: "PATCH",
             url: apiKeys.PATCH_TASK_STATUS,
-            data: data,
+            data: {
+                ...data,
+                columnStatus
+            },
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
