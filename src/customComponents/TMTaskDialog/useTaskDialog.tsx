@@ -1,6 +1,5 @@
+import { Priority, Status } from "@/constants";
 import { useTranslations } from "next-intl";
-import { Status } from "../../../../constants";
-import { Priority } from "../../../../constants";
 
 const useTaskDialog = () => {
     const t = useTranslations("option");

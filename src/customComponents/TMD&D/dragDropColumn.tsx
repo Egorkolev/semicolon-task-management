@@ -1,9 +1,9 @@
 import React from 'react';
-import DragDropTask from "@/app/[locale]/customComponents/TMD&D/dragDropTask"; // Компонент таски
+import DragDropTask from "@/customComponents/TMD&D/dragDropTask"; // Компонент таски
 import { SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import {Status} from "@/constants";
 import {useTranslations} from "next-intl";
-import {BadgeButton} from "@/app/[locale]/customComponents/TMButton";
+import {BadgeButton} from "@/customComponents/TMButton";
 import {useDroppable} from "@dnd-kit/core";
 
 export default function Column({ id, tasks, title }: { id: string; tasks: any[], title: string; }) {

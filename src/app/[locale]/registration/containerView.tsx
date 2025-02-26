@@ -1,13 +1,13 @@
 import React from "react";
-import { SecondaryButton, YellowButton } from "../customComponents/TMButton";
-import { TMFrame } from "../customComponents/TMFrame";
+import { SecondaryButton, YellowButton } from "@/customComponents/TMButton";
+import { TMFrame } from "@/customComponents/TMFrame";
 import RegistrationForm from "./RegistrationFotm";
 import { styles } from "@/styles/tailwindClasses";
 import { FaGithub } from "react-icons/fa";
 import { Link } from "../../../i18n/routing";
 import { useTranslations } from "next-intl";
-import TMLanguageSelect from "../customComponents/TMLanguageSelect";
-import ThemeToggle from "../customComponents/ThemeToggle";
+import TMLanguageSelect from "@/customComponents/TMLanguageSelect";
+import ThemeToggle from "@/customComponents/ThemeToggle";
 import { RegisterFormProps } from "./types";
 
 const ContainerView: React.FC<RegisterFormProps> = (props) => {

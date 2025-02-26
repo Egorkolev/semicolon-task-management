@@ -1,21 +1,21 @@
 "use client";
 
-import { BadgeButton, PrimaryButton } from "@/app/[locale]/customComponents/TMButton";
-import { TMOverviewHeader } from "@/app/[locale]/customComponents/TMOverviewHeader";
-import TMTaskDialog from "@/app/[locale]/customComponents/TMTaskDialog/TMTaskDialog";
-import TMDragDrop from "@/app/[locale]/customComponents/TMD&D/dragDrop";
-import TMTaskCard from "@/app/[locale]/customComponents/TMTaskCard";
-import TMToast from "@/app/[locale]/customComponents/TMToast";
-import TMTaskTable from "../../customComponents/TMTaskTable";
+import { BadgeButton, PrimaryButton } from "@/customComponents/TMButton";
+import { TMOverviewHeader } from "@/customComponents/TMOverviewHeader";
+import TMTaskDialog from "@/customComponents/TMTaskDialog/TMTaskDialog";
+import TMDragDrop from "@/customComponents/TMD&D/dragDrop";
+import TMTaskCard from "@/customComponents/TMTaskCard";
+import TMToast from "@/customComponents/TMToast";
+import TMTaskTable from "@/customComponents/TMTaskTable";
 import { RiDragDropLine } from "react-icons/ri";
 import { FaTableCells } from "react-icons/fa6";
-import NoteImg from "../../../public/note.png";
+import NoteImg from "@/public/note.png";
 import { FaTableList } from "react-icons/fa6";
 import { useTranslations } from "next-intl";
 import {Status, TaskViewOptions} from "@/constants";
 import { TaskTypes } from "./types";
 import Image from "next/image";
-import TmTooltip from "@/app/[locale]/customComponents/TMTooltip";
+import TmTooltip from "@/customComponents/TMTooltip";
 
 const ContainerView = (props: TaskTypes) => {
     const t = useTranslations();

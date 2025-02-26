@@ -1,4 +1,4 @@
-import Frame from "../../public/frame.png"
+import Frame from "@/public/frame.png"
 
 interface FrameType {
     childeren?: React.ReactNode;

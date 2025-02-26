@@ -1,5 +1,5 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import AvatarLogo from "@/app/public/avatar.png";
+import AvatarLogo from "@/public/avatar.png";
 interface AvatarType {
     logo?: string;
     fallBack?: string;

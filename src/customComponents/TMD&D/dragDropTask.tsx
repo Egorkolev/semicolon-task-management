@@ -1,6 +1,6 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import {BadgeButton, SecondaryButton} from "@/app/[locale]/customComponents/TMButton";
+import {BadgeButton, SecondaryButton} from "@/customComponents/TMButton";
 import {Link} from "@/i18n/routing";
 import {FaCaretRight} from "react-icons/fa6";
 import React from "react";

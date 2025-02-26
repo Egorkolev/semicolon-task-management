@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "../../../i18n/routing";
 import { refreshedToken, verifiedToken } from "@/lib/apiDataFetch/tokenFetch";
-import TMToast from "../customComponents/TMToast";
+import TMToast from "@/customComponents/TMToast";
 import { Progress } from "@/components/ui/progress"
 
 const WithAuth = (WrappedComponent: React.ComponentType<any>) => {

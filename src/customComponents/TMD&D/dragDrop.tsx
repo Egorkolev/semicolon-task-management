@@ -1,7 +1,7 @@
-import DragDropColumn from "@/app/[locale]/customComponents/TMD&D/dragDropColumn";
+import DragDropColumn from "@/customComponents/TMD&D/dragDropColumn";
 import { TaskType } from "@/app/[locale]/[userId]/tasks/[id]/task/types";
 import {updateTaskStatusFetch} from "@/lib/apiDataFetch/taskFetch";
-import TMToast from "@/app/[locale]/customComponents/TMToast";
+import TMToast from "@/customComponents/TMToast";
 import React, { useEffect, useState } from "react";
 import { arrayMove } from "@dnd-kit/sortable";
 import { Status } from "@/constants";

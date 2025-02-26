@@ -1,19 +1,23 @@
 "use client";
-import TMAvatar from "./TMAvatar";
-import { PrimaryButton } from "./TMButton";
-import TMCalendar from "./TMCalendar";
+
+import { useFileContext } from "@/context/FileUploadContext";
 import { useUserContext } from "@/context/UserContext";
-import PhotoFrame from "../../public/photo.png";
-import Image from "next/image";
-import { useState } from "react";
+import PhotoFrame from "@/public/photo.png";
 import TMAvatarDialog from "./TMAvatarDialog";
 import { useTranslations } from "next-intl";
-import { useFileContext } from "@/context/FileUploadContext";
+import { PrimaryButton } from "./TMButton";
+import TMCalendar from "./TMCalendar";
+import TMAvatar from "./TMAvatar";
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import useUserInfo from "@/hooks/useUserInfo";
 
 const TMInfoSideBar = () => {
     const t = useTranslations("button");
     const {handleUploadFile, handleFileChange, closeDialog, openDialog, showAvatarDialog, isUploading} = useFileContext();
     const {userData} = useUserContext();
+    const user = useUserInfo();
     const [isHovered, setIsHovered] = useState<boolean>(false);
     
     return (
@@ -36,7 +40,9 @@ const TMInfoSideBar = () => {
                     <p className="text-darkBlue dark:text-gray font-bold">{userData?.name}</p>
                     <p className="text-gray text-sm">{userData?.email}</p>
                 </div>
-                <PrimaryButton type="button" label={t("myProfile")} />
+                <Link className="text-infoBlue" href={`/${user?.userId}/settings`}>
+                    <PrimaryButton type="button" label={t("myProfile")} />
+                </Link>
             </div>
             <div>
                 <TMCalendar />

@@ -29,9 +29,9 @@ import { useDateContext } from '@/context/DateContext'
 import useUserInfo from '@/hooks/useUserInfo'
 import { BadgeButton, PrimaryButton } from './TMButton'
 import { Link } from '@/i18n/routing'
-import { TaskType } from '../[userId]/tasks/[id]/task/types'
 import TMSearchInput from "./TMSearchInput"
 import TMDropDown from "./TMDropDown"
+import { TaskType } from "@/app/[locale]/[userId]/tasks/types"
 
 export default function TMTaskDataTable({ tasks, filters }: { tasks: TaskType[], filters: any }) {
     const t = useTranslations()

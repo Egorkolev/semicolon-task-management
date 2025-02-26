@@ -1,10 +1,10 @@
 import React from "react";
-import { PrimaryButton } from "../customComponents/TMButton";
-import TMInput from "../customComponents/TMInput";
+import { PrimaryButton } from "@/customComponents/TMButton";
+import TMInput from "@/customComponents/TMInput";
 import { FormProvider } from "react-hook-form";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-import TMToast from "../customComponents/TMToast";
+import TMToast from "@/customComponents/TMToast";
 import { useTranslations } from "next-intl";
 import { CharactersLimits } from "@/constants";
 import { LoginFormProps } from "./types";

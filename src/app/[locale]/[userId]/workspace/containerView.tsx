@@ -1,11 +1,11 @@
 import React from "react";
-import { SecondaryButton, YellowButton } from "../../customComponents/TMButton";
-import { TMFrame } from "../../customComponents/TMFrame";
+import { SecondaryButton, YellowButton } from "@/customComponents/TMButton";
+import { TMFrame } from "@/customComponents/TMFrame";
 import { FaGithub } from "react-icons/fa";
 import { styles} from "@/styles/tailwindClasses";
 import WorkspaceForm from "./workspaceForm";
-import TMLanguageSelect from "../../customComponents/TMLanguageSelect";
-import ThemeToggle from "../../customComponents/ThemeToggle";
+import TMLanguageSelect from "@/customComponents/TMLanguageSelect";
+import ThemeToggle from "@/customComponents/ThemeToggle";
 import { useTranslations } from "next-intl";
 import { WorkspaceFormProps } from "./types";
 

@@ -1,5 +1,5 @@
-import OverviweFrame from "../../public/overviewFrame.png";
-import HelloImg from "../../public/hello.png"
+import OverviweFrame from "@/public/overviewFrame.png";
+import HelloImg from "@/public/hello.png"
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 

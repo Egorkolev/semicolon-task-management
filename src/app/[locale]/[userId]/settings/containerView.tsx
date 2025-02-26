@@ -1,14 +1,14 @@
 "use client";
 
-import { TMOverviewHeader } from "@/app/[locale]/customComponents/TMOverviewHeader";
+import { TMOverviewHeader } from "@/customComponents/TMOverviewHeader";
 import { useTranslations } from "next-intl";
 import { MdEmail } from "react-icons/md";
 import { FaUserAlt } from "react-icons/fa";
 import { styles } from "@/styles/tailwindClasses";
 import { useUserContext } from "@/context/UserContext";
 import { FaUnlockAlt } from "react-icons/fa";
-import { PrimaryButton } from "../../customComponents/TMButton";
-import TMSwitch from "../../customComponents/TMSwitch";
+import { PrimaryButton } from "@/customComponents/TMButton";
+import TMSwitch from "@/customComponents/TMSwitch";
 import { useTheme } from "@/context/ThemeContext";
 
 

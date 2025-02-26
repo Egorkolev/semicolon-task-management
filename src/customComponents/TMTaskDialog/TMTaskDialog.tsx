@@ -9,7 +9,7 @@ import {
 import TMInput from "../TMInput";
 import { FormProvider, UseFormHandleSubmit, UseFormRegister, UseFormReturn } from "react-hook-form";
 import { Form } from "@/components/ui/form";
-import TMTextArea from "@/app/[locale]/customComponents/TMTextArea";
+import TMTextArea from "@/customComponents/TMTextArea";
 import { PrimaryButton } from "../TMButton";
 import useTaskDialog from "./useTaskDialog";
 import TMSelect from "../TMSelect";

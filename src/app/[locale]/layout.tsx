@@ -1,25 +1,26 @@
 "use client";
-import localFont from "next/font/local";
-import RootLayoutClient from "./RootLayoutClient";
-import "./globals.css";
-import WithAuth from "./hoc/WithAuth";
-import TMSideBarMenu from "./customComponents/TMSideBarMenu/TMSideBarMenu";
-import TMInfoSideBar from "./customComponents/TMInfoSideBar";
-import { Toaster } from "sonner";
-import { NextIntlClientProvider } from "next-intl";
-import { notFound } from "next/navigation";
-import { routing, usePathname } from "@/i18n/routing";
-import { apiKeys } from "@/lib/apiKeys";
-import { Analytics } from "@vercel/analytics/react";
+
+import TMSideBarMenu from "@/customComponents/TMSideBarMenu/TMSideBarMenu";
+import TMInfoSideBar from "@/customComponents/TMInfoSideBar";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { routing, usePathname } from "@/i18n/routing";
+import { Analytics } from "@vercel/analytics/react";
+import { NextIntlClientProvider } from "next-intl";
+import RootLayoutClient from "./RootLayoutClient";
+import { notFound } from "next/navigation";
+import localFont from "next/font/local";
+import { apiKeys } from "@/lib/apiKeys";
+import WithAuth from "./hoc/WithAuth";
+import { Toaster } from "sonner";
+import "@/globals.css";
 
 const geistSans = localFont({
-  src: "../fonts/GeistVF.woff",
+  src: "../../fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
 });
 const geistMono = localFont({
-  src: "../fonts/GeistMonoVF.woff",
+  src: "../../fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
 });

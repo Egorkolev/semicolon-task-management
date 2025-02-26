@@ -1,12 +1,14 @@
-import type { Config } from "tailwindcss";
-import theme from "./src/app/[locale]/customComponents/theme";
 import tailwindcssAnimate from "tailwindcss-animate";
+import type { Config } from "tailwindcss";
+import theme from "./src/customComponents/theme";
 
 const config: Config = {
     darkMode: ["class"],
     content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+	"./src/customComponents/**/*.{js,ts,jsx,tsx,mdx}",
+	"./src/customComponents/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
 	"./src/styles/*.{js,ts,jsx,tsx,mdx}"
   ],

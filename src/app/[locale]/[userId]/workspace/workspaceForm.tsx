@@ -1,9 +1,9 @@
 import React from "react";
-import { PrimaryButton } from "../../customComponents/TMButton";
-import TMInput from "../../customComponents/TMInput";
+import { PrimaryButton } from "@/customComponents/TMButton";
+import TMInput from "@/customComponents/TMInput";
 import { FormProvider } from "react-hook-form";
-import TMTextArea from "@/app/[locale]/customComponents/TMTextArea";
-import TMToast from "@/app/[locale]/customComponents/TMToast";
+import TMTextArea from "@/customComponents/TMTextArea";
+import TMToast from "@/customComponents/TMToast";
 import { useTranslations } from "next-intl";
 import { CharactersLimits } from "@/constants";
 import { WorkspaceFormProps } from "./types";
