@@ -9,7 +9,7 @@ import {Priority, Status} from "@/constants";
 import {FaCaretRight} from "react-icons/fa6";
 import {useTranslations} from "next-intl";
 import { CSS } from "@dnd-kit/utilities";
-import {Link} from "@/i18n/routing";
+import { Link } from "@/i18n/routing";
 import React from "react";
 
 export default function DragDropTask({ task }: { task: TaskType }) {
@@ -85,7 +85,7 @@ export default function DragDropTask({ task }: { task: TaskType }) {
                         {task.description}
                     </div>
                     <div className="flex justify-between items-center gap-2">
-                        <Link className="text-infoBlue" href={`/${user?.userId}/tasks/${task.id}/task`}>
+                        <Link href={`/${user?.userId}/tasks/${task.id}/task`}>
                             <StarBorder
                                 as="button"
                                 className="custom-class"

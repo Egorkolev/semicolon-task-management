@@ -14,7 +14,7 @@ const LoginForm = (props: LoginFormProps) => {
     const t = useTranslations("registrationForm");
     return (
         <FormProvider {...form}>
-            <PrimaryButton onClick={handleLogInGuest} className="dark:shadow-lg dark:shadow-gray animate-glow" label={t("useGuestAccount")} />
+            <PrimaryButton onClick={handleLogInGuest} className="dark:shadow-lg dark:shadow-gray animate-glow mb-2" label={t("useGuestAccount")} />
             <TMToast response={responseData} trigger={showToast} />
             <form
                 onSubmit={handleSubmit(handleOnSubmit)}

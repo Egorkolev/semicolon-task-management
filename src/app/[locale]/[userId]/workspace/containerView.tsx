@@ -8,6 +8,7 @@ import WorkspaceForm from "./workspaceForm";
 import { useTranslations } from "next-intl";
 import { FaGithub } from "react-icons/fa";
 import React from "react";
+import SpotlightCard from "@/lib/styles/SpotlightCard/SpotlightCard";
 
 const ContainerView: React.FC<WorkspaceFormProps> = (props) => {
     const {handleLogOut} = props;
@@ -15,7 +16,9 @@ const ContainerView: React.FC<WorkspaceFormProps> = (props) => {
     return (
         <div className={styles.formWrapper}>
             <div className={styles.outsideForm}>
-                <WorkspaceForm {...props} />
+                <SpotlightCard className="custom-spotlight-card p-5" spotlightColor="rgba(0, 229, 255, 0.2)">
+                    <WorkspaceForm {...props} />
+                </SpotlightCard>
             </div>
             <TMFrame childeren={
                 <>  

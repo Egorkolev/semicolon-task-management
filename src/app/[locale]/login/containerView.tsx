@@ -9,6 +9,7 @@ import { useTranslations } from "next-intl";
 import { FaGithub } from "react-icons/fa";
 import { LoginFormProps } from "./types";
 import LoginForm from "./LoginForm";
+import SpotlightCard from "@/lib/styles/SpotlightCard/SpotlightCard";
 
 const ContainerView: React.FC<LoginFormProps> = (props) => {
     const t = useTranslations("button");
@@ -32,7 +33,9 @@ const ContainerView: React.FC<LoginFormProps> = (props) => {
                 </>
             } />
             <div className={styles.outsideForm}>
-                <LoginForm {...props} />
+                <SpotlightCard className="custom-spotlight-card p-5" spotlightColor="rgba(0, 229, 255, 0.2)">
+                    <LoginForm {...props} />
+                </SpotlightCard>
             </div>
         </div>
     );

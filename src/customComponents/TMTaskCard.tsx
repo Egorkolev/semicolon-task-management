@@ -104,7 +104,7 @@ const TMTaskCard = ({tasks, filters}: any) => {
                                     {task.description}
                                 </div>
                                 <div className="flex justify-between items-center gap-2">
-                                <Link className="text-infoBlue" href={`/${user?.userId}/tasks/${task.id}/task`}>
+                                <Link href={`/${user?.userId}/tasks/${task.id}/task`}>
                                     <StarBorder
                                         as="button"
                                         className="custom-class"

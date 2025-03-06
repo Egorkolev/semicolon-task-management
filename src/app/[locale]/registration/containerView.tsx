@@ -9,6 +9,7 @@ import { useTranslations } from "next-intl";
 import { RegisterFormProps } from "./types";
 import { FaGithub } from "react-icons/fa";
 import React from "react";
+import SpotlightCard from "@/lib/styles/SpotlightCard/SpotlightCard";
 
 const ContainerView: React.FC<RegisterFormProps> = (props) => {
     const t = useTranslations("button");
@@ -33,7 +34,9 @@ const ContainerView: React.FC<RegisterFormProps> = (props) => {
 
             } />
             <div className={styles.outsideForm}>
-                <RegistrationForm {...props} />
+                <SpotlightCard className="custom-spotlight-card p-5" spotlightColor="rgba(0, 229, 255, 0.2)">
+                    <RegistrationForm {...props} />
+                </SpotlightCard>
             </div>
         </div>
     );
