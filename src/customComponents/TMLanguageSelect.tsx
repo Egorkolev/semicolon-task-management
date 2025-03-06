@@ -1,16 +1,17 @@
 "use client";
-import * as React from "react";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { useEffect, useState } from "react";
+
 import { useRouter, usePathname } from "@/i18n/routing";
 import { usePathname as pathNav } from "next/navigation";
+import { useEffect, useState } from "react";
+import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
+import * as React from "react";
 
 
 interface LanguageType {
@@ -45,10 +46,10 @@ const TMLanguageSelect = ({className}: LanguageType) => {
 
     return (
         <Select value={selectedLanguage} onValueChange={handleLanguageChange}>
-            <SelectTrigger className={`w-[180px] max-h-[34px] ${className}`}>
+            <SelectTrigger className={`max-w-[180px] max-h-[34px] bg-white dark:bg-neutral-900 ${className}`}>
                 <SelectValue placeholder="Select a language" />
             </SelectTrigger>
-            <SelectContent className="dark:bg-slate-600">
+            <SelectContent className="dark:bg-neutral-800">
                 <SelectGroup>
                 <SelectItem value="uk">🇺🇦 Українська</SelectItem>
                 <SelectItem value="en">🏴󠁧󠁢󠁥󠁮󠁧󠁿 English</SelectItem>

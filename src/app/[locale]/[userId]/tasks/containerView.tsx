@@ -1,21 +1,22 @@
 "use client";
 
-import { BadgeButton, PrimaryButton } from "@/customComponents/TMButton";
-import { TMOverviewHeader } from "@/customComponents/TMOverviewHeader";
+import { BadgeButton, PrimaryButton, SecondaryButton } from "@/customComponents/TMButton";
 import TMTaskDialog from "@/customComponents/TMTaskDialog/TMTaskDialog";
+import { TMOverviewHeader } from "@/customComponents/TMOverviewHeader";
+import StarBorder from "@/lib/styles/StarBorder/StarBorder";
 import TMDragDrop from "@/customComponents/TMD&D/dragDrop";
-import TMTaskCard from "@/customComponents/TMTaskCard";
-import TMToast from "@/customComponents/TMToast";
 import TMTaskTable from "@/customComponents/TMTaskTable";
+import TMTaskCard from "@/customComponents/TMTaskCard";
+import TmTooltip from "@/customComponents/TMTooltip";
+import {Status, TaskViewOptions} from "@/constants";
+import TMToast from "@/customComponents/TMToast";
 import { RiDragDropLine } from "react-icons/ri";
 import { FaTableCells } from "react-icons/fa6";
-import NoteImg from "@/public/note.png";
 import { FaTableList } from "react-icons/fa6";
 import { useTranslations } from "next-intl";
-import {Status, TaskViewOptions} from "@/constants";
+import NoteImg from "@/public/note.png";
 import { TaskTypes } from "./types";
 import Image from "next/image";
-import TmTooltip from "@/customComponents/TMTooltip";
 
 const ContainerView = (props: TaskTypes) => {
     const t = useTranslations();
@@ -31,7 +32,16 @@ const ContainerView = (props: TaskTypes) => {
                     pageName={t("nav.tasks")}
                     welcomeText={t("message.yourTasksInYourSpace")}
                 />
-                {taskData?.length !== 0 && <PrimaryButton onClick={openTaskDialog}>{t("button.createTask")}</PrimaryButton>}
+                {taskData?.length !== 0 && 
+                    <StarBorder
+                    as="button"
+                    className="custom-class ml-auto rounded-sm"
+                    color="cyan"
+                    speed="3s"
+                >
+                    <SecondaryButton onClick={openTaskDialog}>{t("button.createTask")}</SecondaryButton>
+                </StarBorder>
+                }
             </div>
             <div className="gap-4 flex justify-between items-start flex-wrap">
                 <div className="md:flex hidden"></div>

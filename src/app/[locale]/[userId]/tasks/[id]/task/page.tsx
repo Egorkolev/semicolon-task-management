@@ -139,11 +139,11 @@ const Task = () => {
 
     const getButtonStatus = (status: string) => {
         const buttonStatus: any = {
-            [Status.PENDING]: 'bg-blue hover:bg-blue opacity-90 hover:opacity-100 rounded-lg dark:text-gray',
-            [Status.IN_PROGRESS]: 'bg-successGreen hover:bg-successGreen opacity-90 hover:opacity-100 rounded-lg dark:text-white',
+            [Status.PENDING]: '',
+            [Status.IN_PROGRESS]: '',
             [Status.COMPLETE]: 'text-successGreen bg-white dark:bg-successGreen dark:bg-opacity-10  shadow-none hover:bg-white cursor-default border-none pl-0',
         }
-        return buttonStatus[status] || 'bg-blue rounded-lg';
+        return buttonStatus[status];
     };
 
     const getButtonText = (status: string) => {

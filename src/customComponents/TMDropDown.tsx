@@ -1,13 +1,13 @@
-import React from 'react';
 import { Button } from "@/components/ui/button";
+import { useTranslations } from 'next-intl';
+import { ChevronDown } from "lucide-react";
 import {
     DropdownMenu,
     DropdownMenuCheckboxItem,
     DropdownMenuContent,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ChevronDown } from "lucide-react";
-import { useTranslations } from 'next-intl';
+import React from 'react';
 
 function TMDropDown({table, label}: {table: any, label: string}) {
     const t = useTranslations();
@@ -20,26 +20,16 @@ function TMDropDown({table, label}: {table: any, label: string}) {
         actions: t("taskTable.action")
     }
     return (
-            <DropdownMenu>
+        <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Button 
-                    variant="outline" 
-                    className="
-                    ml-auto       
-                    bg-blue 
-                    rounded-lg 
-                    opacity-90 
-                    hover:opacity-100
-                    hover:bg-blue
-                    shadow-xl
-                    text-white
-                    dark:text-gray
-                    hover:text-white"
+                    className="rounded-sm ml-auto"
+                    variant="outline"
                 >
                     {label} <ChevronDown className="ml-2 h-4 w-4" />
                 </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className='dark:bg-slate-600' align="end">
+            <DropdownMenuContent className='dark:bg-neutral-800' align="end">
                 {table
                     .getAllColumns()
                     .filter((column: any) => column.getCanHide())

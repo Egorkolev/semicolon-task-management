@@ -32,6 +32,7 @@ import { Link } from '@/i18n/routing'
 import TMSearchInput from "./TMSearchInput"
 import TMDropDown from "./TMDropDown"
 import { TaskType } from "@/app/[locale]/[userId]/tasks/types"
+import SpotlightCard from "@/lib/styles/SpotlightCard/SpotlightCard"
 
 export default function TMTaskDataTable({ tasks, filters }: { tasks: TaskType[], filters: any }) {
     const t = useTranslations()
@@ -208,9 +209,10 @@ export default function TMTaskDataTable({ tasks, filters }: { tasks: TaskType[],
                 <TMDropDown table={table} label={t("taskTable.columns")} />
             </div>
 
-            <Table className="bg-white dark:bg-slate-600 mb-2 rounded-md dark:shadow-blue dark:shadow-md">
+            <SpotlightCard className="custom-spotlight-card" spotlightColor="rgba(0, 229, 255, 0.2)">
+            <Table className="bg-white dark:bg-neutral-900">
                 <TableHeader>
-                    <TableRow className="dark:shadow-blue dark:shadow-md">
+                    <TableRow>
                         {table.getHeaderGroups().map((headerGroup) => (
                             headerGroup.headers.map((header) => (
                                 <TableHead key={header.id} className="font-bold">
@@ -228,7 +230,7 @@ export default function TMTaskDataTable({ tasks, filters }: { tasks: TaskType[],
                 <TableBody>
                     {table.getRowModel().rows?.length ? (
                         table.getRowModel().rows.map((row) => (
-                            <TableRow key={row.id} className="dark:shadow-blue dark:shadow-md h-12">
+                            <TableRow key={row.id} className="h-12">
                                 {row.getVisibleCells().map((cell) => (
                                     <TableCell key={cell.id}>
                                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -245,6 +247,7 @@ export default function TMTaskDataTable({ tasks, filters }: { tasks: TaskType[],
                     )}
                 </TableBody>
             </Table>
+            </SpotlightCard>
 
             <div className="flex justify-center md:justify-between py-2 gap-2 flex-wrap items-center">
                 <div className="text-md text-gray">

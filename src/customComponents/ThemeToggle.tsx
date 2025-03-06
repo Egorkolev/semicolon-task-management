@@ -27,9 +27,9 @@ const ThemeToggle = () => {
     return (
         <Button
             onClick={toggleTheme}
-            className="bg-gray-200 dark:bg-gray-800 border-white dark:border-gray hover:bg-slate-800 dark:hover:bg-slate-100 border w-fit p-2"
+            className="dark:bg-gray-800 border-neutral-800 dark:border-gray hover:bg-slate-800 dark:hover:bg-slate-100 border w-fit p-2"
         >
-            {currentTheme === 'light' ? (<MdDarkMode />) : (<MdLightMode className="text-gray" />)}
+            {currentTheme === 'light' ? (<MdDarkMode />) : (<MdLightMode className="text-neutral-800 dark:text-gray" />)}
         </Button>
     )
 }

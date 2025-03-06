@@ -1,7 +1,7 @@
 import OverviweFrame from "@/public/overviewFrame.png";
+import { useTranslations } from "next-intl";
 import HelloImg from "@/public/hello.png"
 import Image from "next/image";
-import { useTranslations } from "next-intl";
 
 interface HeaderType {
     userName?: string | undefined;
@@ -30,10 +30,7 @@ export const TMOverviewHeader = ({userName, welcomeText, textFrame, pageName}: H
                     rounded-2xl
                     font-serif
                     hidden
-                    md:block
-                    dark:shadow-blue 
-                    dark:shadow-lg
-                    "
+                    md:block"
                 style={{
                     backgroundImage: `url(${OverviweFrame.src})`,
                     backgroundSize: 'cover',

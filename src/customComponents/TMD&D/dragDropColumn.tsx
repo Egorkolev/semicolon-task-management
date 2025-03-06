@@ -7,7 +7,7 @@ import {BadgeButton} from "@/customComponents/TMButton";
 import {useDroppable} from "@dnd-kit/core";
 
 export default function Column({ id, tasks, title }: { id: string; tasks: any[], title: string; }) {
-    const { setNodeRef } = useDroppable({ id });
+    const { setNodeRef, isOver } = useDroppable({ id });
     const t = useTranslations();
 
     const getStatusStyle = (status: string) => {
@@ -47,10 +47,14 @@ export default function Column({ id, tasks, title }: { id: string; tasks: any[],
     };
 
     return (
-        <div ref={setNodeRef} className="flex flex-col items-center">
+        <div className="flex flex-col items-center">
             <BadgeButton className={`my-2 text-md ${badgeStatus(id || title)}`}>{getStatusName(id || title)}</BadgeButton>
             <SortableContext items={tasks} strategy={verticalListSortingStrategy}>
-                <div className={` flex flex-col gap-4 px-2 py-4 rounded-md bg-opacity-20 h-full min-w-80 border ${getStatusStyleBorder(id)} ${getStatusStyle(id)}`}>
+                <div ref={setNodeRef} className={`flex flex-col gap-4 px-2 py-4 rounded-md h-full min-w-[357px] min-h-[300px] border 
+                    ${getStatusStyleBorder(id)} 
+                    ${getStatusStyle(id)} 
+                    ${isOver ? 'bg-opacity-40' : 'bg-opacity-20'}`}
+                >
                     {tasks.map((task) => (
                         <DragDropTask key={task.id} task={task}/>
                     ))}

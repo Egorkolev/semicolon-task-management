@@ -55,6 +55,7 @@ const TMInput = forwardRef<HTMLInputElement, InputType>(({
                   transition-colors 
                   duration-200
                   text-[16px]
+                  border-neutral-950
                   ${field.value && "border-blue bg-blue bg-opacity-5"}
                 `}
               />

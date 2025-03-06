@@ -1,11 +1,12 @@
 export const styles = {
     formWrapper: `
-        flex 
+        flex
         justify-center 
         gap-8
         flex-wrap 
         items-center
         relative
+        top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
     `,
     outsideForm: `
         w-[90%]
@@ -18,13 +19,11 @@ export const styles = {
         bg-white
         bg-opacity-80
         md:bg-opacity-0
-        dark:bg-slate-800 
-        md:dark:bg-slate-600 
+        dark:bg-neutral-800 
+        md:dark:bg-neutral-800 
         dark:bg-opacity-80
         rounded-md
-        dark:rounded-md 
-        dark:shadow-blue 
-        dark:shadow-lg
+        dark:rounded-sm
         p-3
     `,
     frameForm: `

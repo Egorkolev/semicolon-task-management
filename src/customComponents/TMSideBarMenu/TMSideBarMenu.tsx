@@ -1,8 +1,24 @@
 "use client";
-import TMAvatar from "../TMAvatar";
-import { BsReverseLayoutTextSidebarReverse } from "react-icons/bs";
-import { ImCalendar } from "react-icons/im";
 
+import { BsReverseLayoutTextSidebarReverse } from "react-icons/bs";
+import { useFileContext } from "@/context/FileUploadContext";
+import { Link, usePathname } from "@/i18n/routing";
+import TMLanguageSelect from "../TMLanguageSelect";
+import TMAvatarDialog from "../TMAvatarDialog";
+import { SecondaryButton } from "../TMButton";
+import useSideBarMenu from "./useSideBarMenu";
+import { ImCalendar } from "react-icons/im";
+import { useTranslations } from "next-intl";
+import ThemeToggle from "../ThemeToggle";
+import TMCalendar from "../TMCalendar";
+import TMAvatar from "../TMAvatar";
+import TMToast from "../TMToast";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTrigger,
+} from "@radix-ui/react-dialog";
 import {
   Sheet,
   SheetContent,
@@ -10,22 +26,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import TMCalendar from "../TMCalendar";
-import useSideBarMenu from "./useSideBarMenu";
-import TMAvatarDialog from "../TMAvatarDialog";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogTrigger,
-} from "@radix-ui/react-dialog";
-import { Link, usePathname } from "@/i18n/routing";
-import TMLanguageSelect from "../TMLanguageSelect";
-import TMToast from "../TMToast";
-import ThemeToggle from "../ThemeToggle";
-import { SecondaryButton } from "../TMButton";
-import { useTranslations } from "next-intl";
-import { useFileContext } from "@/context/FileUploadContext";
 
 const TMSideBarMenu = () => {
   const {
@@ -37,6 +37,7 @@ const TMSideBarMenu = () => {
     pathname,
     userData,
   } = useSideBarMenu();
+
   const {
     handleUploadFile,
     handleFileChange,
@@ -47,12 +48,13 @@ const TMSideBarMenu = () => {
     showAvatarDialog,
     isUploading,
   } = useFileContext();
+
   const t = useTranslations();
   const pathName = usePathname();
   const isCalendar = pathName.endsWith("/tasks");
   return (
     <>
-      <div className="flex flex-col gap-8 w-16 pt-10 bg-blue dark:shadow-blue dark:shadow-lg dark:bg-slate-600 z-[60] items-center">
+      <div className="flex flex-col gap-8 w-16 pt-10 bg-white dark:bg-neutral-700 z-[60] items-center">
         <TMToast response={responseData} trigger={showToast} />
         <TMAvatar
           onClick={openDialog}
@@ -76,7 +78,7 @@ const TMSideBarMenu = () => {
         {isCalendar && (
           <ImCalendar
             onClick={showCalendarDialog}
-            className="text-white dark:text-gray w-8 h-8 mx-auto box md:hidden cursor-pointer"
+            className="text-neutral-800 dark:text-gray w-8 h-8 mx-auto box md:hidden cursor-pointer"
           />
         )}
         <Dialog open={showCalendar} onOpenChange={onCloseCalendar}>
@@ -94,17 +96,17 @@ const TMSideBarMenu = () => {
         <Sheet>
           <div className="absolute -left-12 top-28 z-[60]">
             <SheetTrigger>
-              <BsReverseLayoutTextSidebarReverse className="text-white dark:text-gray w-8 h-8 cursor-pointer" />
+              <BsReverseLayoutTextSidebarReverse className="text-neutral-800 dark:text-gray w-8 h-8 cursor-pointer" />
             </SheetTrigger>
           </div>
           <SheetContent
             side="left"
-            className="pb-28 md:pb-10 w-[200px] sm:w-[200px] max-w-[200px] ml-16 pl-0 max-h-[100vh] pt-10 dark:bg-slate-800 flex flex-col justify-between gap-3"
+            className="pb-28 md:pb-10 w-[200px] sm:w-[200px] max-w-[200px] ml-16 pl-0 max-h-[100vh] pt-10 bg-slate-100 dark:bg-neutral-900 flex flex-col justify-between gap-3"
           >
             <div>
               <SheetHeader>
                 <SheetTitle className="w-full py-2 px-4">
-                  <TMLanguageSelect className="max-w-36 bg-blue text-white dark:text-gray" />
+                  <TMLanguageSelect />
                 </SheetTitle>
               </SheetHeader>
               <ul className="space-y-4">
@@ -142,9 +144,8 @@ const TMSideBarMenu = () => {
               </ul>
             </div>
             <SecondaryButton
-              className="dark:shadow-lg dark:shadow-gray mx-auto min-w-[150px]"
+              className="mx-auto min-w-[150px]"
               onClick={handleLogOut}
-              type="button"
               label={t("button.logOut")}
             />
           </SheetContent>

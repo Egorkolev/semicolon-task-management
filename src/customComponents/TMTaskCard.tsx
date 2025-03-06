@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { BadgeButton, SecondaryButton } from "./TMButton";
-import { FaCaretRight } from "react-icons/fa6";
-import { Priority, Status } from '@/constants';
-import { FcMediumPriority } from "react-icons/fc";
-import { FcLowPriority } from "react-icons/fc";
-import { FcHighPriority } from "react-icons/fc";
-import { useDateContext } from "@/context/DateContext";
-import useUserInfo from "@/hooks/useUserInfo";
-import { Link } from "@/i18n/routing";
-import { useTranslations } from "next-intl";
+import SpotlightCard from "@/lib/styles/SpotlightCard/SpotlightCard";
 import { TaskType } from "@/app/[locale]/[userId]/overview/types";
+import StarBorder from "@/lib/styles/StarBorder/StarBorder";
+import { BadgeButton, SecondaryButton } from "./TMButton";
+import { useDateContext } from "@/context/DateContext";
+import React, { useEffect, useState } from "react";
+import { FcMediumPriority } from "react-icons/fc";
+import { FcHighPriority } from "react-icons/fc";
+import { Priority, Status } from '@/constants';
+import { FaCaretRight } from "react-icons/fa6";
+import { FcLowPriority } from "react-icons/fc";
+import useUserInfo from "@/hooks/useUserInfo";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 
 const TMTaskCard = ({tasks, filters}: any) => {
     const t = useTranslations();
@@ -88,27 +90,36 @@ const TMTaskCard = ({tasks, filters}: any) => {
         return priorityStyle[priority];
     }
     return (
-        <div className="flex justify-between flex-wrap gap-10 overflow-auto pb-10">
+        <div className="flex justify-center flex-wrap gap-10 overflow-auto pb-10">
             {        
                 fileredTask && fileredTask?.map((task: TaskType) => {
                     return (
-                        <div key={task.id} className="flex-1 flex flex-col gap-6 p-6 justify-between bg-white dark:bg-slate-600 dark:shadow-blue dark:shadow-md w-[340px] rounded-md">
-                            <div className="flex justify-between items-center">
-                                <h2 className="text-gray">{task.title}</h2>
-                                <BadgeButton className={badgeStatus(task.status)}>{getStatusName(task.status)}</BadgeButton>
+                        <SpotlightCard key={task.id} className="custom-spotlight-card" spotlightColor="rgba(0, 229, 255, 0.2)">
+                            <div className="flex-1 flex flex-col gap-6 p-6 justify-between bg-white dark:bg-neutral-900 w-[340px]">
+                                <div className="flex justify-between items-center">
+                                    <h2 className="text-gray">{task.title}</h2>
+                                    <BadgeButton className={badgeStatus(task.status)}>{getStatusName(task.status)}</BadgeButton>
+                                </div>
+                                <div className="text-darkBlue dark:text-gray">
+                                    {task.description}
+                                </div>
+                                <div className="flex justify-between items-center gap-2">
+                                <Link className="text-infoBlue" href={`/${user?.userId}/tasks/${task.id}/task`}>
+                                    <StarBorder
+                                        as="button"
+                                        className="custom-class"
+                                        color="cyan"
+                                        speed="3s"
+                                    >
+                                        <SecondaryButton>{t("button.viewTask")}<FaCaretRight /></SecondaryButton>
+                                    </StarBorder>
+                                </Link>
+                                    <BadgeButton className={`flex justify-between gap-2 px-2 ${badgePriorityStyle(task.priority)}`}>
+                                        {getPriorityName(task.priority)}{badgePriorityIcon(task.priority)}
+                                    </BadgeButton>
+                                </div>
                             </div>
-                            <div className="text-darkBlue dark:text-gray">
-                                {task.description}
-                            </div>
-                            <div className="flex justify-between items-center gap-2">
-                            <Link className="text-infoBlue" href={`/${user?.userId}/tasks/${task.id}/task`}>
-                                <SecondaryButton>{t("button.viewTask")}<FaCaretRight /></SecondaryButton>
-                            </Link>
-                                <BadgeButton className={`flex justify-between gap-2 px-2 ${badgePriorityStyle(task.priority)}`}>
-                                    {getPriorityName(task.priority)}{badgePriorityIcon(task.priority)}
-                                </BadgeButton>
-                            </div>
-                        </div>
+                        </SpotlightCard>
                     )
                 })
             }

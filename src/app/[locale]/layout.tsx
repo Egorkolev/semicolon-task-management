@@ -1,6 +1,7 @@
 "use client";
 
 import TMSideBarMenu from "@/customComponents/TMSideBarMenu/TMSideBarMenu";
+import SplashCursor from '@/lib/styles/SplashCursor/SplashCursor'
 import TMInfoSideBar from "@/customComponents/TMInfoSideBar";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { routing, usePathname } from "@/i18n/routing";
@@ -53,10 +54,11 @@ const RootLayout = ({
   return (
     <html lang={locale}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray bg-opacity-10 dark:bg-slate-800 dark:bg-opacity-100`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-100 dark:bg-black`}
       >
         <NextIntlClientProvider messages={messages} locale={locale} timeZone={apiKeys.NEXT_PUBLIC_TIME_ZONE}>
           <RootLayoutClient>
+            <SplashCursor />
             <div className="flex justify-between">
               <div className="flex h-screen fixed z-[60]">
                 {shouldShowContent && <TMSideBarMenu />}
@@ -66,7 +68,7 @@ const RootLayout = ({
                   className={
                     isRegistrationPage
                       ? `py-10 px-3 h-[100vh]`
-                      : `pt-10 pb-32 md:pb-10 max-w-7xl 3xl:mx-auto pl-[75px] 3xl:pl-[15px] md:mr-[301px] 3xl:pr-[301px] pr-[15px] h-[100vh] flex-1 overflow-auto`
+                      : `pt-10 pb-32 md:pb-10 max-w-[1450px] 3xl:mx-auto pl-[75px] 3xl:pl-[15px] md:mr-[301px] 3xl:pr-[301px] pr-[15px] h-[100vh] flex-1 overflow-auto`
                   }
                 >
                   <AuthenticatedLayout />

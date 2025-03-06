@@ -21,7 +21,7 @@ const TMCalendar = () => {
             mode="single"
             selected={newDate}
             onSelect={setNewDate}
-            className="rounded-lg bg-gray dark:bg-slate-800 bg-opacity-10 text-blue"
+            className="rounded-lg bg-gray bg-opacity-20 dark:bg-neutral-900 dark:bg-opacity-100 text-blue"
             modifiers={{
                 booked: taskDates,
             }}

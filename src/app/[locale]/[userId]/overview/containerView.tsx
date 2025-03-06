@@ -1,16 +1,17 @@
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { GiTeamIdea } from "react-icons/gi";
-import { GiDesk } from "react-icons/gi";
-import { FaCaretRight } from "react-icons/fa6";
-import { TMOverviewHeader } from "@/customComponents/TMOverviewHeader";
-import { BadgeButton, PrimaryButton } from "@/customComponents/TMButton";
-import { styles } from "@/styles/tailwindClasses";
-import TMAvatarDialog from "@/customComponents/TMAvatarDialog";
-import TMToast from "@/customComponents/TMToast";
-import { useUserContext } from "@/context/UserContext";
+import { BadgeButton, SecondaryButton } from "@/customComponents/TMButton";
 import TMTaskDialog from "@/customComponents/TMTaskDialog/TMTaskDialog";
+import { TMOverviewHeader } from "@/customComponents/TMOverviewHeader";
+import TMAvatarDialog from "@/customComponents/TMAvatarDialog";
+import StarBorder from "@/lib/styles/StarBorder/StarBorder";
+import { useUserContext } from "@/context/UserContext";
 import TMTaskCard from "@/customComponents/TMTaskCard";
+import { styles } from "@/styles/tailwindClasses";
+import TMToast from "@/customComponents/TMToast";
+import { FaCaretRight } from "react-icons/fa6";
+import { GiTeamIdea } from "react-icons/gi";
 import { useTranslations } from "next-intl";
+import { GiDesk } from "react-icons/gi";
 import { OwerviewTypes } from "./types";
 
 const ContainerView: React.FC<OwerviewTypes> = (props) => {
@@ -35,7 +36,16 @@ const ContainerView: React.FC<OwerviewTypes> = (props) => {
 
             <div className="flex items-center justify-between gap-2 flex-wrap">
                 <h2 className="text-darkBlue dark:text-gray text-1xl font-bold">{startNotCompleted ? t('message.letGetYouStarted') : t('message.tasksForToday')}</h2>
-                {startCompleted && <PrimaryButton onClick={openTaskDialog}>{t("button.createTask")}</PrimaryButton>}
+                {startCompleted && 
+                    <StarBorder
+                        as="button"
+                        className="custom-class ml-auto rounded-sm"
+                        color="cyan"
+                        speed="3s"
+                    >
+                        <SecondaryButton onClick={openTaskDialog}>{t("button.createTask")}</SecondaryButton>
+                    </StarBorder>
+                }
             </div>
             
             <ToggleGroup className="flex flex-col gap-2" type="single" value={selectedValue} onValueChange={setSelectedValue}>

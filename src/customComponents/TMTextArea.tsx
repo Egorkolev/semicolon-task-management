@@ -50,6 +50,7 @@ const TMTextArea = forwardRef<HTMLTextAreaElement, InputType>(({
                             duration-200
                             resize-none
                             text-[16px]
+                            border-neutral-950
                             ${field.value && "border-blue bg-blue bg-opacity-5"}
                             `}
                         />

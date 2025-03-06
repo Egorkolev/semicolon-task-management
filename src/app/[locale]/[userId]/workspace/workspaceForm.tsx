@@ -46,7 +46,7 @@ const WorkspaceForm = (props: WorkspaceFormProps) => {
                 label={t("workspaceDescriptionLabel")}
                 placeholder={t("describeWorkspace")}
             />
-            <PrimaryButton className="dark:shadow-lg dark:shadow-gray" type="submit" label={t("create")} />
+            <PrimaryButton type="submit" label={t("create")} />
         </form>
     </FormProvider>
     )

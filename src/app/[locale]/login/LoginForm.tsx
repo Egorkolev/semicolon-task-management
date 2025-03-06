@@ -56,7 +56,7 @@ const LoginForm = (props: LoginFormProps) => {
                     }
                 />
                 <div className="flex justify-between flex-wrap gap-2">
-                    <PrimaryButton className="dark:shadow-lg dark:shadow-gray" type="submit" label={t("logIn")} />
+                    <PrimaryButton type="submit" label={t("logIn")} />
                 </div>
             </form>
         </FormProvider>

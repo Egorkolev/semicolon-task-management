@@ -1,5 +1,6 @@
-import * as React from "react"
- 
+import { FormControl, FormField, FormItem } from "@/components/ui/form";
+import { useFormContext } from "react-hook-form";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -7,10 +8,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { Label } from "@/components/ui/label";
-import { FormControl, FormField, FormItem } from "@/components/ui/form";
-import { useFormContext } from "react-hook-form";
+} from "@/components/ui/select";
+import * as React from "react";
 
 interface SelectType {
     name:        string;
@@ -36,7 +35,7 @@ const TMSelect = React.forwardRef<HTMLSelectElement, SelectedType>(({option, nam
         <Select {...field} defaultValue={field.value} onValueChange={field.onChange}>
           <div className="flex flex-col w-[-webkit-fill-available] gap-2">
             <Label>{label}</Label>
-            <SelectTrigger className={`w-auto ${field.value && "border-blue bg-blue bg-opacity-5"}`}>
+            <SelectTrigger className={`w-auto ${field.value && "border-blue  bg-opacity-5"}`}>
               <SelectValue placeholder={placeholder} />
             </SelectTrigger>
           </div>

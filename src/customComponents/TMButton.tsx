@@ -1,3 +1,4 @@
+import StarBorder from "@/lib/styles/StarBorder/StarBorder";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge"
 import { Loader2 } from "lucide-react"
@@ -13,29 +14,30 @@ interface ButtonType {
 
 export const PrimaryButton = ({label, type, children, onClick, className, disabled, variant}: ButtonType) => {
   return (
-  <Button 
-    variant={variant}
-    disabled={disabled}
-    onClick={onClick}
-    type={type} 
-    className={`
-      ${className}
-      bg-blue 
-      rounded-lg 
-      opacity-90 
-      hover:opacity-100
-      hover:bg-blue
-      shadow-xl
-      dark:text-gray
-    `}
-  >
-      {children || label}
-  </Button>
+    <Button
+      disabled={disabled}
+      onClick={onClick}
+      type={type} 
+      variant="outline"
+      className={`
+        ${className}
+          opacity-90 
+          hover:opacity-100
+          text-blue
+          hover:bg-opacity-5
+          hover:text-blue
+          dark:text-white
+          rounded-sm
+          border-none
+      `}
+    >
+        {children || label}
+    </Button>
   )
 }
 
 export const SecondaryButton = ({label, type, children, onClick, className, disabled}: ButtonType) => {
-    return (
+  return (
     <Button 
       disabled={disabled}
       onClick={onClick}
@@ -45,14 +47,12 @@ export const SecondaryButton = ({label, type, children, onClick, className, disa
         ${className}
         opacity-90 
         hover:opacity-100
-        border-blue 
-        text-blue 
-        rounded-lg
+        text-blue
         hover:bg-opacity-5
         hover:text-blue
-        shadow-xl
-        dark:bg-blue
-        dark:text-gray
+        dark:text-white
+        rounded-sm
+        border-none
       `}
     >
       {children || label}

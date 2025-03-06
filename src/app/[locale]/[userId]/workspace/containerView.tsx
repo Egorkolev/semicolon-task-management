@@ -1,13 +1,13 @@
-import React from "react";
-import { SecondaryButton, YellowButton } from "@/customComponents/TMButton";
-import { TMFrame } from "@/customComponents/TMFrame";
-import { FaGithub } from "react-icons/fa";
-import { styles} from "@/styles/tailwindClasses";
-import WorkspaceForm from "./workspaceForm";
+import { PrimaryButton, SecondaryButton } from "@/customComponents/TMButton";
 import TMLanguageSelect from "@/customComponents/TMLanguageSelect";
 import ThemeToggle from "@/customComponents/ThemeToggle";
-import { useTranslations } from "next-intl";
+import { TMFrame } from "@/customComponents/TMFrame";
+import { styles} from "@/styles/tailwindClasses";
 import { WorkspaceFormProps } from "./types";
+import WorkspaceForm from "./workspaceForm";
+import { useTranslations } from "next-intl";
+import { FaGithub } from "react-icons/fa";
+import React from "react";
 
 const ContainerView: React.FC<WorkspaceFormProps> = (props) => {
     const {handleLogOut} = props;
@@ -21,13 +21,13 @@ const ContainerView: React.FC<WorkspaceFormProps> = (props) => {
                 <>  
                     <div className="flex justify-between items-center gap-1">
                         <ThemeToggle />
-                        <TMLanguageSelect className="bg-white dark:bg-blue dark:text-gray dark:border-none dark:shadow-lg dark:shadow-gray" />
+                        <TMLanguageSelect />
                     </div>
                     <h1 className="text-start text-6xl font-bold text-white dark:text-gray hidden md:block ">Your Enviroment your Will.</h1>
                     <div className="flex justify-between items-center gap-1">
-                        <SecondaryButton className="dark:shadow-lg dark:shadow-gray" onClick={handleLogOut} type="button" label={t("button.logOut")} />
+                        <SecondaryButton onClick={handleLogOut} label={t("button.logOut")} />
                         <a className="text-infoBlue" href="https://github.com/Egorkolev/semicolon-task-management" target="_blank">
-                            <YellowButton type="button"><FaGithub className="mr-2" /> GitHub code review</YellowButton>
+                            <PrimaryButton type="button"><FaGithub className="mr-2" /> GitHub code review</PrimaryButton>
                         </a>
                     </div>
                 </>

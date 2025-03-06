@@ -20,10 +20,12 @@ const config: Config = {
 		'lg': '1024px',
 		'xl': '1280px',
 		'2xl': '1536px',
-		"3xl": "1600px"
+		"3xl": "1600px",
 	},
   	extend: {
 		animation: {
+			'star-movement-bottom': 'star-movement-bottom linear infinite alternate',
+			'star-movement-top': 'star-movement-top linear infinite alternate',
 			typing: "typing 3s steps(50, end), blink 0.5s step-end infinite",
 			blink: 'blink 0.5s step-end infinite',
 			glow: "glow 1.5s infinite",
@@ -32,6 +34,14 @@ const config: Config = {
 			none: "none",
 		},
 		keyframes: {
+			'star-movement-bottom': {
+				'0%': { transform: 'translate(0%, 0%)', opacity: '1' },
+				'100%': { transform: 'translate(-100%, 0%)', opacity: '0' },
+			},
+			'star-movement-top': {
+				'0%': { transform: 'translate(0%, 0%)', opacity: '1' },
+				'100%': { transform: 'translate(100%, 0%)', opacity: '0' },
+			},
 			typing: {
 			  "0%": { width: "0%" },
 			  "100%": { width: "100%" },

@@ -1,23 +1,27 @@
-import { useSortable } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
+import {FcHighPriority, FcLowPriority, FcMediumPriority} from "react-icons/fc";
 import {BadgeButton, SecondaryButton} from "@/customComponents/TMButton";
-import {Link} from "@/i18n/routing";
-import {FaCaretRight} from "react-icons/fa6";
-import React from "react";
-import {useTranslations} from "next-intl";
 import {TaskType} from "@/app/[locale]/[userId]/tasks/[id]/task/types";
+import SpotlightCard from '@/lib/styles/SpotlightCard/SpotlightCard';
+import StarBorder from "@/lib/styles/StarBorder/StarBorder";
+import { useSortable } from "@dnd-kit/sortable";
 import useUserInfo from "@/hooks/useUserInfo";
 import {Priority, Status} from "@/constants";
-import {FcHighPriority, FcLowPriority, FcMediumPriority} from "react-icons/fc";
+import {FaCaretRight} from "react-icons/fa6";
+import {useTranslations} from "next-intl";
+import { CSS } from "@dnd-kit/utilities";
+import {Link} from "@/i18n/routing";
+import React from "react";
 
 export default function DragDropTask({ task }: { task: TaskType }) {
     const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
         id: task.id,
     });
 
-    const style = {
+    const style: React.CSSProperties = {
         transform: CSS.Transform.toString(transform),
         transition,
+        zIndex: transform ? 1000 : 'auto',
+        position: transform ? 'relative' : 'static'
     };
 
     const t = useTranslations();
@@ -70,24 +74,33 @@ export default function DragDropTask({ task }: { task: TaskType }) {
 
     return (
         <div className="w-fit" ref={setNodeRef} style={style} {...attributes} {...listeners}>
-            <div key={task.id}
-                 className="flex flex-col gap-6 p-6 justify-between bg-white dark:bg-slate-600 w-[340px] rounded-md">
-                <div className="flex justify-between items-center">
-                    <h2 className="text-gray">{task.title}</h2>
-                    <BadgeButton className={badgeStatus(task.status)}>{getStatusName(task.status)}</BadgeButton>
+            <SpotlightCard className="custom-spotlight-card h-full" spotlightColor="rgba(0, 229, 255, 0.2)">
+                <div
+                    className="flex flex-col gap-6 p-6 justify-between bg-white dark:bg-neutral-900 w-[340px]">
+                    <div className="flex justify-between items-center">
+                        <h2 className="text-gray">{task.title}</h2>
+                        <BadgeButton className={badgeStatus(task.status)}>{getStatusName(task.status)}</BadgeButton>
+                    </div>
+                    <div className="text-darkBlue dark:text-gray">
+                        {task.description}
+                    </div>
+                    <div className="flex justify-between items-center gap-2">
+                        <Link className="text-infoBlue" href={`/${user?.userId}/tasks/${task.id}/task`}>
+                            <StarBorder
+                                as="button"
+                                className="custom-class"
+                                color="cyan"
+                                speed="3s"
+                            >
+                                <SecondaryButton>{t("button.viewTask")}<FaCaretRight/></SecondaryButton>
+                            </StarBorder>
+                        </Link>
+                        <BadgeButton className={`flex justify-between gap-2 px-2 ${badgePriorityStyle(task.priority)}`}>
+                            {getPriorityName(task.priority)}{badgePriorityIcon(task.priority)}
+                        </BadgeButton>
+                    </div>
                 </div>
-                <div className="text-darkBlue dark:text-gray">
-                    {task.description}
-                </div>
-                <div className="flex justify-between items-center gap-2">
-                    <Link className="text-infoBlue" href={`/${user?.userId}/tasks/${task.id}/task`}>
-                        <SecondaryButton>{t("button.viewTask")}<FaCaretRight/></SecondaryButton>
-                    </Link>
-                    <BadgeButton className={`flex justify-between gap-2 px-2 ${badgePriorityStyle(task.priority)}`}>
-                        {getPriorityName(task.priority)}{badgePriorityIcon(task.priority)}
-                    </BadgeButton>
-                </div>
-            </div>
+            </SpotlightCard>
         </div>
     );
 }

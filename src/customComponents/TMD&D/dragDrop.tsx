@@ -19,6 +19,7 @@ interface Props {
 }
 
 const TMDragDrop: React.FC<Props> = ({ tasks, onStatusUpdate }) => {
+    const [activeId, setActiveId] = useState<string | null>(null);
     const [showToast, setShowToast] = useState<boolean>(false);
     const [responseData, setResponseData] = useState<any>();
     const [columns, setColumns] = useState<ColumnsType>({
@@ -48,6 +49,10 @@ const TMDragDrop: React.FC<Props> = ({ tasks, onStatusUpdate }) => {
         ) as keyof ColumnsType | undefined;
     };
 
+    const handleDragStart = (event: { active: any }) => {
+        setActiveId(event.active.id);
+    };
+
     const handleDragEnd = async (event: DragEndEvent) => {
         const { active, over } = event;
         if (!over) return;
@@ -58,20 +63,18 @@ const TMDragDrop: React.FC<Props> = ({ tasks, onStatusUpdate }) => {
         const task = columns[sourceCol].find((t) => t.id === active.id);
         if (!task) return;
 
-        // Get target column - either from a task's column or directly from over.id
+        const isColumnId = Object.keys(columns).includes(over.id.toString());
+
         let targetCol: keyof ColumnsType;
 
-        if (over.id in Status) {
-            // Dropping directly onto a column
+        if (isColumnId) {
             targetCol = over.id as keyof ColumnsType;
         } else {
-            // Dropping onto another task
             const taskTargetCol = findColumnOfTask(over.id);
             if (!taskTargetCol) return;
             targetCol = taskTargetCol;
         }
 
-        // If moving to a different column
         if (sourceCol !== targetCol) {
             try {
                 if (onStatusUpdate) {
@@ -97,7 +100,6 @@ const TMDragDrop: React.FC<Props> = ({ tasks, onStatusUpdate }) => {
                 console.error('Failed to update task status:', error);
             }
         } else {
-            // If moving within the same column
             const oldIndex = columns[sourceCol].findIndex((t) => t.id === active.id);
             const newIndex = columns[sourceCol].findIndex((t) => t.id === over.id);
 
@@ -111,6 +113,7 @@ const TMDragDrop: React.FC<Props> = ({ tasks, onStatusUpdate }) => {
     return (
         <DndContext
             collisionDetection={closestCorners}
+            onDragStart={handleDragStart}
             onDragEnd={handleDragEnd}
         >
             <TMToast response={responseData} trigger={showToast} />
