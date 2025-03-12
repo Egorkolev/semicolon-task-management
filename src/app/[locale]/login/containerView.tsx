@@ -12,7 +12,7 @@ import LoginForm from "./LoginForm";
 import SpotlightCard from "@/lib/styles/SpotlightCard/SpotlightCard";
 
 const ContainerView: React.FC<LoginFormProps> = (props) => {
-    const t = useTranslations("button");
+    const t = useTranslations();
     return (
         <div className={styles.formWrapper}>
             <TMFrame childeren={
@@ -21,13 +21,13 @@ const ContainerView: React.FC<LoginFormProps> = (props) => {
                         <TMLanguageSelect />
                         <ThemeToggle />
                     </div>
-                    <h1 className="text-start text-6xl font-bold text-white dark:text-gray hidden md:block">Take your productivity to the next level.</h1>
+                    <h1 className="text-start text-6xl font-bold text-white hidden md:block">{t("message.productivity")}</h1>
                     <div className="flex justify-between items-center gap-1">  
                         <a className="text-infoBlue" href="https://github.com/Egorkolev/semicolon-task-management" target="_blank">
-                            <PrimaryButton type="button"><FaGithub className="mr-2" /> GitHub code review</PrimaryButton>
+                            <PrimaryButton type="button"><FaGithub className="mr-2" />GitHub {t("button.codeReview")}</PrimaryButton>
                         </a>
                         <Link href="/registration">
-                            <SecondaryButton className="text-infoBlue" label={t("createAccount")} />
+                            <SecondaryButton className="text-infoBlue" label={t("button.createAccount")} />
                         </Link>
                     </div>
                 </>

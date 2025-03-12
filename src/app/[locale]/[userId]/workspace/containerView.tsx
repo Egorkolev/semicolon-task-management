@@ -26,11 +26,11 @@ const ContainerView: React.FC<WorkspaceFormProps> = (props) => {
                         <ThemeToggle />
                         <TMLanguageSelect />
                     </div>
-                    <h1 className="text-start text-6xl font-bold text-white dark:text-gray hidden md:block ">Your Enviroment your Will.</h1>
+                    <h1 className="text-start text-6xl font-bold text-white hidden md:block ">{t("message.environment")}</h1>
                     <div className="flex justify-between items-center gap-1">
                         <SecondaryButton onClick={handleLogOut} label={t("button.logOut")} />
                         <a className="text-infoBlue" href="https://github.com/Egorkolev/semicolon-task-management" target="_blank">
-                            <PrimaryButton type="button"><FaGithub className="mr-2" /> GitHub code review</PrimaryButton>
+                            <PrimaryButton type="button"><FaGithub className="mr-2" />GitHub {t("button.codeReview")}</PrimaryButton>
                         </a>
                     </div>
                 </>

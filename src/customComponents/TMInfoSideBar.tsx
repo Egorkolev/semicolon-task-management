@@ -13,6 +13,7 @@ import TMAvatar from "./TMAvatar";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import StarBorder from "@/lib/styles/StarBorder/StarBorder";
 
 const TMInfoSideBar = () => {
     const t = useTranslations("button");
@@ -44,7 +45,14 @@ const TMInfoSideBar = () => {
                         <p className="text-gray text-sm">{userData?.email}</p>
                     </div>
                     <Link className="text-infoBlue" href={`/${user?.userId}/settings`}>
+                    <StarBorder
+                        as="button"
+                        className="custom-class ml-auto rounded-sm"
+                        color="cyan"
+                        speed="6s"
+                    >
                         <PrimaryButton label={t("myProfile")} />
+                    </StarBorder>
                     </Link>
                 </div>
                 <div>

@@ -94,8 +94,8 @@ const TMTaskCard = ({tasks, filters}: any) => {
             {        
                 fileredTask && fileredTask?.map((task: TaskType) => {
                     return (
-                        <SpotlightCard key={task.id} className="custom-spotlight-card" spotlightColor="rgba(0, 229, 255, 0.2)">
-                            <div className="flex-1 flex flex-col gap-6 p-6 justify-between bg-white dark:bg-neutral-900 w-[340px]">
+                        <SpotlightCard key={task.id} className="custom-spotlight-card w-[340px]" spotlightColor="rgba(0, 229, 255, 0.2)">
+                            <div className="flex-1 flex flex-col gap-6 p-6 justify-between bg-white dark:bg-neutral-900">
                                 <div className="flex justify-between items-center">
                                     <h2 className="text-gray">{task.title}</h2>
                                     <BadgeButton className={badgeStatus(task.status)}>{getStatusName(task.status)}</BadgeButton>
@@ -109,7 +109,7 @@ const TMTaskCard = ({tasks, filters}: any) => {
                                         as="button"
                                         className="custom-class"
                                         color="cyan"
-                                        speed="3s"
+                                        speed="6s"
                                     >
                                         <SecondaryButton>{t("button.viewTask")}<FaCaretRight /></SecondaryButton>
                                     </StarBorder>

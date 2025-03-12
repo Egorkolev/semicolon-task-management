@@ -27,10 +27,10 @@ const TMAvatarDialog = ({ showAvatarDialog, onClose, onChange, onUpload, userIma
   return (
     <Dialog open={showAvatarDialog} onOpenChange={onClose}>
       <DialogTrigger asChild></DialogTrigger>
-      <DialogContent className="p-0 sm:max-w-[425px] dark:bg-neutral-900">
+      <DialogContent className="p-0 sm:max-w-[425px] dark:bg-neutral-900 z-[60]">
         <SpotlightCard className="
           custom-spotlight-card w-full h-full p-5 flex flex-col justify-center 
-          items-center text-center gap-2 z-[60]" spotlightColor="rgba(0, 229, 255, 0.2)"
+          items-center text-center gap-2" spotlightColor="rgba(0, 229, 255, 0.2)"
         >
           <DialogHeader>
             <DialogTitle className="text-darkBlue dark:text-gray m-2 p-0">

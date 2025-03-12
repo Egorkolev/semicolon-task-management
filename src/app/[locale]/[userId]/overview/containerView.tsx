@@ -41,7 +41,7 @@ const ContainerView: React.FC<OwerviewTypes> = (props) => {
                         as="button"
                         className="custom-class ml-auto rounded-sm"
                         color="cyan"
-                        speed="3s"
+                        speed="6s"
                     >
                         <SecondaryButton onClick={openTaskDialog}>{t("button.createTask")}</SecondaryButton>
                     </StarBorder>

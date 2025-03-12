@@ -65,7 +65,7 @@ const ContainerView = (props: TaskTypes) => {
                                 as="button"
                                 className="custom-class"
                                 color="cyan"
-                                speed="3s"
+                                speed="6s"
                             >
                                 <SecondaryButton
                                     onClick={() => handleChangeStatus(task)}

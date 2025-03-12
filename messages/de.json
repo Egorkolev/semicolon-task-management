@@ -17,9 +17,16 @@
         "accountSettings": "Kontoeinstellungen",
         "unselected": "Nicht ausgewählt",
         "notificationSettings": "Benachrichtigungseinstellungen",
-        "accessibilitySettings": "Barrierefreiheitseinstellungen"
+        "accessibilitySettings": "Barrierefreiheitseinstellungen",
+        "productivity": "Bringen Sie Ihre Produktivität auf die nächste Stufe.",
+        "environment": "Ihre Umgebung Ihr Wille.",
+        "allowNotifications": "Desktop-Benachrichtigungen zulassen",
+        "sendEmails": "Kritische Benachrichtigungen an meine E-Mail senden",
+        "darkMode": "Dunkelmodus aktivieren",
+        "theme": "Arbeitsbereich-Theme personalisieren"
     },
     "button": {
+        "codeReview": "Code-Überprüfung",
         "getStarted": "Loslegen",
         "createTask": "Aufgabe erstellen",
         "viewTask": "Aufgabe ansehen",

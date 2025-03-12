@@ -90,7 +90,7 @@ export default function DragDropTask({ task }: { task: TaskType }) {
                                 as="button"
                                 className="custom-class"
                                 color="cyan"
-                                speed="3s"
+                                speed="6s"
                             >
                                 <SecondaryButton>{t("button.viewTask")}<FaCaretRight/></SecondaryButton>
                             </StarBorder>

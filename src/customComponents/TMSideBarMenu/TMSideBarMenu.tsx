@@ -26,6 +26,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import StarBorder from "@/lib/styles/StarBorder/StarBorder";
 
 const TMSideBarMenu = () => {
   const {
@@ -101,7 +102,7 @@ const TMSideBarMenu = () => {
           </div>
           <SheetContent
             side="left"
-            className="pb-28 md:pb-10 w-[200px] sm:w-[200px] max-w-[200px] ml-16 pl-0 max-h-[100vh] pt-10 bg-slate-100 dark:bg-neutral-900 flex flex-col justify-between gap-3"
+            className="pb-10 w-[200px] sm:w-[200px] max-w-[200px] ml-16 pl-0 max-h-[100vh] pt-10 bg-slate-100 dark:bg-neutral-900 flex flex-col justify-between gap-3"
           >
             <div>
               <SheetHeader>
@@ -143,11 +144,18 @@ const TMSideBarMenu = () => {
                 ))}
               </ul>
             </div>
-            <SecondaryButton
-              className="mx-auto min-w-[150px]"
-              onClick={handleLogOut}
-              label={t("button.logOut")}
-            />
+            <StarBorder
+                as="button"
+                className="custom-class w-fit mx-auto"
+                color="cyan"
+                speed="6s"
+            >
+              <SecondaryButton
+                className="w-[150px]"
+                onClick={handleLogOut}
+                label={t("button.logOut")}
+              />
+            </StarBorder>
           </SheetContent>
         </Sheet>
       </div>

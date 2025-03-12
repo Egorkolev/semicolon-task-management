@@ -60,7 +60,7 @@ const TMDeleteDialog = ({ showDeleteDialog, onClose, onClick, taskName, taskStat
               as="button"
               className="custom-class w-full"
               color="cyan"
-              speed="3s"
+              speed="6s"
             >
               <SecondaryButton onClick={onClose} className="w-full">
                 {t("button.no")}

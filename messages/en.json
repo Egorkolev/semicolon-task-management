@@ -17,9 +17,16 @@
         "accountSettings": "Account Settings",
         "unselected": "Unselected",
         "notificationSettings": "Notification Settings",
-        "accessibilitySettings": "Accessibility Settings"
+        "accessibilitySettings": "Accessibility Settings",
+        "productivity": "Take your productivity to the next level.",
+        "environment": "Your Environment your Will.",
+        "allowNotifications": "Allow Desktop Notifications",
+        "sendEmails": "Send Critical Notifications to My Email",
+        "darkMode": "Enable Dark Mode",
+        "theme": "Personalize Workspace Theme"
     },
     "button": {
+        "codeReview": "code review",
         "getStarted": "Get Started",
         "createTask": "Create Task",
         "viewTask": "View Task",

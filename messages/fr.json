@@ -17,9 +17,16 @@
         "accountSettings": "Paramètres du compte",
         "unselected": "Non sélectionné",
         "notificationSettings": "Paramètres de notification",
-        "accessibilitySettings": "Paramètres d'accessibilité"
+        "accessibilitySettings": "Paramètres d'accessibilité",
+        "productivity": "Portez votre productivité au niveau supérieur.",
+        "environment": "Votre Environnement votre Volonté.",
+        "allowNotifications": "Autoriser les notifications de bureau",
+        "sendEmails": "Envoyer les notifications critiques à mon e-mail",
+        "darkMode": "Activer le mode sombre",
+        "theme": "Personnaliser le thème de l'espace de travail"
     },
     "button": {
+        "codeReview": "revue de code",
         "getStarted": "Commencer",
         "createTask": "Créer une tâche",
         "viewTask": "Voir la tâche",

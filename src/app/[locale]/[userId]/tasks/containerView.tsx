@@ -37,7 +37,7 @@ const ContainerView = (props: TaskTypes) => {
                     as="button"
                     className="custom-class ml-auto rounded-sm"
                     color="cyan"
-                    speed="3s"
+                    speed="6s"
                 >
                     <SecondaryButton onClick={openTaskDialog}>{t("button.createTask")}</SecondaryButton>
                 </StarBorder>
@@ -125,7 +125,7 @@ const ContainerView = (props: TaskTypes) => {
                         case TaskViewOptions.DRAG:
                             return <TMDragDrop tasks={taskData} />;
                         default:
-                            return <TMTaskCard tasks={taskData} filters={selectedStatus} />; // Default view
+                            return <TMTaskCard tasks={taskData} filters={selectedStatus} />;
                     }
                 })()}
             </>)}

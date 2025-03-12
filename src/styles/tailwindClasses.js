@@ -24,7 +24,6 @@ export const styles = {
         dark:bg-opacity-80
         rounded-md
         dark:rounded-sm
-        p-3
     `,
     frameForm: `
         mx-auto
@@ -34,7 +33,7 @@ export const styles = {
         space-y-8
         max-w-[397px]
         bg-white bg-opacity-70
-        dark:bg-slate-600
+        dark:bg-neutral-700
         dark:bg-opacity-70
         p-4
         rounded-lg
@@ -51,14 +50,14 @@ export const styles = {
         border border-transparent 
         data-[state=on]:border-1 
         data-[state=on]:border-blue
-        dark:bg-slate-600
+        dark:bg-neutral-700
         dark:data-[state=on]:text-gray
     `,
     settingsGroupItem: `
         flex flex-wrap h-fit gap-4
         bg-white w-full p-2 px-6
         rounded-2xl 
-        dark:bg-slate-600 border
+        dark:bg-neutral-700 border
         dark:text-gray
         border-gray items-center
     `

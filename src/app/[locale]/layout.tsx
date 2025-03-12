@@ -58,7 +58,7 @@ const RootLayout = ({
       >
         <NextIntlClientProvider messages={messages} locale={locale} timeZone={apiKeys.NEXT_PUBLIC_TIME_ZONE}>
           <RootLayoutClient>
-            <SplashCursor />
+            {!shouldShowContent && <SplashCursor />}
             <div className="flex justify-between">
               <div className="flex h-screen fixed z-[60]">
                 {shouldShowContent && <TMSideBarMenu />}
